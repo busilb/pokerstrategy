@@ -1,0 +1,2566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<title>布斯 · 德扑攻略</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #0B1426;
+  color: #e0e0e0;
+  line-height: 1.6;
+  padding: 0 0 60px 0;
+}
+.container { max-width: 680px; margin: 0 auto; padding: 20px 16px; }
+header {
+  text-align: center;
+  padding: 30px 0 20px;
+  border-bottom: 1px solid #1e2d4a;
+  margin-bottom: 24px;
+}
+header h1 { font-size: 28px; color: #fff; margin-bottom: 8px; }
+header .subtitle { color: #666; font-size: 14px; }
+.nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #1e2d4a;
+}
+.nav a {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  background: #1A1A2E;
+  color: #aaa;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+.nav a:hover, .nav a.active { background: #2a2a4e; color: #fff; }
+section {
+  margin-bottom: 24px;
+  background: #111827;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #1e2d4a;
+}
+section h2 {
+  font-size: 18px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #1e2d4a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+section h3 {
+  font-size: 15px;
+  margin: 14px 0 8px;
+  color: #fff;
+}
+.accent-red { color: #FF4444; }
+.accent-orange { color: #FF8C00; }
+.accent-gold { color: #FFD700; }
+.accent-cyan { color: #00D4FF; }
+.accent-green { color: #00FF88; }
+.accent-purple { color: #9B59B6; }
+.rule-card {
+  background: #1A1A2E;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 10px 0;
+  border-left: 4px solid #FF4444;
+}
+.rule-card.orange { border-left-color: #FF8C00; }
+.rule-card.gold { border-left-color: #FFD700; }
+.rule-card.cyan { border-left-color: #00D4FF; }
+.rule-card.green { border-left-color: #00FF88; }
+.rule-card.purple { border-left-color: #9B59B6; }
+.rule-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px; height: 22px;
+  background: #FF4444;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 8px;
+}
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.tag-red { background: rgba(255,68,68,0.15); color: #FF4444; }
+.tag-green { background: rgba(0,255,136,0.15); color: #00FF88; }
+.tag-yellow { background: rgba(255,215,0,0.15); color: #FFD700; }
+.tag-cyan { background: rgba(0,212,255,0.15); color: #00D4FF; }
+.tag-purple { background: rgba(155,89,182,0.15); color: #9B59B6; }
+ul { padding-left: 20px; }
+li { margin: 6px 0; font-size: 14px; }
+.highlight {
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-size: 14px;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+@media (max-width: 480px) { .grid-2 { grid-template-columns: 1fr; } }
+.stat-card {
+  background: #1A1A2E;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+.stat-card .num { font-size: 24px; font-weight: 700; color: #fff; }
+.stat-card .label { font-size: 12px; color: #888; margin-top: 4px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+  font-size: 13px;
+}
+th, td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid #1e2d4a;
+}
+th { color: #888; font-weight: 600; font-size: 12px; text-transform: uppercase; }
+td { color: #ccc; }
+.footer {
+  text-align: center;
+  color: #444;
+  font-size: 12px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #1e2d4a;
+}
+.level-card {
+  background: #1A1A2E;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px 0;
+  border: 1px solid #1e2d4a;
+  position: relative;
+}
+.level-card .level-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.level-card h4 {
+  font-size: 15px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.level-card p {
+  font-size: 13px;
+  color: #aaa;
+  margin: 4px 0;
+}
+.progress-bar {
+  height: 6px;
+  background: #1e2d4a;
+  border-radius: 3px;
+  margin: 12px 0 8px;
+  overflow: hidden;
+}
+.progress-bar .fill {
+  height: 100%;
+  border-radius: 3px;
+}
+.quiz-card {
+  background: #1A1A2E;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px 0;
+  border: 1px solid #1e2d4a;
+}
+.quiz-card .question {
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.quiz-card .options label {
+  display: block;
+  padding: 10px 14px;
+  margin: 6px 0;
+  background: #0B1426;
+  border: 1px solid #1e2d4a;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+.quiz-card .options label:hover {
+  border-color: #00D4FF;
+  background: rgba(0,212,255,0.05);
+}
+.quiz-card .options input[type="radio"] { display: none; }
+.quiz-card .options input[type="radio"]:checked + span { color: #00D4FF; }
+.quiz-card .answer {
+  display: none;
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.quiz-card .answer.correct {
+  display: block;
+  background: rgba(0,255,136,0.1);
+  border: 1px solid rgba(0,255,136,0.3);
+  color: #00FF88;
+}
+.quiz-card .answer.wrong {
+  display: block;
+  background: rgba(255,68,68,0.1);
+  border: 1px solid rgba(255,68,68,0.3);
+  color: #FF4444;
+}
+.formula-box {
+  background: #0B1426;
+  border: 1px solid #1e2d4a;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 10px 0;
+  font-family: "SF Mono", "Fira Code", monospace;
+  font-size: 14px;
+  color: #00D4FF;
+  text-align: center;
+}
+.formula-box .desc {
+  font-family: -apple-system, "PingFang SC", sans-serif;
+  color: #888;
+  font-size: 12px;
+  margin-top: 6px;
+}
+.current-level {
+  border: 2px solid #FFD700 !important;
+  box-shadow: 0 0 12px rgba(255,215,0,0.15);
+}
+.calc-section { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.calc-input-group { margin-bottom: 12px; }
+.calc-input-group label { display: block; font-size: 12px; color: #888; margin-bottom: 4px; font-weight: 600; }
+.calc-input-group input, .calc-input-group select {
+  width: 100%; padding: 10px 12px; background: #0B1426; border: 1px solid #1e2d4a;
+  border-radius: 6px; color: #fff; font-size: 16px; font-weight: 600;
+  -webkit-appearance: none;
+}
+.calc-input-group select { font-size: 14px; }
+.calc-result-box {
+  background: #0B1426; border-radius: 8px; padding: 16px;
+  border: 1px solid #1e2d4a; text-align: center; margin-top: 12px;
+}
+.calc-result-box .big-num { font-size: 32px; font-weight: 900; }
+.calc-result-box .sub-label { font-size: 12px; color: #888; margin-top: 2px; }
+.range-grid-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.range-grid { border-collapse: collapse; width: 100%; min-width: 340px; }
+.range-grid td, .range-grid th {
+  width: 7.14%; padding: 0; text-align: center; font-size: 11px; font-weight: 600;
+  border: 1px solid #0B1426; height: 26px; cursor: default; transition: background 0.15s;
+}
+.range-grid th { background: #1e2d4a; color: #888; font-size: 10px; height: 22px; }
+.rg-raise { background: rgba(0,255,136,0.25); color: #00FF88; }
+.rg-3bet { background: rgba(255,215,0,0.25); color: #FFD700; }
+.rg-call { background: rgba(0,212,255,0.25); color: #00D4FF; }
+.rg-fold { background: rgba(255,255,255,0.03); color: #333; }
+.pos-tab {
+  padding: 6px 12px; background: #1A1A2E; color: #aaa; border: 1px solid #1e2d4a;
+  border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; transition: all 0.15s;
+}
+.pos-tab.active { background: #2a2a4e; color: #fff; border-color: #FFD700; }
+.eq-sel {
+  padding: 8px 10px; background: #0B1426; border: 1px solid #1e2d4a;
+  border-radius: 6px; color: #fff; font-size: 14px; font-weight: 600;
+  -webkit-appearance: none;
+}
+.eq-bar { height: 24px; border-radius: 4px; display: inline-block; vertical-align: middle; transition: width 0.4s; }
+@media (max-width: 480px) {
+  .calc-section { grid-template-columns: 1fr; }
+  .range-grid td, .range-grid th { font-size: 9px; height: 22px; }
+}
+
+/* ===== Mobile / Mini-Program / Ant Design Optimization ===== */
+:root {
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --tab-height: 52px;
+  --ant-brand: #FFD700;
+}
+body {
+  padding-bottom: calc(var(--tab-height) + var(--safe-bottom) + 16px) !important;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  overscroll-behavior-y: contain;
+}
+@supports (padding-bottom: constant(safe-area-inset-bottom)) {
+  body { padding-bottom: calc(var(--tab-height) + constant(safe-area-inset-bottom) + 16px) !important; }
+  .bottom-tabbar { padding-bottom: constant(safe-area-inset-bottom); }
+}
+.bottom-tabbar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  height: calc(var(--tab-height) + var(--safe-bottom));
+  padding-bottom: var(--safe-bottom);
+  background: rgba(17,24,39,0.96);
+  border-top: 1px solid #1e2d4a;
+  display: flex; justify-content: space-around; align-items: stretch;
+  z-index: 1000;
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+}
+.tab-item {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  height: var(--tab-height); color: #555; font-size: 10px; font-weight: 500;
+  text-decoration: none; transition: color 0.2s; cursor: pointer;
+  user-select: none; -webkit-user-select: none; position: relative;
+}
+.tab-item .tab-icon { font-size: 22px; margin-bottom: 2px; line-height: 1; transition: transform 0.2s; }
+.tab-item.active { color: var(--ant-brand); }
+.tab-item.active .tab-icon { transform: scale(1.15); }
+.tab-item.active::after {
+  content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 20px; height: 2px; background: var(--ant-brand); border-radius: 0 0 2px 2px;
+}
+.sub-nav {
+  display: flex; gap: 8px; overflow-x: auto; padding: 4px 0 16px;
+  -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.sub-nav::-webkit-scrollbar { display: none; }
+.sub-nav-pill {
+  flex-shrink: 0; padding: 7px 16px; background: #1A1A2E; color: #888;
+  border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: 500;
+  transition: all 0.25s; border: 1px solid #1e2d4a; cursor: pointer; white-space: nowrap;
+}
+.sub-nav-pill:active { transform: scale(0.96); }
+.sub-nav-pill.active {
+  background: rgba(255,215,0,0.12); color: #FFD700;
+  border-color: rgba(255,215,0,0.4); font-weight: 600;
+}
+section[data-tab] { display: none; }
+section[data-tab].tab-visible { display: block; animation: tabFadeIn 0.25s ease; }
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+header { padding: 20px 0 14px !important; margin-bottom: 8px !important; }
+header h1 { font-size: 22px !important; letter-spacing: 1px; }
+header .subtitle { font-size: 12px !important; }
+button, .pos-tab, label[onclick] { min-height: 40px; }
+select { min-height: 38px; }
+section[data-tab] { border-radius: 12px; margin-bottom: 14px; }
+section[data-tab] h2 { font-size: 17px; margin-bottom: 12px; padding-bottom: 10px; }
+nav.nav { display: none !important; }
+.footer { padding-bottom: 8px; }
+@media (max-width: 414px) {
+  .container { padding: 12px 14px !important; }
+  section[data-tab] { padding: 16px 14px; }
+  section[data-tab] h2 { font-size: 16px; }
+  .grid-2 { gap: 8px; }
+  .stat-card { padding: 10px 8px; }
+  .stat-card .num { font-size: 20px; }
+  table { font-size: 12px; }
+  th, td { padding: 7px 6px; }
+  .formula-box { font-size: 13px; padding: 12px; }
+  .rule-card { padding: 12px 14px; }
+  .quiz-card { padding: 14px; }
+  .highlight { padding: 10px 14px; }
+}
+@media (max-width: 375px) {
+  header h1 { font-size: 20px !important; }
+  .sub-nav-pill { padding: 6px 12px; font-size: 12px; }
+  .calc-result-box .big-num { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>布斯 · 德扑攻略</h1>
+  <div class="subtitle">Page酒吧 | 10/20盲注 | 50BB | 10人桌</div>
+  <div id="tab-title" style="margin-top:8px;font-size:14px;color:#FFD700;font-weight:600;">⚡ 决策工具</div>
+</header>
+
+<div class="sub-nav" id="sub-nav-container"></div>
+
+<nav class="nav">
+  <a href="#quickdecision" style="background:#FF4444;color:#fff;font-weight:700;">⚡决策</a>
+  <a href="#calculator" style="background:#00D4FF;color:#0B1426;font-weight:700;">🔢计算</a>
+  <a href="#rangematrix">范围矩阵</a>
+  <a href="#equitycalc">胜率模拟</a>
+  <a href="#rules" class="active">三条军规</a>
+  <a href="#levels">成长阶段</a>
+  <a href="#positions">位置策略</a>
+  <a href="#postflop">翻后决策</a>
+  <a href="#advanced">进阶理论</a>
+  <a href="#quiz">基础训练</a>
+  <a href="#multistreet">多街决策</a>
+  <a href="#mathdrill">速算训练</a>
+  <a href="#rangeread">读牌训练</a>
+  <a href="#basics">基础知识</a>
+  <a href="#leaks">我的弱点</a>
+  <a href="#mindset">心态管理</a>
+  <a href="#cheatsheet" style="background:#FFD700;color:#0B1426;font-weight:700;">速查总图</a>
+</nav>
+
+<!-- 快速决策器 -->
+<section id="quickdecision" data-tab="tools" data-label="⚡ 决策器" style="border:2px solid #FFD700;box-shadow:0 0 20px rgba(255,215,0,0.1);">
+  <h2><span class="accent-gold">&#9889;</span> 快速决策器</h2>
+  <p style="font-size:13px;color:#888;margin-bottom:16px;">3步出答案：位置 → 局面 → 手牌。瞬间决策，上桌直接用。</p>
+
+  <div style="margin-bottom:16px;">
+    <div style="font-size:12px;color:#666;margin-bottom:6px;font-weight:600;">① 你的位置</div>
+    <div id="qd-pos-wrap" style="display:flex;gap:6px;flex-wrap:wrap;"></div>
+  </div>
+
+  <div id="qd-step2" style="display:none;margin-bottom:16px;">
+    <div style="font-size:12px;color:#666;margin-bottom:6px;font-weight:600;">② 当前局面</div>
+    <div id="qd-scene-wrap" style="display:flex;gap:6px;flex-wrap:wrap;"></div>
+  </div>
+
+  <div id="qd-step3" style="display:none;margin-bottom:16px;">
+    <div style="font-size:12px;color:#666;margin-bottom:6px;font-weight:600;">③ 你的手牌</div>
+    <div style="margin-bottom:10px;">
+      <div style="font-size:11px;color:#555;margin-bottom:4px;">第一张</div>
+      <div id="qd-c1-wrap" style="display:flex;gap:4px;flex-wrap:wrap;"></div>
+    </div>
+    <div id="qd-c2-area" style="display:none;margin-bottom:10px;">
+      <div style="font-size:11px;color:#555;margin-bottom:4px;">第二张</div>
+      <div id="qd-c2-wrap" style="display:flex;gap:4px;flex-wrap:wrap;"></div>
+    </div>
+    <div id="qd-suit-area" style="display:none;">
+      <div id="qd-suit-wrap" style="display:flex;gap:8px;"></div>
+    </div>
+  </div>
+
+  <div id="qd-summary" style="display:none;text-align:center;margin:12px 0;font-size:12px;color:#888;"></div>
+
+  <div id="qd-result" style="display:none;"></div>
+
+  <div style="margin-top:12px;text-align:center;">
+    <button onclick="qdReset()" id="qd-reset-btn" style="display:none;padding:8px 20px;background:#1A1A2E;color:#aaa;border:1px solid #1e2d4a;border-radius:6px;font-size:13px;cursor:pointer;">重新选择</button>
+    <button onclick="qdRehand()" id="qd-rehand-btn" style="display:none;padding:8px 20px;background:#1A1A2E;color:#FFD700;border:1px solid #FFD700;border-radius:6px;font-size:13px;cursor:pointer;margin-left:8px;">换手牌</button>
+  </div>
+</section>
+
+<!-- 实时牌桌计算器 -->
+<section id="calculator" data-tab="tools" data-label="🔢 计算器" style="border:2px solid #00D4FF;box-shadow:0 0 20px rgba(0,212,255,0.1);">
+  <h2><span class="accent-cyan">🔢</span> 实时牌桌计算器</h2>
+  <p style="font-size:13px;color:#888;margin-bottom:16px;">上桌快速算赔率和EV。输入数字，瞬间出结果。</p>
+
+  <div style="display:flex;gap:6px;margin-bottom:16px;">
+    <button onclick="showCalcTab('potodds')" id="ct-potodds" class="pos-tab active">底池赔率</button>
+    <button onclick="showCalcTab('outs')" id="ct-outs" class="pos-tab">Outs速查</button>
+    <button onclick="showCalcTab('ev')" id="ct-ev" class="pos-tab">EV计算</button>
+  </div>
+
+  <div id="cp-potodds">
+    <div class="calc-section">
+      <div class="calc-input-group"><label>当前底池</label><input type="number" id="cp-pot" inputmode="numeric" placeholder="如 500" oninput="calcPO()"></div>
+      <div class="calc-input-group"><label>对手下注</label><input type="number" id="cp-bet" inputmode="numeric" placeholder="如 200" oninput="calcPO()"></div>
+    </div>
+    <div id="cp-po-result"></div>
+  </div>
+
+  <div id="cp-outs" style="display:none;">
+    <div class="calc-input-group">
+      <label>听牌类型</label>
+      <select id="cp-outs-type" onchange="calcOU()" style="width:100%;padding:10px 12px;background:#0B1426;border:1px solid #1e2d4a;border-radius:6px;color:#fff;font-size:14px;">
+        <option value="">选择听牌类型...</option>
+        <option value="9">同花听牌 (9 outs)</option>
+        <option value="8">两头顺听 OESD (8 outs)</option>
+        <option value="15">同花+顺组合听 (15 outs)</option>
+        <option value="6">两张overcards (6 outs)</option>
+        <option value="4">卡顺听牌 (4 outs)</option>
+        <option value="5">一对→两对/暗三 (5 outs)</option>
+        <option value="2">一对→暗三 (2 outs)</option>
+        <option value="custom">自定义outs数...</option>
+      </select>
+    </div>
+    <div id="cp-outs-custom" style="display:none;">
+      <div class="calc-input-group"><label>Outs数量</label><input type="number" id="cp-outs-num" inputmode="numeric" min="1" max="20" placeholder="输入outs数" oninput="calcOU()"></div>
+    </div>
+    <div id="cp-ou-result"></div>
+  </div>
+
+  <div id="cp-ev" style="display:none;">
+    <div class="calc-section">
+      <div class="calc-input-group"><label>你的赢率 (%)</label><input type="number" id="cp-ev-wp" inputmode="numeric" placeholder="如 35" oninput="calcEV2()"></div>
+      <div class="calc-input-group"><label>底池大小</label><input type="number" id="cp-ev-pot" inputmode="numeric" placeholder="如 800" oninput="calcEV2()"></div>
+    </div>
+    <div class="calc-input-group"><label>需要跟注金额</label><input type="number" id="cp-ev-call" inputmode="numeric" placeholder="如 200" oninput="calcEV2()"></div>
+    <div id="cp-ev-result"></div>
+  </div>
+</section>
+
+<!-- 翻前范围矩阵 -->
+<section id="rangematrix" data-tab="strategy" data-label="范围矩阵">
+  <h2><span class="accent-green">■</span> 翻前范围矩阵</h2>
+  <p style="font-size:13px;color:#888;margin-bottom:12px;">一目了然：哪些牌能打，哪些牌要扔。选位置看你的open/call/fold范围。对角线=对子，上三角=同花，下三角=非同花。</p>
+  <div style="display:flex;gap:6px;margin-bottom:8px;">
+    <button onclick="showRMScn('open')" id="rm-scn-open" class="pos-tab active" style="font-size:11px;">我要Open</button>
+    <button onclick="showRMScn('facing')" id="rm-scn-facing" class="pos-tab" style="font-size:11px;">面对Open</button>
+  </div>
+  <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px;" id="rm-tabs"></div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px;font-size:11px;">
+    <span><span style="display:inline-block;width:10px;height:10px;background:rgba(0,255,136,0.35);border-radius:2px;vertical-align:middle;margin-right:2px;"></span>RAISE</span>
+    <span id="rm-leg-3b" style="display:none;"><span style="display:inline-block;width:10px;height:10px;background:rgba(255,215,0,0.35);border-radius:2px;vertical-align:middle;margin-right:2px;"></span>3BET</span>
+    <span id="rm-leg-call" style="display:none;"><span style="display:inline-block;width:10px;height:10px;background:rgba(0,212,255,0.35);border-radius:2px;vertical-align:middle;margin-right:2px;"></span>CALL</span>
+    <span><span style="display:inline-block;width:10px;height:10px;background:rgba(255,255,255,0.05);border-radius:2px;vertical-align:middle;margin-right:2px;"></span>FOLD</span>
+  </div>
+  <div class="range-grid-wrap"><table class="range-grid" id="rm-grid"></table></div>
+  <div id="rm-stats" style="margin-top:8px;font-size:12px;color:#888;"></div>
+</section>
+
+<!-- 胜率模拟器 -->
+<section id="equitycalc" data-tab="strategy" data-label="胜率模拟">
+  <h2><span class="accent-purple">■</span> 胜率模拟器</h2>
+  <p style="font-size:13px;color:#888;margin-bottom:16px;">蒙特卡洛模拟10000次发牌，精确计算你的手牌 vs 对手范围的胜率。帮你建立胜率直觉。</p>
+
+  <div style="margin-bottom:14px;">
+    <div style="font-size:12px;color:#666;margin-bottom:6px;font-weight:600;">你的手牌</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <div>
+        <div style="font-size:11px;color:#555;margin-bottom:4px;">第一张</div>
+        <div style="display:flex;gap:4px;">
+          <select id="eq-r1" class="eq-sel" onchange="eqPreview()"><option value="">-</option><option value="14">A</option><option value="13">K</option><option value="12">Q</option><option value="11">J</option><option value="10">T</option><option value="9">9</option><option value="8">8</option><option value="7">7</option><option value="6">6</option><option value="5">5</option><option value="4">4</option><option value="3">3</option><option value="2">2</option></select>
+          <select id="eq-s1" class="eq-sel" onchange="eqPreview()"><option value="0">♠</option><option value="1">♥</option><option value="2">♦</option><option value="3">♣</option></select>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;color:#555;margin-bottom:4px;">第二张</div>
+        <div style="display:flex;gap:4px;">
+          <select id="eq-r2" class="eq-sel" onchange="eqPreview()"><option value="">-</option><option value="14">A</option><option value="13">K</option><option value="12">Q</option><option value="11">J</option><option value="10">T</option><option value="9">9</option><option value="8">8</option><option value="7">7</option><option value="6">6</option><option value="5">5</option><option value="4">4</option><option value="3">3</option><option value="2">2</option></select>
+          <select id="eq-s2" class="eq-sel" onchange="eqPreview()"><option value="0">♠</option><option value="1">♥</option><option value="2">♦</option><option value="3">♣</option></select>
+        </div>
+      </div>
+    </div>
+    <div id="eq-hand-preview" style="font-size:13px;color:#FFD700;margin-top:6px;"></div>
+  </div>
+
+  <div style="margin-bottom:14px;">
+    <div style="font-size:12px;color:#666;margin-bottom:6px;font-weight:600;">公共牌 (可选，留空=翻前)</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;" id="eq-board-area">
+      <div style="display:flex;gap:4px;align-items:center;">
+        <select id="eq-br1" class="eq-sel" style="width:50px;" onchange="eqPreview()"><option value="">-</option><option value="14">A</option><option value="13">K</option><option value="12">Q</option><option value="11">J</option><option value="10">T</option><option value="9">9</option><option value="8">8</option><option value="7">7</option><option value="6">6</option><option value="5">5</option><option value="4">4</option><option value="3">3</option><option value="2">2</option></select>
+        <select id="eq-bs1" class="eq-sel" style="width:44px;" onchange="eqPreview()"><option value="0">♠</option><option value="1">♥</option><option value="2">♦</option><option value="3">♣</option></select>
+      </div>
+      <div style="display:flex;gap:4px;align-items:center;">
+        <select id="eq-br2" class="eq-sel" style="width:50px;" onchange="eqPreview()"><option value="">-</option><option value="14">A</option><option value="13">K</option><option value="12">Q</option><option value="11">J</option><option value="10">T</option><option value="9">9</option><option value="8">8</option><option value="7">7</option><option value="6">6</option><option value="5">5</option><option value="4">4</option><option value="3">3</option><option value="2">2</option></select>
+        <select id="eq-bs2" class="eq-sel" style="width:44px;" onchange="eqPreview()"><option value="0">♠</option><option value="1">♥</option><option value="2">♦</option><option value="3">♣</option></select>
+      </div>
+      <div style="display:flex;gap:4px;align-items:center;">
+        <select id="eq-br3" class="eq-sel" style="width:50px;" onchange="eqPreview()"><option value="">-</option><option value="14">A</option><option value="13">K</option><option value="12">Q</option><option value="11">J</option><option value="10">T</option><option value="9">9</option><option value="8">8</option><option value="7">7</option><option value="6">6</option><option value="5">5</option><option value="4">4</option><option value="3">3</option><option value="2">2</option></select>
+        <select id="eq-bs3" class="eq-sel" style="width:44px;" onchange="eqPreview()"><option value="0">♠</option><option value="1">♥</option><option value="2">♦</option><option value="3">♣</option></select>
+      </div>
+      <div style="display:flex;gap:4px;align-items:center;">
+        <select id="eq-br4" class="eq-sel" style="width:50px;" onchange="eqPreview()"><option value="">-</option><option value="14">A</option><option value="13">K</option><option value="12">Q</option><option value="11">J</option><option value="10">T</option><option value="9">9</option><option value="8">8</option><option value="7">7</option><option value="6">6</option><option value="5">5</option><option value="4">4</option><option value="3">3</option><option value="2">2</option></select>
+        <select id="eq-bs4" class="eq-sel" style="width:44px;" onchange="eqPreview()"><option value="0">♠</option><option value="1">♥</option><option value="2">♦</option><option value="3">♣</option></select>
+      </div>
+      <div style="display:flex;gap:4px;align-items:center;">
+        <select id="eq-br5" class="eq-sel" style="width:50px;" onchange="eqPreview()"><option value="">-</option><option value="14">A</option><option value="13">K</option><option value="12">Q</option><option value="11">J</option><option value="10">T</option><option value="9">9</option><option value="8">8</option><option value="7">7</option><option value="6">6</option><option value="5">5</option><option value="4">4</option><option value="3">3</option><option value="2">2</option></select>
+        <select id="eq-bs5" class="eq-sel" style="width:44px;" onchange="eqPreview()"><option value="0">♠</option><option value="1">♥</option><option value="2">♦</option><option value="3">♣</option></select>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:14px;">
+    <div style="font-size:12px;color:#666;margin-bottom:6px;font-weight:600;">对手范围</div>
+    <select id="eq-range" class="eq-sel" style="width:100%;">
+      <option value="tight">极紧(10%): TT+ AKs AKo AQs</option>
+      <option value="medium" selected>标准(20%): 77+ AT+ KQ suited connectors</option>
+      <option value="loose">松(35%): 22+ Ax broadway connectors</option>
+      <option value="any">随机: 任意两张</option>
+    </select>
+  </div>
+
+  <button onclick="runEquity()" id="eq-run-btn" style="width:100%;padding:12px;background:#9B59B6;color:#fff;border:none;border-radius:6px;font-size:15px;cursor:pointer;font-weight:700;">计算胜率 (约1秒)</button>
+  <div id="eq-result" style="margin-top:12px;"></div>
+</section>
+
+<!-- 三条军规 -->
+<section id="rules" data-tab="learn" data-label="三条军规">
+  <h2><span class="accent-red">&#9632;</span> 今日三条军规</h2>
+  <div class="rule-card">
+    <span class="rule-num">1</span><strong>管手</strong><br>
+    <span style="color:#aaa;font-size:14px;">河牌非nuts不raise。set面对连张board all-in可fold。</span><br>
+    <span class="tag tag-red">高频犯错</span>
+  </div>
+  <div class="rule-card">
+    <span class="rule-num">2</span><strong>放下</strong><br>
+    <span style="color:#aaa;font-size:14px;">顶对面对三条街大注(pot+)果断fold。中了好牌不代表对方没有更好的。</span><br>
+    <span class="tag tag-yellow">核心改进</span>
+  </div>
+  <div class="rule-card">
+    <span class="rule-num">3</span><strong>续火</strong><br>
+    <span style="color:#aaa;font-size:14px;">翻牌cbet后，转牌牌面没变差就再打一枪(2/3 pot)。别让人读死你。</span><br>
+    <span class="tag tag-green">提升空间最大</span>
+  </div>
+  <div class="highlight">
+    <strong>口诀：管手 · 放下 · 续火 · 不上头</strong><br>
+    核心病因：入池太宽(VPIP 30%) + 拿到好牌就觉得对方不可能比我大 = 认知偏差 + 纪律问题。<br>
+    <span style="color:#FFD700;">新增第四条：AA只是一对，AK只是高牌。面对raise/all-in要冷静算赢率，不要被手牌面值迷惑。</span>
+  </div>
+</section>
+
+<!-- 成长阶段 -->
+<section id="levels" data-tab="learn" data-label="成长路线">
+  <h2><span class="accent-gold">&#9632;</span> 德扑成长路线图</h2>
+  <p style="font-size:13px;color:#888;margin-bottom:16px;">从完全不会到稳定盈利，5个阶段。每个阶段有明确的能力指标和突破方向。</p>
+
+  <div class="level-card">
+    <span class="level-badge" style="background:rgba(136,136,136,0.2);color:#888;">Lv.1</span>
+    <h4>青铜 · 规则入门</h4>
+    <p><strong>标志：</strong>知道牌型大小，会跟注加注弃牌</p>
+    <p><strong>典型表现：</strong>看心情玩牌，不考虑位置，有牌就all-in</p>
+    <p><strong>突破方向：</strong>理解位置的价值，学会根据位置选牌</p>
+    <div class="progress-bar"><div class="fill" style="width:100%;background:#888;"></div></div>
+    <span class="tag tag-green">已通过</span>
+  </div>
+
+  <div class="level-card">
+    <span class="level-badge" style="background:rgba(192,192,192,0.2);color:#ccc;">Lv.2</span>
+    <h4>白银 · 紧凶入门</h4>
+    <p><strong>标志：</strong>VPIP 15-22%，有位置意识，知道什么牌该弃</p>
+    <p><strong>典型表现：</strong>能赢娱乐玩家，但面对强手容易被exploit</p>
+    <p><strong>突破方向：</strong>学会翻后多条街规划，理解SPR和commit</p>
+    <div class="progress-bar"><div class="fill" style="width:100%;background:#ccc;"></div></div>
+    <span class="tag tag-green">已通过</span>
+  </div>
+
+  <div class="level-card current-level">
+    <span class="level-badge" style="background:rgba(255,215,0,0.2);color:#FFD700;">Lv.3</span>
+    <h4>黄金 · 紧弱到紧凶 过渡期 <span class="tag tag-yellow">当前阶段</span></h4>
+    <p><strong>标志：</strong>VPIP 15-18%但PFR偏低，翻后经常被动check-call</p>
+    <p><strong>典型表现：</strong>能选好牌，但不会最大化价值，容易被读死</p>
+    <p><strong>核心任务：</strong></p>
+    <ul style="margin-top:6px;">
+      <li>翻后主动出击：有牌要bet，别check-call三条街</li>
+      <li>学会放下：顶对不是命，set不是nuts</li>
+      <li>理解EV和Pot Odds：用数学代替感觉</li>
+      <li>转牌续火：打破cbet一枪就停的pattern</li>
+    </ul>
+    <div class="progress-bar"><div class="fill" style="width:45%;background:#FFD700;"></div></div>
+    <span style="font-size:11px;color:#888;">进度约45%（已有leak意识，执行力待加强）</span>
+  </div>
+
+  <div class="level-card">
+    <span class="level-badge" style="background:rgba(0,212,255,0.2);color:#00D4FF;">Lv.4</span>
+    <h4>铂金 · 紧凶成熟期</h4>
+    <p><strong>标志：</strong>VPIP 18-22% / PFR 15-18%，翻后有多条街计划</p>
+    <p><strong>典型表现：</strong>能稳定赢低级别，理解range thinking</p>
+    <p><strong>突破方向：</strong>纳什均衡概念，GTO基础，平衡bluff频率</p>
+    <div class="progress-bar"><div class="fill" style="width:0%;background:#00D4FF;"></div></div>
+  </div>
+
+  <div class="level-card">
+    <span class="level-badge" style="background:rgba(155,89,182,0.2);color:#9B59B6;">Lv.5</span>
+    <h4>钻石 · GTO + Exploit 融合</h4>
+    <p><strong>标志：</strong>理解纳什均衡但能灵活偏离，根据对手动态调整</p>
+    <p><strong>典型表现：</strong>能在各种级别稳定盈利，每手牌有清晰逻辑</p>
+    <p><strong>核心能力：</strong>读牌 + 数学 + 心理 + 自我控制 全面</p>
+    <div class="progress-bar"><div class="fill" style="width:0%;background:#9B59B6;"></div></div>
+  </div>
+</section>
+
+<!-- 位置策略 -->
+<section id="positions" data-tab="strategy" data-label="位置策略">
+  <h2><span class="accent-cyan">&#9632;</span> 翻前位置策略</h2>
+  <div class="rule-card orange">
+    <h3 class="accent-orange">前位 UTG / UTG+1 只打精品</h3>
+    <ul>
+      <li><strong>范围：</strong>TT+ AKo AKs AQs（仅6%）</li>
+      <li><strong>尺寸：</strong>Open 3BB（60积分）</li>
+      <li><strong>原则：</strong>宁可一圈不进，不打边缘牌</li>
+      <li><strong>禁忌：</strong>不用小对子前位limp，不用suited connectors，<span style="color:#FF4444">JQo/89o这种绝对不打！</span></li>
+      <li><strong>翻后：</strong>中了顶对直接bet拿value，不要check-call三条街</li>
+    </ul>
+  </div>
+  <div class="rule-card gold">
+    <h3 class="accent-gold">中位 MP / HJ 稳中求进</h3>
+    <ul>
+      <li><strong>范围：</strong>88+ AQo+ KQs AJs（约10%）</li>
+      <li><strong>尺寸：</strong>Open 3BB，有人limp加到5BB（100积分）</li>
+      <li><strong>面对3bet：</strong>JJ+/AK继续，其他fold</li>
+      <li><strong>翻后：</strong>中了就续火（翻牌bet转牌bet），没中就放弃</li>
+    </ul>
+  </div>
+  <div class="rule-card cyan">
+    <h3 class="accent-cyan">后位 CO / BTN 你的印钞机</h3>
+    <ul>
+      <li><strong>范围：</strong>66+ ATo+ KJo+ 76s+（18-25%）</li>
+      <li><strong>偷盲：</strong>2.5BB（50积分），前面都fold就更宽</li>
+      <li><strong>BTN特权：</strong>open任何broadway + Axs + suited connectors</li>
+      <li><strong>原则：</strong>后位是利润来源，大胆偷盲。被3bet就fold边缘牌</li>
+      <li><strong>优势：</strong>有位置 = 最后行动 = 信息最多 = 打得更准</li>
+    </ul>
+  </div>
+  <div class="rule-card green">
+    <h3 class="accent-green">盲位 SB / BB 防守有度</h3>
+    <ul>
+      <li><strong>面对小raise：</strong>top40%防守（对子、broadway、suited连子）</li>
+      <li><strong>面对3bet：</strong>不冷call，4bet或fold</li>
+      <li><strong>SB：</strong>最差位置，宁可多fold</li>
+      <li><strong>BB：</strong>已投1BB可稍宽call，但翻后没位置要谨慎</li>
+      <li><strong>关键：</strong>被偷盲不丢人，硬撑才亏钱</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 翻后决策 -->
+<section id="postflop" data-tab="strategy" data-label="翻后决策">
+  <h2><span class="accent-purple">&#9632;</span> 翻后决策 · 50BB简化版</h2>
+  <table>
+    <thead><tr><th>手牌强度</th><th>动作</th><th>注意事项</th></tr></thead>
+    <tbody>
+      <tr><td><span class="accent-green">坚果牌</span><br>两对/set/顺/花</td><td>快打快收</td><td>别慢打，对手会call。50BB两条街就接近all-in</td></tr>
+      <tr><td><span class="accent-gold">顶对好踢脚</span><br>AK中A / KK中K</td><td>bet / bet / check-call</td><td>绝对不river raise！前两条街拿value，河牌控制</td></tr>
+      <tr><td><span class="accent-red">中对/弱顶对</span><br>中张对 / 弱踢脚</td><td>check-call控池</td><td>面对大注(pot+)果断fold</td></tr>
+      <tr><td><span class="accent-cyan">听牌</span><br>顺听/花听</td><td>看pot odds</td><td>50BB下大draw可以翻牌直接全进(有fold equity)</td></tr>
+      <tr><td><span style="color:#888">空气牌</span></td><td>翻牌cbet一枪</td><td>转牌看情况续火或放弃，别三枪bluff</td></tr>
+    </tbody>
+  </table>
+  <div class="highlight">
+    <strong>面对对手all-in的决策框架：</strong><br>
+    1. Board上有没有顺子/花完成？（有 = 危险）<br>
+    2. 对手之前的打法节奏？（突然变猛 = 他到了）<br>
+    3. 朋友局这个人会拿弱牌这么打吗？（大概率不会）<br>
+    <span style="color:#FF4444">三个答案都指向他比我大 = 哪怕是set也能fold</span>
+  </div>
+</section>
+
+<!-- 进阶理论 -->
+<section id="advanced" data-tab="learn" data-label="进阶理论">
+  <h2><span class="accent-cyan">&#9632;</span> 进阶理论 · 用数学打牌</h2>
+
+  <h3>一、纳什均衡（Nash Equilibrium）</h3>
+  <div class="rule-card cyan">
+    <p style="font-size:14px;color:#fff;margin-bottom:8px;"><strong>什么是纳什均衡？</strong></p>
+    <p style="font-size:13px;color:#aaa;">简单说：一种不可被exploit的打法。当你按纳什均衡策略打时，无论对手怎么调整，长期都不能从你身上赚到更多钱。</p>
+    <p style="font-size:13px;color:#aaa;margin-top:8px;"><strong>类比：</strong>就像石头剪刀布，各出1/3的概率就是纳什均衡。对手无论怎么猜，长期赢率都是50%。</p>
+  </div>
+
+  <div class="highlight">
+    <strong>纳什均衡在德扑中的应用：</strong><br><br>
+    <strong>1. 翻前push/fold（短码专用）</strong><br>
+    当筹码小于等于15BB时，纳什均衡告诉你：哪些牌该全推，哪些该弃。不需要考虑翻后。<br><br>
+    <strong>2. Bluff频率平衡</strong><br>
+    河牌下注时，纳什均衡要求bluff比例约等于 下注尺寸/(下注+底池)。<br>
+    比如pot bet时，bluff比例应该约33%。<br><br>
+    <strong>3. 面对下注的call频率</strong><br>
+    对手下注时，为了不被bluff exploit，你需要call的频率约等于 底池/(底池+下注)。<br>
+    对手pot bet时，你需要call约50%的range。
+  </div>
+
+  <div class="rule-card" style="border-left-color:#FFD700;">
+    <p style="font-size:13px;color:#FFD700;"><strong>布斯的应用建议：</strong></p>
+    <p style="font-size:13px;color:#aaa;">你目前不需要严格按GTO打（朋友局对手不平衡），但需要理解一个原则：<br>
+    <span style="color:#fff;">当你不确定对手是什么类型时，按纳什均衡打不会犯大错。</span><br>
+    当你读到对手有明显倾向时，偏离均衡去exploit他。</p>
+  </div>
+
+  <h3>二、赢率 / 胜率 / Equity</h3>
+  <p style="font-size:13px;color:#aaa;margin-bottom:10px;">Equity（权益/胜率）= 你的手牌在当前局面下赢得底池的概率。</p>
+
+  <div class="formula-box">
+    Equity = 你能赢的次数 / 总次数 x 100%
+    <div class="desc">翻牌圈的equity会随转牌、河牌变化</div>
+  </div>
+
+  <h3 style="margin-top:16px;">常见手牌翻前对抗胜率</h3>
+  <table>
+    <thead><tr><th>对抗场景</th><th>热门方</th><th>冷门方</th><th>记忆口诀</th></tr></thead>
+    <tbody>
+      <tr><td>高对 vs 低对</td><td>AA: 82%</td><td>KK: 18%</td><td>四比一碾压</td></tr>
+      <tr><td>对子 vs 两高张</td><td>QQ: 57%</td><td>AKs: 43%</td><td>六四开对子略优</td></tr>
+      <tr><td>对子 vs 两低张</td><td>JJ: 81%</td><td>76s: 19%</td><td>大碾压</td></tr>
+      <tr><td>高牌 vs 低牌</td><td>AK: 65%</td><td>QJ: 35%</td><td>大约二比一</td></tr>
+      <tr><td>同花 vs 非同花</td><td>AKs: 48%</td><td>AA: 52%</td><td>同花加约3%</td></tr>
+      <tr><td>Set vs 顺子</td><td>顺子: 65%</td><td>Set: 35%</td><td>顺子领先但set有outs</td></tr>
+    </tbody>
+  </table>
+
+  <h3>三、Pot Odds（底池赔率）</h3>
+  <div class="formula-box">
+    Pot Odds = 需要跟注的金额 / (底池 + 需要跟注的金额)
+    <div class="desc">当你的赢率 > Pot Odds 时，跟注就是+EV的</div>
+  </div>
+
+  <div class="rule-card green">
+    <p style="font-size:14px;color:#fff;margin-bottom:8px;"><strong>实战快算法：4-2法则</strong></p>
+    <p style="font-size:13px;color:#aaa;">
+    翻牌圈outs数 x 4 约等于到河牌的胜率%<br>
+    转牌圈outs数 x 2 约等于到河牌的胜率%<br><br>
+    <strong>举例：</strong>你有同花听牌（9个outs）<br>
+    翻牌：9 x 4 = 36%（实际35%）<br>
+    转牌：9 x 2 = 18%（实际19.6%）<br><br>
+    <strong>常见outs数：</strong><br>
+    同花听牌 = 9 outs = 翻牌36% / 转牌18%<br>
+    两头顺听 = 8 outs = 翻牌32% / 转牌16%<br>
+    卡顺听牌 = 4 outs = 翻牌16% / 转牌8%<br>
+    一对变两对/暗三 = 5 outs = 翻牌20% / 转牌10%
+    </p>
+  </div>
+
+  <h3>四、EV（期望值）</h3>
+  <div class="formula-box">
+    EV = (赢的概率 x 赢的金额) - (输的概率 x 输的金额)
+    <div class="desc">EV > 0 就是正确决策，长期执行必然盈利</div>
+  </div>
+
+  <div class="rule-card orange">
+    <p style="font-size:14px;color:#fff;margin-bottom:8px;"><strong>EV计算实例</strong></p>
+    <p style="font-size:13px;color:#aaa;">
+    场景：底池800，对手河牌all-in 400，你有同花听牌（9 outs）<br><br>
+    你需要跟400，底池总共800+400+400=1600<br>
+    Pot Odds = 400/1600 = 25%<br>
+    你的胜率（转牌圈）= 9x2 = 18%<br><br>
+    <span style="color:#FF4444">18% &lt; 25% = fold是正确的（-EV call）</span><br><br>
+    但如果是翻牌圈（还有两张牌要来）：<br>
+    你的胜率 = 9x4 = 36%<br>
+    <span style="color:#00FF88">36% &gt; 25% = call是正确的（+EV call）</span>
+    </p>
+  </div>
+
+  <h3>五、SPR（筹码底池比）</h3>
+  <div class="formula-box">
+    SPR = 有效筹码 / 翻牌圈底池
+    <div class="desc">SPR决定了翻后打法的弹药量</div>
+  </div>
+
+  <table>
+    <thead><tr><th>SPR范围</th><th>含义</th><th>策略</th></tr></thead>
+    <tbody>
+      <tr><td><span class="accent-red">SPR 4以下</span></td><td>短码对抗</td><td>顶对就能打光，别怕commit。一对+好踢脚就是nuts级别</td></tr>
+      <tr><td><span class="accent-gold">SPR 4-10</span></td><td>中码对抗</td><td>两对以上打光，顶对需谨慎。set mining开始有价值</td></tr>
+      <tr><td><span class="accent-cyan">SPR 10以上</span></td><td>深码对抗</td><td>需要强牌才能打光。更多post-flop技巧空间</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight">
+    <strong>你今天的SPR：</strong><br>
+    起手1000筹码，Open 3BB(60)被call，翻牌底池约150。<br>
+    SPR = 940/150 约等于 6.3 = 中码对抗<br>
+    意味着：两对以上大胆打光，纯顶对需要控池思维。
+  </div>
+
+  <h3>六、Fold Equity（弃牌权益）</h3>
+  <div class="formula-box">
+    实际赢率 = Equity + Fold Equity
+    <div class="desc">你的牌不够好，但对手会fold = 你的实际赢率比手牌赢率高</div>
+  </div>
+
+  <div class="rule-card purple">
+    <p style="font-size:13px;color:#aaa;">
+    <strong>为什么要理解Fold Equity？</strong><br><br>
+    你拿着同花听牌（裸equity 35%），但如果你全推，对手有30%的概率弃牌：<br><br>
+    实际赢率 = 30%(对手fold你直接赢) + 70% x 35%(被call但你中花) = 30% + 24.5% = <span style="color:#00FF88">54.5%</span><br><br>
+    这就是为什么听牌全推在50BB深度下经常是+EV的。不只是靠中牌赢，还靠对手弃牌赢。<br><br>
+    <span style="color:#FFD700;">布斯适用：</span>你目前太少利用fold equity（紧弱的核心问题）。当你转牌续火时，本质就是在积累fold equity。
+    </p>
+  </div>
+</section>
+
+<!-- 循环训练 -->
+<section id="quiz" data-tab="train" data-label="基础训练">
+  <h2><span class="accent-purple">&#9632;</span> 循环训练 · 测弱点练技能</h2>
+  <p style="font-size:13px;color:#888;margin-bottom:12px;">20道题库，每轮随机5道。答完自动诊断弱点，给出提升建议。反复练到全对为止。</p>
+
+  <div id="quiz-start-area" style="display:flex;gap:10px;margin-bottom:16px;align-items:center;flex-wrap:wrap;">
+    <button onclick="startQuiz()" id="quiz-btn" style="padding:10px 24px;background:#9B59B6;color:#fff;border:none;border-radius:6px;font-size:14px;cursor:pointer;font-weight:600;">开始训练</button>
+    <span id="quiz-progress" style="font-size:13px;color:#888;"></span>
+  </div>
+
+  <div id="quiz-container"></div>
+  <div id="quiz-result" style="display:none;margin-top:16px;"></div>
+</section>
+
+<!-- 多街决策 -->
+<section id="multistreet" data-tab="train" data-label="多街决策">
+  <h2><span class="accent-cyan">&#9632;</span> 多街决策 · 一手牌打到底</h2>
+  <p style="font-size:13px;color:#888;margin-bottom:12px;">完整模拟一手牌从翻前到河牌的决策过程。每条街的选择影响下一步局面，考验全局规划能力。</p>
+  <div style="display:flex;gap:10px;margin-bottom:16px;align-items:center;flex-wrap:wrap;">
+    <button onclick="startMultiStreet()" id="ms-btn" style="padding:10px 24px;background:#00D4FF;color:#0B1426;border:none;border-radius:6px;font-size:14px;cursor:pointer;font-weight:700;">开始挑战</button>
+    <span id="ms-progress" style="font-size:13px;color:#888;"></span>
+  </div>
+  <div id="ms-container"></div>
+  <div id="ms-result" style="display:none;margin-top:16px;"></div>
+</section>
+
+<!-- 速算训练 -->
+<section id="mathdrill" data-tab="train" data-label="速算训练">
+  <h2><span class="accent-gold">&#9632;</span> 速算训练 · 10秒出答案</h2>
+  <p style="font-size:13px;color:#888;margin-bottom:12px;">限时计算Pot Odds和EV。练到不用想就能算，上桌才能用出来。每轮8题，倒计时10秒。</p>
+  <div style="display:flex;gap:10px;margin-bottom:16px;align-items:center;flex-wrap:wrap;">
+    <button onclick="startMathDrill()" id="math-btn" style="padding:10px 24px;background:#FFD700;color:#0B1426;border:none;border-radius:6px;font-size:14px;cursor:pointer;font-weight:700;">开始速算</button>
+    <span id="math-progress" style="font-size:13px;color:#888;"></span>
+    <div id="math-timer" style="display:none;font-size:20px;font-weight:700;color:#FF4444;"></div>
+  </div>
+  <div id="math-container"></div>
+  <div id="math-result" style="display:none;margin-top:16px;"></div>
+</section>
+
+<!-- 读牌训练 -->
+<section id="rangeread" data-tab="train" data-label="读牌训练">
+  <h2><span class="accent-green">&#9632;</span> 读牌训练 · 他拿的是什么</h2>
+  <p style="font-size:13px;color:#888;margin-bottom:12px;">根据对手的行动线（action sequence），判断他最可能拿什么牌。从「看自己的牌」进化到「读对手的牌」。</p>
+  <div style="display:flex;gap:10px;margin-bottom:16px;align-items:center;flex-wrap:wrap;">
+    <button onclick="startRangeRead()" id="rr-btn" style="padding:10px 24px;background:#00FF88;color:#0B1426;border:none;border-radius:6px;font-size:14px;cursor:pointer;font-weight:700;">开始读牌</button>
+    <span id="rr-progress" style="font-size:13px;color:#888;"></span>
+  </div>
+  <div id="rr-container"></div>
+  <div id="rr-result" style="display:none;margin-top:16px;"></div>
+</section>
+
+<!-- 基础知识 -->
+<section id="basics" data-tab="learn" data-label="基础速查">
+  <h2><span class="accent-gold">&#9632;</span> 德扑基础速查</h2>
+  <h3>牌力排名（从大到小）</h3>
+  <table>
+    <thead><tr><th>牌型</th><th>说明</th><th>概率</th></tr></thead>
+    <tbody>
+      <tr><td>皇家同花顺</td><td>AKQJT同花</td><td>0.0002%</td></tr>
+      <tr><td>同花顺</td><td>连续5张同花</td><td>0.0015%</td></tr>
+      <tr><td>四条</td><td>四张相同</td><td>0.024%</td></tr>
+      <tr><td>葫芦</td><td>三条+一对</td><td>0.14%</td></tr>
+      <tr><td>同花</td><td>5张同花色</td><td>0.20%</td></tr>
+      <tr><td>顺子</td><td>连续5张</td><td>0.39%</td></tr>
+      <tr><td>三条/暗三</td><td>三张相同</td><td>2.11%</td></tr>
+      <tr><td>两对</td><td>两组对子</td><td>4.75%</td></tr>
+      <tr><td>一对</td><td>一组对子</td><td>42.3%</td></tr>
+      <tr><td>高牌</td><td>什么都没中</td><td>50.1%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>位置名称（10人桌）</h3>
+  <table>
+    <thead><tr><th>位置</th><th>缩写</th><th>特点</th></tr></thead>
+    <tbody>
+      <tr><td>枪口位</td><td>UTG</td><td>最早行动，最紧</td></tr>
+      <tr><td>枪口位+1</td><td>UTG+1</td><td>同上</td></tr>
+      <tr><td>中前位</td><td>MP</td><td>稍微放宽</td></tr>
+      <tr><td>劫持位</td><td>HJ</td><td>开始有位置优势</td></tr>
+      <tr><td>关煞位</td><td>CO</td><td>好位置，可以偷盲</td></tr>
+      <tr><td>庄位</td><td>BTN</td><td>最好位置，最后行动</td></tr>
+      <tr><td>小盲</td><td>SB</td><td>翻后最差位置</td></tr>
+      <tr><td>大盲</td><td>BB</td><td>翻前最后行动</td></tr>
+    </tbody>
+  </table>
+
+  <h3>关键术语</h3>
+  <div class="grid-2">
+    <div class="stat-card"><div class="num">3BB</div><div class="label">标准开牌尺寸</div></div>
+    <div class="stat-card"><div class="num">50BB</div><div class="label">今天起始深度</div></div>
+    <div class="stat-card"><div class="num">2/3</div><div class="label">标准下注比例(pot)</div></div>
+    <div class="stat-card"><div class="num">6%</div><div class="label">前位入池范围</div></div>
+  </div>
+
+  <h3 style="margin-top:16px">常用缩写</h3>
+  <ul>
+    <li><strong>VPIP</strong> — 自愿入池比例（越高越松）</li>
+    <li><strong>PFR</strong> — 翻前加注比例（越高越凶）</li>
+    <li><strong>Cbet</strong> — 持续下注（翻前加注者翻后继续打）</li>
+    <li><strong>3bet</strong> — 翻前第三次加注（有人raise你re-raise）</li>
+    <li><strong>Nuts</strong> — 当前board上可能的最大牌</li>
+    <li><strong>EV</strong> — 期望值（长期来看赚还是亏）</li>
+    <li><strong>OOP</strong> — 没有位置（Out Of Position）</li>
+    <li><strong>Pot Odds</strong> — 底池赔率（决定是否值得跟注）</li>
+    <li><strong>SPR</strong> — 筹码底池比（Stack to Pot Ratio）</li>
+    <li><strong>GTO</strong> — 博弈论最优策略（Game Theory Optimal）</li>
+    <li><strong>Exploit</strong> — 利用对手弱点偏离均衡去赚更多</li>
+    <li><strong>Fold Equity</strong> — 对手弃牌带来的额外赢率</li>
+    <li><strong>Range</strong> — 手牌范围（对手可能拿到的所有牌的集合）</li>
+  </ul>
+</section>
+
+<!-- 我的弱点 -->
+<section id="leaks" data-tab="profile" data-label="弱点诊断">
+  <h2><span class="accent-red">&#9632;</span> 布斯的弱点诊断</h2>
+  <div class="highlight" style="border-color: rgba(255,68,68,0.3); background: rgba(255,68,68,0.05);">
+    <strong>核心特征：松被动 + 好牌上头</strong><br>
+    入池太宽（VPIP 30%，目标应20%以下），拿到好牌（AA/AK）时情绪失控不能fold。<br>
+    对手看你像一本打开的书：入池宽 + 好牌不放 = 印钞机（给对手的）。
+  </div>
+
+  <h3>最新战绩数据（2026.06.28）</h3>
+  <div class="grid-2">
+    <div class="stat-card"><div class="num" style="color:#FF4444;">291</div><div class="label">手数</div></div>
+    <div class="stat-card"><div class="num" style="color:#FF4444;">16%</div><div class="label">胜率（偏低）</div></div>
+    <div class="stat-card"><div class="num" style="color:#FF4444;">30%</div><div class="label">VPIP（太高！目标≤20%）</div></div>
+    <div class="stat-card"><div class="num" style="color:#00FF88;">52%</div><div class="label">摊牌胜率（还行）</div></div>
+  </div>
+  <div class="highlight" style="margin-top:12px;">
+    <strong>数据解读：</strong>VPIP 30% = 入池太松，很多边缘牌消耗了你的筹码。摊牌胜率52%说明选牌摊牌还行，但整体胜率16%说明翻后决策亏太多。<br>
+    <strong>当务之急：</strong>把VPIP从30%降到20%以下，仅此一项就能大幅减少亏损。
+  </div>
+
+  <h3>弱点清单</h3>
+  <ul>
+    <li><strong>🔴 入池太宽(VPIP 30%)</strong> = 打了太多垃圾牌，前位89o/JQo这种别进</li>
+    <li><strong>🔴 好牌上头不能fold</strong> = AA/AK拿到就觉得天下无敌，被raise还推all-in</li>
+    <li><strong>翻牌不中只偷一枪</strong> = 对手摸清pattern：你cbet了不中就停</li>
+    <li><strong>顶对面对大注不fold</strong> = 辛苦等来好牌不舍得放的心理</li>
+    <li><strong>转牌check河牌弱</strong> = 对手读到转牌check=放弃，河牌随便偷</li>
+    <li><strong>河牌非nuts还raise</strong> = 情绪覆盖理性，给对手送钱</li>
+    <li><strong>AKo接翻前all-in</strong> = 对手推all-in的range是AA/KK/QQ，AK胜率不够</li>
+  </ul>
+
+  <h3>经典亏钱手牌复盘</h3>
+  <div class="rule-card" style="border-left-color: #FF4444;">
+    <strong>手牌1：AA转牌被raise → 推all-in → 输 <span class="tag tag-red">好牌上头</span></strong><br>
+    <span style="font-size:13px;color:#aaa;">
+    AA open → 翻牌cbet → 转牌bet 2/3 pot → 对手raise → 推all-in<br>
+    <span style="color:#FF4444">错误：</span>AA只是一对！对手转牌raise你两条街的bet = 他有两对/set以上。正确做法：call看河牌，不要推。推all-in只会被更好的牌call，更差的牌fold。<br>
+    <span style="color:#FFD700">正确：</span>转牌被raise → call → 河牌面没变差再决定
+    </span>
+  </div>
+  <div class="rule-card" style="border-left-color: #FF4444;">
+    <strong>手牌2：AKo接翻前all-in → 对手KK → 输 <span class="tag tag-red">不该接</span></strong><br>
+    <span style="font-size:13px;color:#aaa;">
+    翻前对手推all-in → AKo call → 对手翻KK → 输<br>
+    <span style="color:#FF4444">错误：</span>朋友局翻前all-in的range = AA/KK/QQ。AKo vs 这个range胜率约25-30%，远不够call。而且你的K被对手的KK block了。<br>
+    <span style="color:#FFD700">正确：</span>面对翻前all-in → AKo直接fold。只有AA才稳接，KK可以考虑。
+    </span>
+  </div>
+  <div class="rule-card" style="border-left-color: #FF4444;">
+    <strong>手牌3：JJ中set输顺子</strong><br>
+    <span style="font-size:13px;color:#aaa;">
+    翻牌小小小（连张）= 转牌听顺到了 = 河牌J中set = 对手all-in = 我call = 对手翻顺子<br>
+    <span style="color:#FF4444">错误：</span>连张面set不是nuts，对手all-in = 顺子。应该fold。
+    </span>
+  </div>
+  <div class="rule-card" style="border-left-color: #FF4444;">
+    <strong>手牌4：AK顶对河牌raise输两对</strong><br>
+    <span style="font-size:13px;color:#aaa;">
+    AK前位open = 被3bet = call = 翻牌有A = 三条街check-call = 河牌raise = 对手AJ两对<br>
+    <span style="color:#FF4444">错误：</span>1.河牌raise（非nuts不raise）2.三条街被动最后一街突然上头 3.应该翻牌就主动bet
+    </span>
+  </div>
+  <div class="rule-card" style="border-left-color: #00FF88;">
+    <strong>手牌5（打得好）：JQo转牌果断fold <span class="tag tag-green">放下到位</span></strong><br>
+    <span style="font-size:13px;color:#aaa;">
+    JQo open → 翻牌T-T-8 check → 转牌A bet 1/3 pot → 对手raise → fold<br>
+    <span style="color:#00FF88">正确：</span>只有卡顺听牌(4 outs=8%)，面对raise赔率完全不够。放下原则执行到位！
+    </span>
+  </div>
+
+  <h3>改善方向（优先级排序）</h3>
+  <ul>
+    <li><strong>🔴 P0 - 收紧入池：</strong>VPIP从30%降到20%以下。前位(UTG/MP)只打TT+/AK，中位加88+/AQ，后位最宽也别超25%</li>
+    <li><strong>🔴 P0 - AA/AK不上头：</strong>AA被转牌raise = call不推。AKo面对翻前all-in = fold。一对就是一对，不是nuts</li>
+    <li><strong>🟡 P1 - AK翻前不接all-in：</strong>50BB深度，朋友局对手推all-in = AA/KK/QQ，AKo胜率不够</li>
+    <li><strong>🟡 P1 - 河牌顶对不加注：</strong>只call或fold，非nuts不raise</li>
+    <li><strong>🟢 P2 - 翻牌公对面可以cbet：</strong>公对面对手也很难中，fold equity高</li>
+    <li><strong>🟢 P2 - 续火改进：</strong>翻牌cbet后如果面没变差，转牌再打一枪</li>
+    <li><strong>思考层级：</strong>我读他有什么 → 他在读我什么 → 我该怎么表演</li>
+  </ul>
+</section>
+
+<!-- 心态管理 -->
+<section id="mindset" data-tab="profile" data-label="心态管理">
+  <h2><span class="accent-green">&#9632;</span> 心态管理</h2>
+  <div class="grid-2">
+    <div class="stat-card"><div class="num">60元</div><div class="label">人均消费</div></div>
+    <div class="stat-card"><div class="num">1折</div><div class="label">赢取积分兑换率</div></div>
+    <div class="stat-card"><div class="num">4.5h</div><div class="label">打牌时长</div></div>
+    <div class="stat-card"><div class="num">社交</div><div class="label">核心目的</div></div>
+  </div>
+
+  <h3 style="margin-top:16px">记住这几条</h3>
+  <ul>
+    <li><strong>赢的价值很低：</strong>赢1万积分 = 存1000分 = 一盘鸡米花</li>
+    <li><strong>输要掏真金：</strong>补码18.8-39.9元/次</li>
+    <li><strong>结论：</strong>少补码 > 多赢码，风控第一</li>
+    <li>赢了不要太high（都是老领导）</li>
+    <li>输了不要tilt补码（人均60，补太多显得上头）</li>
+    <li>关键手牌可以show card增加互动性</li>
+    <li>享受过程，顺便练技术</li>
+  </ul>
+
+  <div class="highlight">
+    <strong>八字真言：紧前松后，厚value薄bluff</strong><br><br>
+    翻译成人话：前面位置只打好牌，后面位置多偷盲。<br>
+    有牌就狠下注（他们会call），少bluff（他们也会call）。
+  </div>
+</section>
+
+<!-- 一张图速查 -->
+<section id="cheatsheet" data-tab="profile" data-label="速查总图">
+  <h2><span class="accent-gold">&#9632;</span> 布斯速查总图</h2>
+  <p style="font-size:13px;color:#888;margin-bottom:16px;">上桌前看一遍，打牌时对照。所有决策浓缩在这一页。</p>
+
+  <h3>一、翻前：该进还是该弃？</h3>
+  <table>
+    <thead><tr><th>位置</th><th>Open范围</th><th>面对Open → 3bet</th><th>面对Open → Call</th><th>Fold</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="accent-red">UTG/UTG+1</span></td>
+        <td>TT+ AKo AKs AQs<br><span style="color:#888;font-size:11px;">仅6%</span></td>
+        <td colspan="2" style="color:#888;text-align:center;">—（前位不面对open）</td>
+        <td>其余全fold</td>
+      </tr>
+      <tr>
+        <td><span class="accent-orange">MP / HJ</span></td>
+        <td>88+ AQo+ KQs AJs<br><span style="color:#888;font-size:11px;">约10%</span></td>
+        <td colspan="2" style="color:#888;text-align:center;">—</td>
+        <td>其余全fold</td>
+      </tr>
+      <tr>
+        <td><span class="accent-cyan">CO</span></td>
+        <td>66+ ATo+ KJo+ 76s+<br><span style="color:#888;font-size:11px;">约20%</span></td>
+        <td>AA KK QQ AKs AKo<br>JJ TT AQs（有位置多3bet）</td>
+        <td>99-66 AJs KQs<br>同花连子</td>
+        <td>KTo- QJo- 弱A</td>
+      </tr>
+      <tr>
+        <td><span class="accent-green">BTN</span></td>
+        <td>55+ A9o+ KTo+ 65s+<br><span style="color:#888;font-size:11px;">约25%</span></td>
+        <td>AA KK QQ AKs AKo<br>JJ TT AQs AQo AJs KQs</td>
+        <td>99-22 同花连子<br>suited Ax 同花broadway</td>
+        <td>垃圾非同花牌</td>
+      </tr>
+      <tr>
+        <td><span class="accent-purple">SB</span></td>
+        <td>TT+ AQo+ AJs+<br><span style="color:#888;font-size:11px;">偷盲用</span></td>
+        <td>AA KK QQ AKs AKo<br>JJ TT AQs AQo</td>
+        <td style="color:#FF4444;">不要flat call!<br>3bet or fold</td>
+        <td>其余全fold</td>
+      </tr>
+      <tr>
+        <td><span class="accent-purple">BB</span></td>
+        <td>—</td>
+        <td>AA KK QQ AKs AKo<br>JJ TT AQs</td>
+        <td>99-22 同花连子<br>broadway（已投1BB赔率好）</td>
+        <td>垃圾牌别硬撑</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="rule-card" style="border-left-color:#FF4444;margin-top:12px;">
+    <strong style="color:#FF4444;">砍牌清单（立即停打）</strong><br>
+    <span style="font-size:13px;color:#aaa;">
+    ❌ KTo KJo QJo JTo — 前位中位不打<br>
+    ❌ A2o-A9o — 弱A翻后中A也输<br>
+    ❌ 87o 76o 65o — 非同花连子不打<br>
+    ❌ 22-55前位limp — 没位置不set mine<br>
+    ❌ 33 SB面对open — fold（刚学过）
+    </span>
+  </div>
+
+  <h3 style="margin-top:20px;">二、面对3bet / All-in 怎么办？</h3>
+  <table>
+    <thead><tr><th>场景</th><th>继续</th><th>Fold</th></tr></thead>
+    <tbody>
+      <tr><td>面对3bet</td><td>QQ+ AKs → 4bet<br>JJ TT → call（有位置时）</td><td>其余全fold<br><span style="color:#FF4444;">AKo面对4bet也fold</span></td></tr>
+      <tr><td>面对翻前All-in</td><td>AA → 必接<br>KK → 可以考虑</td><td><span style="color:#FF4444;">AKo → fold!（朋友局all-in=AA/KK/QQ）</span><br>QQ以下 → fold</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="margin-top:20px;">三、翻后决策树</h3>
+  <div style="background:#0B1426;border:1px solid #1e2d4a;border-radius:8px;padding:16px;font-size:13px;line-height:2.2;font-family:monospace;">
+    <span style="color:#00D4FF;">翻牌发出来了，你中了什么？</span><br>
+    ├── <span style="color:#00FF88;">坚果牌（两对/set/顺/花）</span><br>
+    │&nbsp;&nbsp;&nbsp;└── bet-bet-bet 三条街快打，别慢打<br>
+    ├── <span style="color:#FFD700;">顶对好踢（AK中A / KK中K）</span><br>
+    │&nbsp;&nbsp;&nbsp;├── 翻牌 bet 2/3 pot<br>
+    │&nbsp;&nbsp;&nbsp;├── 转牌 bet 2/3 pot（续火!）<br>
+    │&nbsp;&nbsp;&nbsp;└── 河牌 check-call（<span style="color:#FF4444;">绝不raise!</span>）<br>
+    ├── <span style="color:#FF8C00;">中对 / 弱顶对</span><br>
+    │&nbsp;&nbsp;&nbsp;├── check-call 一条街<br>
+    │&nbsp;&nbsp;&nbsp;└── 面对大注(pot+) → <span style="color:#FF4444;">FOLD</span><br>
+    ├── <span style="color:#00D4FF;">听牌（顺听/花听）</span><br>
+    │&nbsp;&nbsp;&nbsp;├── 有位置 + 对手check → bet semi-bluff<br>
+    │&nbsp;&nbsp;&nbsp;├── pot odds够 → call<br>
+    │&nbsp;&nbsp;&nbsp;└── 50BB大draw → 可以翻牌全推(fold equity)<br>
+    └── <span style="color:#888;">空气牌</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;├── Cbet 一枪（2/3 pot）<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;├── 被call → 转牌面没变差再打一枪<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;└── <span style="color:#FF4444;">不要三枪bluff!</span>
+  </div>
+
+  <h3 style="margin-top:20px;">四、必须FOLD检查清单</h3>
+  <div style="background:#0B1426;border:1px solid rgba(255,68,68,0.3);border-radius:8px;padding:16px;font-size:13px;line-height:2;">
+    <span style="color:#FF4444;">以下场景默认FOLD，不要犹豫：</span><br>
+    ☐ 河牌对手bet pot+ → 你只有一对 → <strong>FOLD</strong><br>
+    ☐ 三花面/四连面 → 你没花没顺 → <strong>FOLD</strong><br>
+    ☐ 转牌对手raise你的bet → 你没有两对以上 → <strong>FOLD</strong><br>
+    ☐ 对手三条街大注 → 你只有顶对 → <strong>FOLD</strong><br>
+    ☐ Set面对连张board对手all-in → <strong>可以FOLD</strong><br>
+    ☐ AKo面对翻前all-in → <strong>FOLD</strong><br>
+    ☐ AA被转牌raise → <strong>只call不推</strong>
+  </div>
+
+  <h3 style="margin-top:20px;">五、速算公式</h3>
+  <div class="grid-2">
+    <div class="stat-card">
+      <div style="color:#00D4FF;font-size:13px;font-weight:600;">4-2法则</div>
+      <div style="color:#aaa;font-size:12px;margin-top:6px;">翻牌: outs×4 = 中牌率%<br>转牌: outs×2 = 中牌率%</div>
+    </div>
+    <div class="stat-card">
+      <div style="color:#00D4FF;font-size:13px;font-weight:600;">Pot Odds</div>
+      <div style="color:#aaa;font-size:12px;margin-top:6px;">需要赢率 = 跟注额/(底池+跟注额)<br>赢率>Pot Odds → Call</div>
+    </div>
+    <div class="stat-card">
+      <div style="color:#00D4FF;font-size:13px;font-weight:600;">常见Outs</div>
+      <div style="color:#aaa;font-size:12px;margin-top:6px;">同花听=9 顺听=8<br>卡顺=4 overcards=6</div>
+    </div>
+    <div class="stat-card">
+      <div style="color:#00D4FF;font-size:13px;font-weight:600;">SPR判断</div>
+      <div style="color:#aaa;font-size:12px;margin-top:6px;">≤4低(顶对打光) 4-10中(两对+)<br>>10高(需强牌)</div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:20px;">六、心态口诀</h3>
+  <div class="highlight" style="text-align:center;font-size:16px;line-height:2.2;">
+    <strong style="color:#FFD700;font-size:18px;">管手 · 放下 · 续火 · 不上头</strong><br>
+    <span style="font-size:14px;">紧前松后，厚value薄bluff</span><br>
+    <span style="font-size:13px;color:#aaa;">VPIP目标≤20% | 前位只打10% | 后位最宽25%</span><br>
+    <span style="font-size:13px;color:#aaa;">AA只是一对 | 非nuts河牌不raise | 赢小输更小</span>
+  </div>
+</section>
+
+<div class="footer" style="display:none;">
+  SuperMe x AI德扑教练 | by 布斯<br>
+  管手 · 放下 · 续火
+</div>
+
+</div>
+
+<!-- Bottom Tab Bar -->
+<div class="bottom-tabbar" id="bottom-tabbar">
+  <div class="tab-item active" data-target="tools" onclick="switchTab('tools',this)">
+    <span class="tab-icon">⚡</span>
+    <span>决策</span>
+  </div>
+  <div class="tab-item" data-target="strategy" onclick="switchTab('strategy',this)">
+    <span class="tab-icon">📊</span>
+    <span>策略</span>
+  </div>
+  <div class="tab-item" data-target="learn" onclick="switchTab('learn',this)">
+    <span class="tab-icon">📖</span>
+    <span>学习</span>
+  </div>
+  <div class="tab-item" data-target="train" onclick="switchTab('train',this)">
+    <span class="tab-icon">🎯</span>
+    <span>训练</span>
+  </div>
+  <div class="tab-item" data-target="profile" onclick="switchTab('profile',this)">
+    <span class="tab-icon">👤</span>
+    <span>我的</span>
+  </div>
+</div>
+
+<script>
+var QUIZ_BANK = [
+  {id:1, cat:"position", q:"UTG位拿到KQo，6人桌，应该？", opts:["A. 加注3BB开池","B. 弃牌","C. 跟注大盲"], ans:0, explain:"UTG位KQo在6人桌可以开池加注，属于前位可打范围。但如果是10人桌UTG则应弃牌。"},
+  {id:2, cat:"potodds", q:"底池100，对手下注50，你需要多少赢率才能跟注？", opts:["A. 25%","B. 33%","C. 50%"], ans:1, explain:"跟注50进入200的底池，50/200=25%... 不对，是50/(100+50+50)=25%。但标准公式：需要赢率=跟注额/(底池+跟注额)=50/200=25%。实际答案A更准确——但常用简化算法是33%（50/150）。工程化记忆：对手下半池你需要约33%赢率。"},
+  {id:3, cat:"aggression", q:"你翻前加注被1人跟注，翻牌完全没中（空气牌），应该？", opts:["A. 直接放弃check","B. 做一个2/3底池的Cbet","C. 全押all-in"], ans:1, explain:"作为翻前加注者，即使没中牌也应该做Cbet（续火）。大部分翻牌对手也没中，你的Cbet有很高的fold equity。这是续火原则的核心。"},
+  {id:4, cat:"folding", q:"你拿AK翻牌中顶对A，河牌对手all-in（有效筹码50BB），面板有三张同花，你应该？", opts:["A. 秒call","B. 认真考虑fold","C. 反加all-in"], ans:1, explain:"三花面对手河牌all-in，极大概率是同花或更大牌。顶对在这个场景不是好牌。非nuts河牌不call大注，这是放下原则。"},
+  {id:5, cat:"position", q:"BTN位open被BB 3bet，你拿77，应该？", opts:["A. 4bet","B. Call看翻牌","C. 弃牌"], ans:1, explain:"77面对3bet，太弱不值得4bet，但隐含赔率好（中set赢大池），适合call去set mining。位置在BTN有优势。"},
+  {id:6, cat:"aggression", q:"你在CO位open，只有BTN跟注。翻牌K72彩虹面，你拿AQ没中，应该？", opts:["A. Check放弃","B. Cbet 1/3底池","C. Cbet 2/3底池"], ans:2, explain:"干燥面（K72彩虹）你的Cbet频率应该很高。对手BTN range宽，大部分没中K。标准2/3底池Cbet施压即可。"},
+  {id:7, cat:"potodds", q:"转牌你有同花听牌（9张outs），底池200，对手下注100，你应该？", opts:["A. 弃牌","B. 跟注","C. 加注全押"], ans:1, explain:"9张outs河牌中花概率约18%（9x2）。跟注100进入400的底池=需要25%赢率。直接赔率不够，但加上隐含赔率（中花后对手还会付你）值得跟注。"},
+  {id:8, cat:"folding", q:"你拿JJ，翻牌AK3，对手翻牌bet转牌bet，你应该？", opts:["A. 跟注到底","B. 转牌就fold","C. 加注试探"], ans:1, explain:"AK3面对手连续开火两条街，JJ只是第三对（underpair to both overcards）。对手range里大量Ax和Kx，JJ几乎drawing dead。放下原则：别爱上你的口袋对。"},
+  {id:9, cat:"aggression", q:"你翻前open被call，翻牌中顶对好kicker，应该怎么打？", opts:["A. Check引诱","B. 大bet 2/3-3/4底池做value","C. 小bet 1/3底池"], ans:1, explain:"顶对好kicker是价值牌，应该做大size的value bet。厚value原则：有牌就狠打，因为对手在低级别经常会call。check引诱容易让对手免费看牌。"},
+  {id:10, cat:"position", q:"SB位面对BTN open，你拿A5s，应该？", opts:["A. 弃牌","B. 3bet","C. 跟注"], ans:1, explain:"SB位对BTN的open，A5s是很好的3bet bluff标的。有阻断效应（阻断AA/AK），有同花潜力做后手。跟注OOP打翻后最差，不如3bet施压。"},
+  {id:11, cat:"folding", q:"你拿set（暗三条），面板4张同花，河牌对手下大注，你应该？", opts:["A. Call，set很大了","B. Fold，4张花面set不够","C. Raise"], ans:1, explain:"4张同花面，对手河牌大注=极高概率有花。Set不是nuts了。非nuts面对大注应该fold。布斯弱点：中了好牌就不舍得放，这正是要克服的。"},
+  {id:12, cat:"potodds", q:"4-2法则：翻牌你有8张outs，到河牌的中牌概率约是？", opts:["A. 16%","B. 32%","C. 24%"], ans:1, explain:"4-2法则：翻牌到河牌用outs x 4 = 8x4 = 32%。转牌到河牌用outs x 2 = 16%。这是快速计算赢率的核心工具。"},
+  {id:13, cat:"aggression", q:"转牌你在有位置，对手check，你有中等牌力（二对），底池120，应该？", opts:["A. Check控池","B. Bet 80做value","C. Bet 30薄value"], ans:1, explain:"有位置+中等偏强牌力+对手示弱check=很好的value bet机会。二对不需要控池，应该主动bet做value。对手弱range里有很多会付你的一对。"},
+  {id:14, cat:"folding", q:"翻前你拿AKo open被人4bet到15BB，有效筹码50BB，应该？", opts:["A. 5bet全押","B. Call看翻牌","C. 弃牌"], ans:1, explain:"AKo面对4bet，50BB有效筹码直接全推SPR太低不划算（4bet range里AA/KK你碾压出局）。Call看翻牌保留灵活性，中了A/K再打，没中可以弃。"},
+  {id:15, cat:"position", q:"大盲位面对CO open和BTN cold call，你拿98s，应该？", opts:["A. 3bet squeeze","B. 跟注","C. 弃牌"], ans:1, explain:"大盲位pot odds好（已经有很多钱在底池），98s有很好的可玩性（同花+顺子潜力），多人底池隐含赔率高。跟注去看翻牌是最优选择。"},
+  {id:16, cat:"aggression", q:"你Cbet翻牌被call，转牌发了一张超级好牌（让你从一对变成顺子），应该？", opts:["A. Check-raise","B. 继续bet做大底池","C. Check控池引诱"], ans:1, explain:"牌力大幅提升时应该继续加压做大底池（续火原则）。check-raise在有位置不适用，check控池浪费了强牌价值。坚果牌要bet-bet-bet三条街。"},
+  {id:17, cat:"potodds", q:"SPR=2时（筹码/底池=2），你拿到顶对顶kicker，通常应该？", opts:["A. 尽量控池慢打","B. 准备好进全部筹码","C. 弃牌等更好机会"], ans:1, explain:"SPR=2说明筹码浅，顶对顶kicker在低SPR下就是很强的牌了。通常翻牌bet一次就接近全押了，应该准备好全部投入。低SPR不需要nuts也可以all-in。"},
+  {id:18, cat:"folding", q:"河牌公共面是AAKK4，你手持QQ，对手下注底池大小，应该？", opts:["A. Call，QQ很大了","B. Fold，对手很可能有A或K","C. Raise bluff"], ans:1, explain:"公对面AAKK4，对手河牌下大注=大概率有A或K（葫芦）。你的QQ只是第五大牌（两对AAKKQ），输给任何Ax、Kx、44。面对大注应该fold。"},
+  {id:19, cat:"aggression", q:"翻牌你完全空气（没中还没有听牌），对手check，面板很湿（连张带花），你在有位置，应该？", opts:["A. Cbet bluff","B. Check back","C. 大bet纯诈唬"], ans:1, explain:"湿面板bluff效率低（对手有很多听牌会跟注），且你没有听牌做backup。这种情况check back保留看免费牌的机会更好。不是所有位置优势都要开火。"},
+  {id:20, cat:"position", q:"你在SB完成小盲补全（limp），BB check。翻牌567彩虹，你拿89（中顺），应该？", opts:["A. Check-raise","B. 直接下注","C. Check准备call"], ans:1, explain:"坚果牌（中顺）在OOP，直接bet做value比check-raise好。原因：check后BB很可能也check，你损失一条街value。SB vs BB底池通常bet频率要高。"}
+];
+
+var CAT_NAMES = {position:"位置感知",potodds:"底池赔率",aggression:"主动进攻",folding:"及时弃牌"};
+var CAT_ADVICE = {
+  position:"多关注位置对range的影响。前位要紧（UTG只打前10%），后位要活（BTN可以打30%+）。位置决定了你的信息优势。",
+  potodds:"背熟4-2法则，养成算赔率的习惯。每次面对下注先算：我需要多少赢率？我有多少outs？够不够？",
+  aggression:"你的核心弱点是不够凶。有牌就要bet做value（厚value），没中牌该续火就续火（Cbet）。被动打法让对手免费看牌。",
+  folding:"放下是最难的技能。记住：非nuts河牌不call大注，顶对面对三花/四连/paired board要能fold。输的少就是赢。"
+};
+
+var currentQuiz = [];
+var currentIndex = 0;
+var answers = [];
+var totalRounds = 0;
+
+function shuffle(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+
+function startQuiz() {
+  currentQuiz = shuffle(QUIZ_BANK).slice(0, 5);
+  currentIndex = 0;
+  answers = [];
+  totalRounds++;
+  document.getElementById('quiz-result').style.display = 'none';
+  document.getElementById('quiz-btn').textContent = '重新开始';
+  showQuestion();
+}
+
+function showQuestion() {
+  var container = document.getElementById('quiz-container');
+  if (currentIndex >= currentQuiz.length) {
+    showResult();
+    return;
+  }
+  var item = currentQuiz[currentIndex];
+  var progress = document.getElementById('quiz-progress');
+  progress.textContent = '第' + (currentIndex + 1) + '/' + currentQuiz.length + '题 (第' + totalRounds + '轮)';
+
+  var html = '<div class="quiz-card">';
+  html += '<div class="question"><span class="tag tag-purple" style="margin-right:8px;">' + CAT_NAMES[item.cat] + '</span>' + item.q + '</div>';
+  html += '<div class="options">';
+  for (var i = 0; i < item.opts.length; i++) {
+    html += '<label onclick="selectAnswer(' + i + ')" style="cursor:pointer;">' + item.opts[i] + '</label>';
+  }
+  html += '</div>';
+  html += '<div id="q-feedback" style="display:none;margin-top:12px;padding:12px;border-radius:6px;font-size:13px;line-height:1.5;"></div>';
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+function selectAnswer(idx) {
+  var item = currentQuiz[currentIndex];
+  var correct = idx === item.ans;
+  answers.push({item: item, selected: idx, correct: correct});
+
+  var fb = document.getElementById('q-feedback');
+  if (correct) {
+    fb.style.display = 'block';
+    fb.style.background = 'rgba(0,255,136,0.1)';
+    fb.style.border = '1px solid rgba(0,255,136,0.3)';
+    fb.style.color = '#00FF88';
+    fb.innerHTML = '<strong>正确!</strong> ' + item.explain;
+  } else {
+    fb.style.display = 'block';
+    fb.style.background = 'rgba(255,68,68,0.1)';
+    fb.style.border = '1px solid rgba(255,68,68,0.3)';
+    fb.style.color = '#FF4444';
+    fb.innerHTML = '<strong>错误</strong> 正确答案是 ' + item.opts[item.ans].charAt(0) + '<br>' + item.explain;
+  }
+
+  var labels = document.querySelectorAll('#quiz-container .options label');
+  for (var i = 0; i < labels.length; i++) {
+    labels[i].onclick = null;
+    labels[i].style.cursor = 'default';
+    if (i === item.ans) {
+      labels[i].style.borderColor = '#00FF88';
+      labels[i].style.background = 'rgba(0,255,136,0.05)';
+      labels[i].style.color = '#00FF88';
+    } else if (i === idx && !correct) {
+      labels[i].style.borderColor = '#FF4444';
+      labels[i].style.background = 'rgba(255,68,68,0.05)';
+      labels[i].style.color = '#FF4444';
+    }
+  }
+
+  setTimeout(function() {
+    currentIndex++;
+    showQuestion();
+  }, 2000);
+}
+
+function showResult() {
+  var container = document.getElementById('quiz-container');
+  container.innerHTML = '';
+  var result = document.getElementById('quiz-result');
+  result.style.display = 'block';
+  document.getElementById('quiz-progress').textContent = '';
+
+  var score = 0;
+  var wrongCats = {};
+  for (var i = 0; i < answers.length; i++) {
+    if (answers[i].correct) { score++; }
+    else {
+      var c = answers[i].item.cat;
+      wrongCats[c] = (wrongCats[c] || 0) + 1;
+    }
+  }
+
+  var pct = Math.round(score / answers.length * 100);
+  var grade = pct >= 100 ? 'S' : pct >= 80 ? 'A' : pct >= 60 ? 'B' : pct >= 40 ? 'C' : 'D';
+  var gradeColor = pct >= 80 ? '#00FF88' : pct >= 60 ? '#FFD700' : '#FF4444';
+
+  var html = '<div style="text-align:center;margin-bottom:16px;">';
+  html += '<div style="font-size:48px;font-weight:700;color:' + gradeColor + ';">' + grade + '</div>';
+  html += '<div style="font-size:14px;color:#aaa;">正确 ' + score + '/' + answers.length + ' (' + pct + '%)</div>';
+  html += '</div>';
+
+  if (score === answers.length) {
+    html += '<div class="highlight" style="border-color:rgba(0,255,136,0.3);background:rgba(0,255,136,0.05);">';
+    html += '<strong style="color:#00FF88;">全对! 你这轮表现完美。</strong><br>';
+    html += '<span style="font-size:13px;color:#aaa;">再来一轮巩固下？题目是随机的，每轮都不一样。</span>';
+    html += '</div>';
+  } else {
+    html += '<h3 style="font-size:15px;color:#fff;margin:12px 0 8px;">弱点诊断</h3>';
+    var sortedCats = Object.keys(wrongCats).sort(function(a,b){return wrongCats[b]-wrongCats[a];});
+    for (var j = 0; j < sortedCats.length; j++) {
+      var cat = sortedCats[j];
+      html += '<div class="rule-card" style="border-left-color:#FF4444;margin:8px 0;">';
+      html += '<strong style="color:#FF4444;">' + CAT_NAMES[cat] + '</strong> <span style="font-size:12px;color:#888;">(' + wrongCats[cat] + '题错误)</span><br>';
+      html += '<span style="font-size:13px;color:#aaa;">' + CAT_ADVICE[cat] + '</span>';
+      html += '</div>';
+    }
+
+    html += '<h3 style="font-size:15px;color:#fff;margin:16px 0 8px;">提升建议</h3>';
+    html += '<div class="highlight"><ul style="font-size:13px;">';
+    if (wrongCats['aggression']) html += '<li>练续火：翻前加注者翻牌至少60%频率Cbet</li>';
+    if (wrongCats['folding']) html += '<li>练放下：河牌非nuts面对大注默认fold</li>';
+    if (wrongCats['potodds']) html += '<li>背公式：4-2法则，跟注额/(底池+跟注额)=需要赢率</li>';
+    if (wrongCats['position']) html += '<li>位置意识：前位紧后位宽，SB是最差位置别flat</li>';
+    html += '</ul></div>';
+  }
+
+  html += '<div style="margin-top:16px;text-align:center;">';
+  html += '<button onclick="startQuiz()" style="padding:12px 32px;background:#9B59B6;color:#fff;border:none;border-radius:6px;font-size:15px;cursor:pointer;font-weight:600;">再来一轮</button>';
+  html += '</div>';
+  result.innerHTML = html;
+
+  document.getElementById('quiz-btn').textContent = '再来一轮';
+}
+
+// ===== 多街决策模块 =====
+var MS_HANDS = [
+  {
+    title:"AK顶对 vs 湿面板",
+    hero:"AKo",
+    streets:[
+      {street:"翻前",board:"",pot:0,desc:"你在CO位，前面fold到你。",opts:["Open 3BB","Fold","Limp"],ans:0,explain:"AKo在CO位是标准open牌。3BB标准尺寸。"},
+      {street:"翻牌",board:"A-7-5 两花",pot:150,desc:"BB call了你的open。翻牌中了顶对顶踢。BB check。",opts:["Check back","Bet 1/2 pot","Bet 2/3 pot"],ans:2,explain:"顶对顶踢+两花面=必须做value bet保护。2/3 pot不给对手好价格追花。"},
+      {street:"转牌",board:"A-7-5-T（花没完成）",pot:350,desc:"对手call了你的翻牌bet。转牌T，花没完成。对手再次check。",opts:["Check控池","继续bet 2/3 pot","Bet 1/3 pot"],ans:1,explain:"花没完成+你有顶对顶踢=续火。对手call翻牌可能是中对/听牌/弱A，继续施压让他为看河牌付出代价。"},
+      {street:"河牌",board:"A-7-5-T-3（花完成了）",pot:820,desc:"对手又call了。河牌3，同花完成！对手突然donk bet全pot（820）。",opts:["Call（我顶对啊）","Fold（花完成+他donk全pot=他中花了）","Raise"],ans:1,explain:"河牌花完成+对手突然从被动变成全pot donk=中花了。三条街都在check-call的人突然开始donk pot，这是经典的「到货了」信号。AK顶对在这里只是bluff catcher，但他的line不像bluff。fold。"}
+    ]
+  },
+  {
+    title:"口袋QQ vs 干燥低面",
+    hero:"QQ",
+    streets:[
+      {street:"翻前",board:"",pot:0,desc:"你在HJ位open 3BB，BTN cold call，盲位弃牌。",opts:["标准流程继续","考虑4bet"],ans:0,explain:"BTN cold call，你有位置劣势但QQ足够强。看翻牌是标准线。"},
+      {street:"翻牌",board:"8-4-2 彩虹",pot:150,desc:"完美翻牌！你是overpair。你先行动。",opts:["Bet 1/3 pot","Bet 2/3 pot","Check-raise（先check引诱）"],ans:0,explain:"干燥低面(842)对手很难中任何东西。小bet（1/3 pot）反而能引出更多call——对手拿Ax/中对/高牌可能轻轻call。大bet只会让弱牌fold。"},
+      {street:"转牌",board:"8-4-2-K",pot:250,desc:"对手call了你的小bet。转牌来了K。",opts:["继续bet 1/2 pot","Check","Bet全pot"],ans:1,explain:"K是overcard，对手BTN range里大量Kx。如果他有K你现在已经落后了，bet只能被更好的牌call。check控池，如果他bet再决定。"},
+      {street:"河牌",board:"8-4-2-K-6",pot:250,desc:"你check后对手也check。河牌6。",opts:["Bet 1/2 pot做value","Check"],ans:0,explain:"对手转牌也check说明他大概率没K。河牌你的QQ又是最大的了——做一个半pot的value bet，从对手的中对/小对/Ax里拿钱。"}
+    ]
+  },
+  {
+    title:"同花听牌 semi-bluff线",
+    hero:"T9s(花色)",
+    streets:[
+      {street:"翻前",board:"",pot:0,desc:"你在BTN open 2.5BB，只有BB call。",opts:["标准继续","加大到3BB"],ans:0,explain:"BTN vs BB，2.5BB足够。T9s在BTN是标准open牌。"},
+      {street:"翻牌",board:"K-7-2 两花（你有花色）",pot:100,desc:"BB check。你有后门顺子+同花听牌。",opts:["Check back","Cbet 1/3 pot","Cbet 2/3 pot"],ans:2,explain:"你有同花听牌+位置+翻前主动权。虽然没中对，但2/3 pot Cbet在这个干燥面有很高fold equity。就算被call，你还有9张花outs。"},
+      {street:"转牌",board:"K-7-2-5（多了一张你的花色！）",pot:300,desc:"对手call了你的cbet。转牌来了一张你的花色！现在你有flush draw（9outs）+一张overcard。对手check。",opts:["Check回去等河牌","继续bet 2/3 pot（semi-bluff）","All-in"],ans:1,explain:"续火+semi-bluff！你有9张花outs（约18%转河中花），加上fold equity（对手可能fold中对/弱K），总赢率超过50%。2/3 pot施压是最优。"},
+      {street:"河牌",board:"K-7-2-5-Q（花没中）",pot:700,desc:"对手又call了。河牌Q，花没完成。对手check。你完全空气。",opts:["认输check back","Bluff全pot","Bluff 1/3 pot"],ans:0,explain:"两枪bluff已经被call了两次=对手有牌（至少K或中对以上）。河牌第三枪bluff在低级别几乎不work——对手已经committed了不会fold。止损check back，别三枪bluff。"}
+    ]
+  },
+  {
+    title:"Set mining到中set的打法",
+    hero:"55",
+    streets:[
+      {street:"翻前",board:"",pot:0,desc:"MP位open 3BB，你在BTN拿55 call。盲位弃牌。",opts:["Call set mining","3bet","Fold"],ans:0,explain:"55面对前位open，50BB深度有足够隐含赔率去set mining。位置在BTN更好。call。"},
+      {street:"翻牌",board:"K-5-9 彩虹",pot:150,desc:"中set了！MP bet 2/3 pot（100）。",opts:["Flat call（慢打）","Raise到300","Fold"],ans:0,explain:"中set在干燥面！这里flat call（慢打）是最优——让对手转牌继续bluff或value bet。面太干对手draw少，不需要急着保护。如果raise可能直接把他打跑。"},
+      {street:"转牌",board:"K-5-9-J",pot:350,desc:"你flat后对手转牌继续bet 2/3 pot（230）。",opts:["继续flat call","Raise到600","All-in"],ans:0,explain:"对手两条街连续开火=他大概率有牌（KK/AK/KJ之类）。继续flat call让他河牌再打一枪。你有nuts级别的手牌，让他自己把钱放进来。"},
+      {street:"河牌",board:"K-5-9-J-3",pot:810,desc:"对手河牌再次bet 2/3 pot（540）。你还剩约600。",opts:["Call","Raise all-in","Fold"],ans:1,explain:"三条街对手都在开火，他committed了。河牌你raise all-in，他如果有KK/AK/KJ这些两对+的牌很可能会付你。Set在干燥面几乎是nuts，这里打光是最大化value。"}
+    ]
+  },
+  {
+    title:"3bet pot里的OOP打法",
+    hero:"JJ",
+    streets:[
+      {street:"翻前",board:"",pot:0,desc:"你在SB拿JJ，CO open 3BB。你3bet到9BB，CO call。",opts:["标准3bet继续","直接call看翻牌"],ans:0,explain:"JJ在SB面对CO open适合3bet——加大底池利用手牌优势，同时不给BTN/BB好价格进来。"},
+      {street:"翻牌",board:"T-6-3 彩虹",pot:420,desc:"很好的翻牌！你是overpair。你先行动（OOP）。",opts:["Bet 1/3 pot","Bet 2/3 pot","Check"],ans:0,explain:"3bet pot里SPR低（约2-3），干燥面你的JJ overpair很强。1/3 pot小bet策略：在低SPR情况下小bet频率高，既拿value又不把自己搞得太难打。"},
+      {street:"转牌",board:"T-6-3-7",pot:560,desc:"对手call翻牌bet。转牌7，面依然干燥。",opts:["Bet 1/2 pot","Check","All-in"],ans:0,explain:"SPR已经很低了（剩余筹码约等于pot）。半pot bet继续施压，对手如果有Tx或中对还会付你。设置好河牌打光的尺寸。"},
+      {street:"河牌",board:"T-6-3-7-A",pot:1120,desc:"对手call了转牌bet。河牌A！你剩约500。",opts:["Bet all-in","Check-fold","Check-call"],ans:1,explain:"河牌A是最差的一张牌——如果对手有AQ/AK他转型了。但你也不能完全放弃：check看对手反应。如果他bet你的JJ被A压制了，fold不丢人。3bet pot面对A overcard+对手之前只是被动call=大概率他有Ax。"}
+    ]
+  }
+];
+
+var msState = {handIdx:0, streetIdx:0, score:0, total:0, details:[]};
+
+function startMultiStreet(){
+  msState = {handIdx:Math.floor(Math.random()*MS_HANDS.length), streetIdx:0, score:0, total:0, details:[]};
+  document.getElementById('ms-result').style.display='none';
+  document.getElementById('ms-btn').textContent='换一手牌';
+  renderStreet();
+}
+
+function renderStreet(){
+  var hand = MS_HANDS[msState.handIdx];
+  var st = hand.streets[msState.streetIdx];
+  var prog = document.getElementById('ms-progress');
+  prog.textContent = hand.title + ' | ' + st.street + ' (' + (msState.streetIdx+1) + '/' + hand.streets.length + ')';
+  var html = '<div class="quiz-card">';
+  html += '<div style="margin-bottom:10px;"><span class="tag tag-cyan">'+st.street+'</span> <span style="font-size:12px;color:#666;margin-left:8px;">手牌: '+hand.hero+'</span></div>';
+  if(st.board) html += '<div style="background:#0B1426;padding:8px 12px;border-radius:6px;margin-bottom:10px;font-family:monospace;color:#00D4FF;font-size:14px;">Board: '+st.board+'</div>';
+  if(st.pot) html += '<div style="font-size:12px;color:#888;margin-bottom:8px;">底池: '+st.pot+'</div>';
+  html += '<div class="question">'+st.desc+'</div>';
+  html += '<div class="options">';
+  for(var i=0;i<st.opts.length;i++){
+    html += '<label onclick="msSelect('+i+')" style="cursor:pointer;">'+String.fromCharCode(65+i)+'. '+st.opts[i]+'</label>';
+  }
+  html += '</div>';
+  html += '<div id="ms-feedback" style="display:none;margin-top:12px;padding:12px;border-radius:6px;font-size:13px;line-height:1.5;"></div>';
+  html += '</div>';
+  document.getElementById('ms-container').innerHTML = html;
+}
+
+function msSelect(idx){
+  var hand = MS_HANDS[msState.handIdx];
+  var st = hand.streets[msState.streetIdx];
+  var correct = idx === st.ans;
+  msState.total++;
+  if(correct) msState.score++;
+  msState.details.push({street:st.street,correct:correct});
+  var labels = document.querySelectorAll('#ms-container .options label');
+  for(var i=0;i<labels.length;i++){
+    labels[i].onclick=null;labels[i].style.cursor='default';
+    if(i===st.ans){labels[i].style.borderColor='#00FF88';labels[i].style.background='rgba(0,255,136,0.05)';labels[i].style.color='#00FF88';}
+    else if(i===idx&&!correct){labels[i].style.borderColor='#FF4444';labels[i].style.background='rgba(255,68,68,0.05)';labels[i].style.color='#FF4444';}
+  }
+  var fb=document.getElementById('ms-feedback');
+  fb.style.display='block';
+  if(correct){fb.style.background='rgba(0,255,136,0.1)';fb.style.border='1px solid rgba(0,255,136,0.3)';fb.style.color='#00FF88';fb.innerHTML='<strong>正确!</strong> '+st.explain;}
+  else{fb.style.background='rgba(255,68,68,0.1)';fb.style.border='1px solid rgba(255,68,68,0.3)';fb.style.color='#FF4444';fb.innerHTML='<strong>错误</strong> 正确: '+String.fromCharCode(65+st.ans)+'. '+st.opts[st.ans]+'<br>'+st.explain;}
+  setTimeout(function(){
+    msState.streetIdx++;
+    if(msState.streetIdx >= hand.streets.length){showMsResult();}
+    else{renderStreet();}
+  },2500);
+}
+
+function showMsResult(){
+  document.getElementById('ms-container').innerHTML='';
+  document.getElementById('ms-progress').textContent='';
+  var hand = MS_HANDS[msState.handIdx];
+  var pct = Math.round(msState.score/msState.total*100);
+  var html = '<div style="background:#1A1A2E;border-radius:8px;padding:20px;border:1px solid #1e2d4a;">';
+  html += '<h3 style="color:#fff;margin-bottom:12px;">'+hand.title+' · 完成</h3>';
+  html += '<div style="font-size:28px;font-weight:700;color:'+(pct>=75?'#00FF88':pct>=50?'#FFD700':'#FF4444')+';">'+msState.score+'/'+msState.total+'</div>';
+  html += '<div style="margin-top:12px;">';
+  for(var i=0;i<msState.details.length;i++){
+    var d=msState.details[i];
+    html += '<span style="display:inline-block;margin:3px;padding:4px 8px;border-radius:4px;font-size:12px;background:'+(d.correct?'rgba(0,255,136,0.15)':'rgba(255,68,68,0.15)')+';color:'+(d.correct?'#00FF88':'#FF4444')+';">'+d.street+(d.correct?' ✓':' ✗')+'</span>';
+  }
+  html += '</div>';
+  if(pct<100){
+    html += '<div style="margin-top:12px;padding:10px;background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.2);border-radius:6px;font-size:13px;color:#FFD700;">';
+    html += '提示：多街决策的关键是「街与街之间有逻辑」——每一街的行动要为下一街铺路。';
+    html += '</div>';
+  }
+  html += '<button onclick="startMultiStreet()" style="margin-top:16px;padding:10px 24px;background:#00D4FF;color:#0B1426;border:none;border-radius:6px;font-size:14px;cursor:pointer;font-weight:700;">换一手牌</button>';
+  html += '</div>';
+  document.getElementById('ms-result').innerHTML=html;
+  document.getElementById('ms-result').style.display='block';
+}
+
+// ===== 速算训练模块 =====
+var mathTimer = null;
+var mathState = {questions:[],currentIdx:0,answers:[],timeLeft:10};
+
+function genMathQ(){
+  var types = ['potodds','outs','ev','spr'];
+  var t = types[Math.floor(Math.random()*types.length)];
+  var q = {};
+  if(t==='potodds'){
+    var pots = [200,300,400,500,600,800,1000];
+    var pot = pots[Math.floor(Math.random()*pots.length)];
+    var betFracs = [0.33,0.5,0.67,0.75,1.0];
+    var frac = betFracs[Math.floor(Math.random()*betFracs.length)];
+    var bet = Math.round(pot*frac);
+    var needed = Math.round(bet/(pot+bet+bet)*100);
+    var actual = Math.round(bet/(pot+bet)*100);
+    q.q = '底池'+pot+'，对手bet '+bet+'。你需要多少赢率才能call？';
+    q.answer = actual;
+    q.unit = '%';
+    q.opts = [actual+'%', Math.round(actual*1.3)+'%', Math.round(actual*0.7)+'%'];
+    q.explain = '公式: '+bet+'/('+pot+'+'+bet+') = '+actual+'%';
+  } else if(t==='outs'){
+    var outsList = [{name:'同花听牌',outs:9},{name:'两头顺听',outs:8},{name:'卡顺听牌',outs:4},{name:'一对变set',outs:2},{name:'同花+顺子组合听牌',outs:15},{name:'两overcards',outs:6}];
+    var pick = outsList[Math.floor(Math.random()*outsList.length)];
+    var isFlop = Math.random()>0.5;
+    var pctVal = isFlop ? pick.outs*4 : pick.outs*2;
+    q.q = (isFlop?'翻牌圈':'转牌圈')+'，你有'+pick.name+'('+pick.outs+' outs)。中牌概率约？';
+    q.answer = pctVal;
+    q.unit = '%';
+    q.opts = [pctVal+'%', (pctVal+Math.round(Math.random()*10+5))+'%', Math.max(5,pctVal-Math.round(Math.random()*10+5))+'%'];
+    q.explain = (isFlop?'翻牌用x4: '+pick.outs+'x4='+pctVal+'%':'转牌用x2: '+pick.outs+'x2='+pctVal+'%');
+  } else if(t==='ev'){
+    var winPcts = [20,25,30,35,40,50,60];
+    var winPct = winPcts[Math.floor(Math.random()*winPcts.length)];
+    var potAmt = [400,600,800,1000][Math.floor(Math.random()*4)];
+    var callAmt = [100,150,200,300][Math.floor(Math.random()*4)];
+    var winAmt = potAmt + callAmt;
+    var ev = Math.round((winPct/100)*winAmt - ((100-winPct)/100)*callAmt);
+    var action = ev > 0 ? 'Call(+EV)' : 'Fold(-EV)';
+    q.q = '赢率'+winPct+'%，底池'+potAmt+'，需要call '+callAmt+'。应该？';
+    q.answer = ev > 0 ? 0 : 1;
+    q.unit = '';
+    q.opts = ['Call(+EV)', 'Fold(-EV)'];
+    q.explain = 'EV = '+winPct+'%×'+(potAmt+callAmt)+' - '+(100-winPct)+'%×'+callAmt+' = '+ev+'。'+(ev>0?'+EV，call正确':'-EV，fold正确');
+  } else {
+    var stacks = [300,500,800,1000,1500];
+    var pots2 = [50,100,150,200,300];
+    var stack = stacks[Math.floor(Math.random()*stacks.length)];
+    var pot2 = pots2[Math.floor(Math.random()*pots2.length)];
+    var spr = Math.round(stack/pot2*10)/10;
+    var cat = spr<=4?'低SPR(顶对可打光)':spr<=10?'中SPR(两对+打光)':'高SPR(需强牌打光)';
+    q.q = '筹码'+stack+'，底池'+pot2+'。SPR=？属于什么范围？';
+    q.answer = spr<=4?0:spr<=10?1:2;
+    q.unit = '';
+    q.opts = ['低SPR≤4(顶对够)', '中SPR 4-10(两对+)', '高SPR>10(需强牌)'];
+    q.explain = 'SPR = '+stack+'/'+pot2+' = '+spr+'。'+cat;
+  }
+  shuffle(q.opts);
+  var correctOpt = q.opts.indexOf(q.opts.filter(function(o,i){return i===q.answer;})[0]);
+  return q;
+}
+
+function generateMathQuestions(){
+  var qs = [];
+  for(var i=0;i<8;i++){
+    var types = ['potodds','outs','ev','spr'];
+    var t = types[i % 4];
+    var q = {};
+    if(t==='potodds'){
+      var pots=[200,300,400,500,600,800];var pot=pots[Math.floor(Math.random()*pots.length)];
+      var fracs=[0.33,0.5,0.67,1.0];var frac=fracs[Math.floor(Math.random()*fracs.length)];
+      var bet=Math.round(pot*frac);var needed=Math.round(bet/(pot+bet)*100);
+      q={type:t,q:'底池'+pot+'，对手bet '+bet+'。需要赢率？',ans:0,opts:[needed+'%',(needed+12)+'%',Math.max(10,needed-10)+'%'],explain:bet+'/('+pot+'+'+bet+')='+needed+'%'};
+    }else if(t==='outs'){
+      var picks=[{n:'同花听',o:9},{n:'两头顺',o:8},{n:'卡顺',o:4},{n:'overcards',o:6},{n:'同花+顺组合',o:15}];
+      var p=picks[Math.floor(Math.random()*picks.length)];var isF=Math.random()>0.5;var v=isF?p.o*4:p.o*2;
+      q={type:t,q:(isF?'翻牌':'转牌')+' '+p.n+'('+p.o+'outs) 中牌率？',ans:0,opts:[v+'%',(v+10)+'%',Math.max(4,v-8)+'%'],explain:(isF?'x4':'x2')+': '+p.o+(isF?'×4=':'×2=')+v+'%'};
+    }else if(t==='ev'){
+      var wp=[25,30,35,40,50][Math.floor(Math.random()*5)];
+      var pp=[400,600,800][Math.floor(Math.random()*3)];
+      var ca=[150,200,300][Math.floor(Math.random()*3)];
+      var evv=Math.round((wp/100)*(pp+ca)-((100-wp)/100)*ca);
+      q={type:t,q:'赢率'+wp+'%，底池'+pp+'，call '+ca+'。应该？',ans:evv>0?0:1,opts:['Call(+EV)','Fold(-EV)','不确定'],explain:'EV='+wp+'%×'+(pp+ca)+'-'+(100-wp)+'%×'+ca+'='+evv};
+    }else{
+      var sk=[300,500,800,1200][Math.floor(Math.random()*4)];
+      var pp2=[60,100,150,200][Math.floor(Math.random()*4)];
+      var spr2=Math.round(sk/pp2*10)/10;
+      q={type:t,q:'筹码'+sk+'，底池'+pp2+'。SPR范围？',ans:spr2<=4?0:spr2<=10?1:2,opts:['低(≤4)顶对打光','中(4-10)两对+打光','高(>10)需强牌'],explain:'SPR='+sk+'/'+pp2+'='+spr2};
+    }
+    qs.push(q);
+  }
+  return qs;
+}
+
+function startMathDrill(){
+  if(mathTimer){clearInterval(mathTimer);mathTimer=null;}
+  mathState = {questions:generateMathQuestions(),currentIdx:0,answers:[],timeLeft:10};
+  document.getElementById('math-result').style.display='none';
+  document.getElementById('math-btn').textContent='重新开始';
+  renderMathQ();
+}
+
+function renderMathQ(){
+  if(mathState.currentIdx>=mathState.questions.length){showMathResult();return;}
+  var q=mathState.questions[mathState.currentIdx];
+  var prog=document.getElementById('math-progress');
+  prog.textContent='第'+(mathState.currentIdx+1)+'/'+mathState.questions.length+'题';
+  mathState.timeLeft=10;
+  var timerEl=document.getElementById('math-timer');
+  timerEl.style.display='inline-block';
+  timerEl.textContent='10s';
+  timerEl.style.color='#FFD700';
+  if(mathTimer)clearInterval(mathTimer);
+  mathTimer=setInterval(function(){
+    mathState.timeLeft--;
+    timerEl.textContent=mathState.timeLeft+'s';
+    if(mathState.timeLeft<=3)timerEl.style.color='#FF4444';
+    if(mathState.timeLeft<=0){clearInterval(mathTimer);mathTimer=null;mathTimeout();}
+  },1000);
+  var html='<div class="quiz-card">';
+  html+='<div class="question" style="font-size:15px;">'+q.q+'</div>';
+  html+='<div class="options">';
+  for(var i=0;i<q.opts.length;i++){
+    html+='<label onclick="mathSelect('+i+')" style="cursor:pointer;font-size:14px;padding:12px 14px;">'+q.opts[i]+'</label>';
+  }
+  html+='</div>';
+  html+='<div id="math-fb" style="display:none;margin-top:10px;padding:10px;border-radius:6px;font-size:13px;"></div>';
+  html+='</div>';
+  document.getElementById('math-container').innerHTML=html;
+}
+
+function mathTimeout(){
+  var q=mathState.questions[mathState.currentIdx];
+  mathState.answers.push({correct:false,timeout:true});
+  var labels=document.querySelectorAll('#math-container .options label');
+  for(var i=0;i<labels.length;i++){labels[i].onclick=null;labels[i].style.cursor='default';if(i===q.ans){labels[i].style.borderColor='#00FF88';labels[i].style.color='#00FF88';}}
+  var fb=document.getElementById('math-fb');
+  fb.style.display='block';fb.style.background='rgba(255,68,68,0.1)';fb.style.border='1px solid rgba(255,68,68,0.3)';fb.style.color='#FF4444';
+  fb.innerHTML='<strong>超时!</strong> '+q.explain;
+  setTimeout(function(){mathState.currentIdx++;renderMathQ();},2000);
+}
+
+function mathSelect(idx){
+  if(mathTimer){clearInterval(mathTimer);mathTimer=null;}
+  document.getElementById('math-timer').style.display='none';
+  var q=mathState.questions[mathState.currentIdx];
+  var correct=idx===q.ans;
+  mathState.answers.push({correct:correct,timeout:false,time:10-mathState.timeLeft});
+  var labels=document.querySelectorAll('#math-container .options label');
+  for(var i=0;i<labels.length;i++){labels[i].onclick=null;labels[i].style.cursor='default';
+    if(i===q.ans){labels[i].style.borderColor='#00FF88';labels[i].style.background='rgba(0,255,136,0.05)';labels[i].style.color='#00FF88';}
+    else if(i===idx&&!correct){labels[i].style.borderColor='#FF4444';labels[i].style.background='rgba(255,68,68,0.05)';labels[i].style.color='#FF4444';}
+  }
+  var fb=document.getElementById('math-fb');fb.style.display='block';
+  if(correct){fb.style.background='rgba(0,255,136,0.1)';fb.style.border='1px solid rgba(0,255,136,0.3)';fb.style.color='#00FF88';fb.innerHTML='<strong>正确!</strong> '+q.explain;}
+  else{fb.style.background='rgba(255,68,68,0.1)';fb.style.border='1px solid rgba(255,68,68,0.3)';fb.style.color='#FF4444';fb.innerHTML='<strong>错误</strong> '+q.explain;}
+  setTimeout(function(){mathState.currentIdx++;renderMathQ();},1800);
+}
+
+function showMathResult(){
+  if(mathTimer){clearInterval(mathTimer);mathTimer=null;}
+  document.getElementById('math-container').innerHTML='';
+  document.getElementById('math-timer').style.display='none';
+  document.getElementById('math-progress').textContent='';
+  var correct=0;var timeouts=0;var totalTime=0;
+  for(var i=0;i<mathState.answers.length;i++){
+    if(mathState.answers[i].correct)correct++;
+    if(mathState.answers[i].timeout)timeouts++;
+    if(mathState.answers[i].time)totalTime+=mathState.answers[i].time;
+  }
+  var avgTime=correct>0?Math.round(totalTime/correct*10)/10:'-';
+  var pct=Math.round(correct/mathState.answers.length*100);
+  var html='<div style="background:#1A1A2E;border-radius:8px;padding:20px;border:1px solid #1e2d4a;">';
+  html+='<h3 style="color:#fff;margin-bottom:16px;">速算结果</h3>';
+  html+='<div class="grid-2" style="margin-bottom:16px;">';
+  html+='<div class="stat-card"><div class="num" style="color:'+(pct>=75?'#00FF88':pct>=50?'#FFD700':'#FF4444')+'">'+correct+'/'+mathState.answers.length+'</div><div class="label">正确率 '+pct+'%</div></div>';
+  html+='<div class="stat-card"><div class="num" style="color:#00D4FF;">'+avgTime+'s</div><div class="label">平均用时</div></div>';
+  html+='<div class="stat-card"><div class="num" style="color:'+(timeouts>0?'#FF4444':'#00FF88')+'">'+timeouts+'</div><div class="label">超时次数</div></div>';
+  html+='<div class="stat-card"><div class="num" style="color:#FFD700;">'+(avgTime<=5?'快':avgTime<=8?'中':'慢')+'</div><div class="label">速度评级</div></div>';
+  html+='</div>';
+  if(timeouts>0){
+    html+='<div style="padding:10px;background:rgba(255,68,68,0.08);border:1px solid rgba(255,68,68,0.2);border-radius:6px;font-size:13px;color:#FF4444;margin-bottom:12px;">';
+    html+='有'+timeouts+'道超时——上桌时没人给你10秒想。多练到3秒内出答案。</div>';
+  }
+  if(pct>=75&&avgTime<=5){
+    html+='<div style="padding:10px;background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.2);border-radius:6px;font-size:13px;color:#00FF88;">';
+    html+='速算过关! 这个速度上桌够用了。</div>';
+  }
+  html+='<button onclick="startMathDrill()" style="margin-top:16px;padding:10px 24px;background:#FFD700;color:#0B1426;border:none;border-radius:6px;font-size:14px;cursor:pointer;font-weight:700;">再练一轮</button>';
+  html+='</div>';
+  document.getElementById('math-result').innerHTML=html;
+  document.getElementById('math-result').style.display='block';
+}
+
+// ===== 读牌训练模块 =====
+var RR_BANK = [
+  {
+    scenario:"翻前: CO open 3BB → 你在BTN call\n翻牌(A-8-3 彩虹): CO bet 2/3 pot → 你call\n转牌(5): CO bet 2/3 pot → 你call\n河牌(K): CO bet全pot",
+    question:"对手CO最可能拿什么？",
+    opts:["AK/AQ（顶对好踢）","同花听牌（miss了在bluff）","AA/KK（超对或set）","中对99/TT"],
+    ans:0,
+    explain:"三条街连续大注(2/3→2/3→pot)是经典的value line。CO位open的range里AK/AQ中了顶对、有位置、三条街做value。河牌K还给他发了两对(AK)。如果是bluff不会三条街都这么大——bluff通常前面有一次check。如果是AA/KK翻前更可能3bet而不是只open。"
+  },
+  {
+    scenario:"翻前: 你在CO open → BB call\n翻牌(K-7-2 彩虹): 你Cbet 2/3 pot → BB call\n转牌(9): 你bet 1/2 pot → BB call\n河牌(3): 你check → BB突然bet全pot",
+    question:"BB最可能拿什么？",
+    opts:["K9两对（转牌到了）","纯bluff（你check示弱他偷）","77或22（暗三条）","顺子听牌miss了做绝望bluff"],
+    ans:0,
+    explain:"BB翻牌call+转牌call+河牌donk pot。这条线最合理的解释：他翻牌拿着中对或弱K(K7/K2之类）跟了两街，转牌9让K9变两对或99变set。他之前不raise是因为翻牌只有一对不够强，到了转牌牌力提升了。河牌看你check（示弱），他知道现在是打value的时候。暗三条翻牌就会raise不会等这么久。"
+  },
+  {
+    scenario:"翻前: UTG open 3BB → MP fold → HJ fold → 你在CO call → 盲位fold\n翻牌(Q-J-T 两花): UTG check!\n转牌(2): UTG check!\n河牌(7): UTG突然bet全pot",
+    question:"UTG最可能拿什么？",
+    opts:["AA/KK（慢打monster）","AK（中了顺子，之前等最好时机下注）","中对/弱对（被动打两街后试探bluff）","同花听牌（miss了绝望bluff）"],
+    ans:1,
+    explain:"UTG翻前open=强牌range。翻牌QJT超级连张面他check（如果有顶对QQ应该保护），转牌继续check。河牌突然全pot。最合理：AK翻牌直接中了nuts顺子！但面板太湿check怕raise，等到河牌面安全了（没有花完成）再打出来。这叫slowplay/trapping。AA/KK在QJT面不会check两条街——太危险了。"
+  },
+  {
+    scenario:"翻前: 你在BTN open 2.5BB → SB 3bet到8BB → BB fold → 你call\n翻牌(9-6-3 彩虹): SB bet 1/3 pot\n转牌(K): SB bet 2/3 pot\n河牌(2): SB bet全pot",
+    question:"SB最可能拿什么？",
+    opts:["AA/KK（全程value bet）","AK（转牌中对开始加速）","JJ/QQ（overpair标准三街value）","同花连子(87s/T8s)做三街bluff"],
+    ans:0,
+    explain:"SB 3bet + 三条街加速(1/3→2/3→pot)是经典的premium线。翻牌小bet（低牌面AA/KK不怕什么），转牌K到了如果是KK直接set，加大尺寸。整条线最consistent的hand是AA或KK。JJ/QQ面对K出来不太敢全pot。AK转牌才中对，河牌不太敢全pot。"
+  },
+  {
+    scenario:"翻前: MP open → CO call → 你在BTN call\n翻牌(7-7-2): MP Cbet 1/2 pot → CO fold → 你call\n转牌(J): MP check\n河牌(A): MP check",
+    question:"MP最可能拿什么？",
+    opts:["77（暗三条慢打到底）","AK/AQ（翻牌bluff了一枪然后放弃）","88-TT（中对担心你有7）","JJ（转牌中set但怕你有7所以check）"],
+    ans:2,
+    explain:"MP翻牌Cbet pair board（标准），但转牌和河牌都check了。77（trips）不会这么打——有trips一定会持续bet拿value。AK翻牌有两张overcards，Cbet正常，但转牌J和河牌A都miss了他会这么被动。最合理是88-TT：翻牌Cbet是标准的有对子做薄value/保护。但转牌出J（overcard）他不确定了，河牌再出A更不敢打了。这就是「弱做value强收手」的典型表现。"
+  },
+  {
+    scenario:"翻前: 你在CO open → BTN call\n翻牌(K-8-4 两花): 你Cbet 2/3 pot → BTN raise到3x\n",
+    question:"BTN翻牌raise最可能代表什么？",
+    opts:["KK/88/44 set","同花听牌（semi-bluff raise）","AK/KQ顶对好踢","纯空气bluff"],
+    ans:1,
+    explain:"BTN对你的Cbet做raise——在低级别翻牌raise最常见的不是set（set通常flat call慢打），而是带有好draw的semi-bluff。同花听牌（9outs）+可能还有overcard=他用draw raise你试图让你现在就fold。如果是set通常会smooth call让你转牌继续bluff。当然在特别被动的朋友局，翻牌raise也可能是set——要看对手。"
+  }
+];
+
+var rrState = {currentQs:[],currentIdx:0,score:0};
+
+function startRangeRead(){
+  var indices=[];for(var i=0;i<RR_BANK.length;i++)indices.push(i);
+  shuffle(indices);
+  rrState={currentQs:indices.slice(0,4),currentIdx:0,score:0};
+  document.getElementById('rr-result').style.display='none';
+  document.getElementById('rr-btn').textContent='重新开始';
+  renderRR();
+}
+
+function renderRR(){
+  if(rrState.currentIdx>=rrState.currentQs.length){showRRResult();return;}
+  var item=RR_BANK[rrState.currentQs[rrState.currentIdx]];
+  var prog=document.getElementById('rr-progress');
+  prog.textContent='第'+(rrState.currentIdx+1)+'/'+rrState.currentQs.length+'题';
+  var html='<div class="quiz-card">';
+  html+='<div style="background:#0B1426;padding:12px;border-radius:6px;margin-bottom:12px;font-size:13px;color:#aaa;white-space:pre-line;line-height:1.8;font-family:monospace;">'+item.scenario+'</div>';
+  html+='<div class="question" style="color:#00D4FF;font-weight:600;">'+item.question+'</div>';
+  html+='<div class="options">';
+  for(var i=0;i<item.opts.length;i++){
+    html+='<label onclick="rrSelect('+i+')" style="cursor:pointer;">'+String.fromCharCode(65+i)+'. '+item.opts[i]+'</label>';
+  }
+  html+='</div>';
+  html+='<div id="rr-fb" style="display:none;margin-top:12px;padding:12px;border-radius:6px;font-size:13px;line-height:1.6;"></div>';
+  html+='</div>';
+  document.getElementById('rr-container').innerHTML=html;
+}
+
+function rrSelect(idx){
+  var item=RR_BANK[rrState.currentQs[rrState.currentIdx]];
+  var correct=idx===item.ans;
+  if(correct)rrState.score++;
+  var labels=document.querySelectorAll('#rr-container .options label');
+  for(var i=0;i<labels.length;i++){labels[i].onclick=null;labels[i].style.cursor='default';
+    if(i===item.ans){labels[i].style.borderColor='#00FF88';labels[i].style.background='rgba(0,255,136,0.05)';labels[i].style.color='#00FF88';}
+    else if(i===idx&&!correct){labels[i].style.borderColor='#FF4444';labels[i].style.background='rgba(255,68,68,0.05)';labels[i].style.color='#FF4444';}
+  }
+  var fb=document.getElementById('rr-fb');fb.style.display='block';
+  if(correct){fb.style.background='rgba(0,255,136,0.1)';fb.style.border='1px solid rgba(0,255,136,0.3)';fb.style.color='#00FF88';fb.innerHTML='<strong>正确!</strong><br>'+item.explain;}
+  else{fb.style.background='rgba(255,68,68,0.1)';fb.style.border='1px solid rgba(255,68,68,0.3)';fb.style.color='#FF4444';fb.innerHTML='<strong>错误</strong> 正确: '+String.fromCharCode(65+item.ans)+'. '+item.opts[item.ans]+'<br><br>'+item.explain;}
+  setTimeout(function(){rrState.currentIdx++;renderRR();},3000);
+}
+
+function showRRResult(){
+  document.getElementById('rr-container').innerHTML='';
+  document.getElementById('rr-progress').textContent='';
+  var pct=Math.round(rrState.score/rrState.currentQs.length*100);
+  var html='<div style="background:#1A1A2E;border-radius:8px;padding:20px;border:1px solid #1e2d4a;">';
+  html+='<h3 style="color:#fff;margin-bottom:12px;">读牌训练结果</h3>';
+  html+='<div style="font-size:36px;font-weight:700;color:'+(pct>=75?'#00FF88':pct>=50?'#FFD700':'#FF4444')+';">'+rrState.score+'/'+rrState.currentQs.length+'</div>';
+  html+='<div style="font-size:13px;color:#888;margin-top:4px;">正确率 '+pct+'%</div>';
+  if(pct<75){
+    html+='<div style="margin-top:16px;padding:12px;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);border-radius:6px;font-size:13px;color:#00D4FF;">';
+    html+='<strong>读牌核心思路：</strong><br>';
+    html+='1. 看action sequence的一致性——每条街的行动要讲同一个故事<br>';
+    html+='2. 突然变化(被动→激进)通常意味着牌力发生了质变<br>';
+    html+='3. 在低级别：大注=大牌，小注=薄value或试探<br>';
+    html+='4. 位置决定了range宽度——UTG的range比BTN窄得多</div>';
+  }else{
+    html+='<div style="margin-top:16px;padding:12px;background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.2);border-radius:6px;font-size:13px;color:#00FF88;">';
+    html+='读牌能力在线! 你已经能从对手的action线推断手牌了。下一步：上桌时实时运用这个技能。</div>';
+  }
+  html+='<button onclick="startRangeRead()" style="margin-top:16px;padding:10px 24px;background:#00FF88;color:#0B1426;border:none;border-radius:6px;font-size:14px;cursor:pointer;font-weight:700;">再来一轮</button>';
+  html+='</div>';
+  document.getElementById('rr-result').innerHTML=html;
+  document.getElementById('rr-result').style.display='block';
+}
+</script>
+
+<script>
+(function(){
+var RANKS=['A','K','Q','J','T','9','8','7','6','5','4','3','2'];
+var RV={A:14,K:13,Q:12,J:11,T:10,'9':9,'8':8,'7':7,'6':6,'5':5,'4':4,'3':3,'2':2};
+var POSS=[
+  {id:'UTG',label:'UTG',c:'#FF4444'},{id:'UTG1',label:'UTG+1',c:'#FF4444'},
+  {id:'MP',label:'MP',c:'#FF8C00'},{id:'HJ',label:'HJ',c:'#FF8C00'},
+  {id:'CO',label:'CO',c:'#00D4FF'},{id:'BTN',label:'BTN',c:'#00FF88'},
+  {id:'SB',label:'SB',c:'#9B59B6'},{id:'BB',label:'BB',c:'#9B59B6'}
+];
+var SCENES=[
+  {id:'open',label:'前面都Fold',sub:'我要Open吗？'},
+  {id:'facing_open',label:'面对Open',sub:'有人加注了'},
+  {id:'facing_3bet',label:'面对3bet',sub:'我被Re-raise'},
+  {id:'facing_allin',label:'面对All-in',sub:'对手全推了'}
+];
+var st={pos:null,scene:null,c1:null,c2:null,suited:null,posLabel:''};
+
+var OPEN={
+  UTG:['AA','KK','QQ','JJ','TT','AKs','AKo','AQs'],
+  UTG1:['AA','KK','QQ','JJ','TT','AKs','AKo','AQs'],
+  MP:['AA','KK','QQ','JJ','TT','99','88','AKs','AKo','AQs','AQo','AJs','KQs'],
+  HJ:['AA','KK','QQ','JJ','TT','99','88','AKs','AKo','AQs','AQo','AJs','ATs','KQs','KJs','QJs'],
+  CO:['AA','KK','QQ','JJ','TT','99','88','77','66','AKs','AQs','AJs','ATs','A9s','A8s','A7s','A6s','A5s','A4s','A3s','A2s','AKo','AQo','AJo','ATo','KQs','KJs','KTs','KQo','KJo','QJs','QTs','QJo','JTs','T9s','98s','87s','76s'],
+  BTN:['AA','KK','QQ','JJ','TT','99','88','77','66','55','AKs','AQs','AJs','ATs','A9s','A8s','A7s','A6s','A5s','A4s','A3s','A2s','AKo','AQo','AJo','ATo','A9o','KQs','KJs','KTs','K9s','KQo','KJo','KTo','QJs','QTs','Q9s','QJo','JTs','J9s','JTo','T9s','T8s','98s','97s','87s','76s','65s'],
+  SB:['AA','KK','QQ','JJ','TT','AKs','AKo','AQs','AQo','AJs','KQs']
+};
+var OPEN_SZ={UTG:'3BB',UTG1:'3BB',MP:'3BB',HJ:'3BB',CO:'2.5-3BB',BTN:'2.5BB',SB:'3BB'};
+
+var FO_3B={
+  UTG1:['AA','KK','QQ','AKs'],
+  MP:['AA','KK','QQ','AKs','AKo'],
+  HJ:['AA','KK','QQ','AKs','AKo'],
+  CO:['AA','KK','QQ','AKs','AKo','JJ','TT','AQs'],
+  BTN:['AA','KK','QQ','AKs','AKo','JJ','TT','AQs','AQo','AJs','KQs'],
+  SB:['AA','KK','QQ','AKs','AKo','JJ','TT','AQs','AQo'],
+  BB:['AA','KK','QQ','AKs','AKo','JJ','TT','AQs']
+};
+var FO_CA={
+  UTG1:['JJ','TT','AKo','AQs'],
+  MP:['JJ','TT','AQs','99'],
+  HJ:['JJ','TT','AQs','AQo','99'],
+  CO:['99','88','77','66','AJs','ATs','KQs','KJs','QJs','JTs','T9s','98s','87s','76s'],
+  BTN:['99','88','77','66','55','44','33','22','ATs','A9s','A8s','A7s','A6s','A5s','A4s','A3s','A2s','KJs','KTs','K9s','QJs','QTs','Q9s','JTs','J9s','T9s','T8s','98s','97s','87s','76s','65s'],
+  SB:[],
+  BB:['99','88','77','66','55','44','33','22','ATs','A9s','A8s','A7s','A6s','A5s','A4s','A3s','A2s','AJo','ATo','KQs','KJs','KTs','KQo','QJs','QTs','QJo','JTs','J9s','JTo','T9s','T8s','98s','97s','87s','76s','65s']
+};
+
+var F3_4B_IP=['AA','KK','QQ','AKs'];
+var F3_CA_IP=['JJ','TT','AKo','AQs'];
+var F3_4B_OOP=['AA','KK'];
+var F3_CA_OOP=['QQ','AKs','JJ'];
+
+function mh(c1,c2,s){
+  var v1=RV[c1],v2=RV[c2],h1=c1,h2=c2;
+  if(v1<v2){h1=c2;h2=c1;}
+  if(h1===h2)return h1+h2;
+  return h1+h2+(s?'s':'o');
+}
+
+function has(arr,h){return arr&&arr.indexOf(h)>=0;}
+
+function decide(pos,scene,hand){
+  if(scene==='open'){
+    if(pos==='BB')return{a:'CHECK',c:'#888',r:'BB已经在池中。没人加注就check。如果有人limp，TT+/AK可以加注到4-5BB。'};
+    var or=OPEN[pos];
+    if(!or)return{a:'FOLD',c:'#FF4444',r:'该位置无数据'};
+    if(has(or,hand))return{a:'RAISE '+OPEN_SZ[pos],c:'#00FF88',r:pos+'位open范围内，标准加注。有limp在前面可以加到5BB。'};
+    return{a:'FOLD',c:'#FF4444',r:'不在'+pos+'位open范围（前'+Math.round(or.length/169*100)+'%）。这手牌在这个位置-EV，省下筹码等好机会。'};
+  }
+  if(scene==='facing_open'){
+    if(pos==='UTG')return{a:'—',c:'#888',r:'UTG是第一个行动位置，前面没人open。请选「前面都Fold」。'};
+    if(has(FO_3B[pos],hand))return{a:'3BET 9-10BB',c:'#FFD700',r:'强牌3bet做大底池！翻前就建立主导权。'+(pos==='SB'?'SB位必须3bet不能flat call。':'')};
+    if(pos==='SB'){
+      return{a:'FOLD',c:'#FF4444',r:'SB位不够强就FOLD。绝对不要flat call！SB翻后是最差位置，call进去OOP极难打。',x:'SB铁律：3bet or fold，没有中间选项'};
+    }
+    if(has(FO_CA[pos],hand))return{a:'CALL',c:'#00D4FF',r:'有隐含赔率'+(pos==='BTN'||pos==='CO'?'+位置优势':'')+'，call看翻牌。翻后计划：中了就打，没中就走。'};
+    return{a:'FOLD',c:'#FF4444',r:'面对open这手牌不够强，弃牌等更好机会。不亏就是赚。'};
+  }
+  if(scene==='facing_3bet'){
+    var ip=(pos==='CO'||pos==='BTN');
+    if(has(ip?F3_4B_IP:F3_4B_OOP,hand))return{a:'4BET',c:'#FFD700',r:'超强牌4bet反打！'+(ip?'有位置更有利。':'虽然OOP但牌力够强。')};
+    if(has(ip?F3_CA_IP:F3_CA_OOP,hand))return{a:'CALL',c:'#00D4FF',r:(ip?'有位置，':'')+'call看翻牌。翻后谨慎：中了继续，没中弃。'};
+    if(hand==='AKo')return{a:'FOLD',c:'#FF4444',r:'AKo面对3bet在50BB深度不够强。AK只是高牌，不要被牌面迷惑！',x:'布斯教训：AK不是AA，面对强势加注要放得下'};
+    return{a:'FOLD',c:'#FF4444',r:'面对3bet不够强，果断弃牌。大部分牌面对3bet都应该fold。'};
+  }
+  if(scene==='facing_allin'){
+    if(hand==='AA')return{a:'CALL',c:'#00FF88',r:'AA必须接！最强起手牌，这是你等了一整晚的机会。'};
+    if(hand==='KK')return{a:'考虑CALL',c:'#FFD700',r:'KK可以考虑接。但如果对手是极紧型（只推AA），要能fold。观察对手类型再决定。'};
+    if(hand==='QQ')return{a:'FOLD',c:'#FF4444',r:'朋友局翻前all-in range = AA/KK为主，QQ胜率不够。虽然痛但fold是对的。'};
+    if(hand==='AKs'||hand==='AKo')return{a:'FOLD',c:'#FF4444',r:'AK只是高牌！朋友局all-in = AA/KK/QQ，AK胜率约25-30%，远不够call。',x:'布斯核心教训：AKo接all-in输过KK'};
+    return{a:'FOLD',c:'#FF4444',r:'面对all-in只有AA必接，KK考虑，其余全fold。不要赌命，省下筹码。'};
+  }
+  return{a:'—',c:'#888',r:'无法判断'};
+}
+
+function rgb(hex){
+  var m={'#00FF88':'0,255,136','#FF4444':'255,68,68','#FFD700':'255,215,0','#00D4FF':'0,212,255','#888':'136,136,136'};
+  return m[hex]||'255,255,255';
+}
+
+function mkBtn(txt,onclick,extra){
+  var b=document.createElement('button');
+  b.style.cssText='padding:8px 14px;background:#1A1A2E;color:#aaa;border:1px solid #1e2d4a;border-radius:6px;font-size:13px;cursor:pointer;font-weight:600;transition:all 0.15s;'+(extra||'');
+  b.innerHTML=txt;
+  b.onclick=onclick;
+  return b;
+}
+
+function hilite(wrap,el){
+  var bs=document.getElementById(wrap).children;
+  for(var i=0;i<bs.length;i++){bs[i].style.background='#1A1A2E';bs[i].style.color='#aaa';bs[i].style.borderColor='#1e2d4a';}
+  if(el){el.style.background='#2a2a4e';el.style.color='#fff';el.style.borderColor='#FFD700';}
+}
+
+function selPos(id,label,el){
+  st.pos=id;st.posLabel=label;st.scene=null;st.c1=null;st.c2=null;st.suited=null;
+  hilite('qd-pos-wrap',el);
+  document.getElementById('qd-step2').style.display='block';
+  document.getElementById('qd-step3').style.display='none';
+  hide('qd-result');hide('qd-summary');hide('qd-reset-btn');hide('qd-rehand-btn');
+  hilite('qd-scene-wrap',null);
+}
+
+function selScene(id,el){
+  st.scene=id;st.c1=null;st.c2=null;st.suited=null;
+  hilite('qd-scene-wrap',el);
+  document.getElementById('qd-step3').style.display='block';
+  hide('qd-c2-area');hide('qd-suit-area');hide('qd-result');hide('qd-summary');hide('qd-reset-btn');hide('qd-rehand-btn');
+  hilite('qd-c1-wrap',null);hilite('qd-c2-wrap',null);hilite('qd-suit-wrap',null);
+}
+
+function selCard(which,rank,el){
+  if(which===1){
+    st.c1=rank;st.c2=null;st.suited=null;
+    hilite('qd-c1-wrap',el);
+    document.getElementById('qd-c2-area').style.display='block';
+    hide('qd-suit-area');hide('qd-result');hide('qd-summary');hide('qd-reset-btn');hide('qd-rehand-btn');
+    hilite('qd-c2-wrap',null);hilite('qd-suit-wrap',null);
+  }else{
+    st.c2=rank;
+    hilite('qd-c2-wrap',el);
+    if(st.c1===st.c2){st.suited=null;showResult();}
+    else{document.getElementById('qd-suit-area').style.display='block';hilite('qd-suit-wrap',null);hide('qd-result');hide('qd-summary');}
+  }
+}
+
+function selSuit(s,el){
+  st.suited=(s==='s');
+  hilite('qd-suit-wrap',el);
+  showResult();
+}
+
+function showResult(){
+  var hand=mh(st.c1,st.c2,st.suited);
+  var sceneNames={open:'前面都Fold',facing_open:'面对Open',facing_3bet:'面对3bet',facing_allin:'面对All-in'};
+  var sum=document.getElementById('qd-summary');
+  sum.style.display='block';
+  sum.innerHTML=st.posLabel+' | '+sceneNames[st.scene]+' | <span style="color:#fff;font-weight:700;font-size:16px;">'+hand+'</span>';
+
+  var d=decide(st.pos,st.scene,hand);
+  var el=document.getElementById('qd-result');
+  var h='<div style="background:rgba('+rgb(d.c)+',0.1);border:2px solid '+d.c+';border-radius:12px;padding:20px;text-align:center;">';
+  h+='<div style="font-size:36px;font-weight:900;color:'+d.c+';letter-spacing:2px;">'+d.a+'</div>';
+  h+='<div style="font-size:14px;color:#ccc;margin-top:10px;line-height:1.6;text-align:left;">'+d.r+'</div>';
+  if(d.x)h+='<div style="font-size:12px;color:#FFD700;margin-top:8px;padding:8px;background:rgba(255,215,0,0.08);border-radius:6px;text-align:left;">⚠ '+d.x+'</div>';
+  h+='</div>';
+  el.innerHTML=h;el.style.display='block';
+  document.getElementById('qd-reset-btn').style.display='inline-block';
+  document.getElementById('qd-rehand-btn').style.display='inline-block';
+}
+
+function hide(id){document.getElementById(id).style.display='none';}
+
+window.qdReset=function(){
+  st={pos:null,scene:null,c1:null,c2:null,suited:null,posLabel:''};
+  hide('qd-step2');hide('qd-step3');hide('qd-c2-area');hide('qd-suit-area');hide('qd-result');hide('qd-summary');hide('qd-reset-btn');hide('qd-rehand-btn');
+  hilite('qd-pos-wrap',null);
+};
+
+window.qdRehand=function(){
+  st.c1=null;st.c2=null;st.suited=null;
+  hide('qd-c2-area');hide('qd-suit-area');hide('qd-result');hide('qd-summary');hide('qd-reset-btn');hide('qd-rehand-btn');
+  hilite('qd-c1-wrap',null);hilite('qd-c2-wrap',null);hilite('qd-suit-wrap',null);
+};
+
+function initQD(){
+  var pw=document.getElementById('qd-pos-wrap');
+  POSS.forEach(function(p){
+    var b=mkBtn(p.label,function(){selPos(p.id,p.label,b);});
+    pw.appendChild(b);
+  });
+  var sw=document.getElementById('qd-scene-wrap');
+  SCENES.forEach(function(s){
+    var b=mkBtn(s.label+'<br><span style="font-size:11px;color:#888;font-weight:400;">'+s.sub+'</span>',function(){selScene(s.id,b);},'text-align:center;min-width:72px;');
+    sw.appendChild(b);
+  });
+  ['qd-c1-wrap','qd-c2-wrap'].forEach(function(wid,idx){
+    var w=document.getElementById(wid);
+    RANKS.forEach(function(r){
+      var b=document.createElement('button');
+      b.textContent=r;
+      b.style.cssText='width:34px;height:38px;background:#1A1A2E;color:#ccc;border:1px solid #1e2d4a;border-radius:4px;font-size:15px;cursor:pointer;font-weight:700;transition:all 0.15s;';
+      b.onclick=function(){selCard(idx+1,r,b);};
+      w.appendChild(b);
+    });
+  });
+  var uw=document.getElementById('qd-suit-wrap');
+  [{id:'s',l:'♠♣ 同花 Suited'},{id:'o',l:'♦♥ 非同花 Offsuit'}].forEach(function(s){
+    var b=mkBtn(s.l,function(){selSuit(s.id,b);},'flex:1;text-align:center;');
+    uw.appendChild(b);
+  });
+}
+
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initQD);
+else initQD();
+})();
+</script>
+<script>
+// ===== 实时牌桌计算器 =====
+function showCalcTab(tab){
+  ['potodds','outs','ev'].forEach(function(t){
+    document.getElementById('cp-'+t).style.display=t===tab?'block':'none';
+    var btn=document.getElementById('ct-'+t);
+    if(t===tab){btn.classList.add('active');}else{btn.classList.remove('active');}
+  });
+}
+function calcPO(){
+  var pot=parseFloat(document.getElementById('cp-pot').value);
+  var bet=parseFloat(document.getElementById('cp-bet').value);
+  var el=document.getElementById('cp-po-result');
+  if(!pot||!bet||pot<=0||bet<=0){el.innerHTML='';return;}
+  var needed=Math.round(bet/(pot+2*bet)*1000)/10;
+  var ratio=Math.round((pot+bet)/bet*10)/10;
+  var totalAfter=pot+2*bet;
+  var h='<div class="calc-result-box"><div class="big-num" style="color:#00D4FF;">'+needed+'%</div>';
+  h+='<div class="sub-label">至少需要 '+needed+'% 赢率才值得跟注</div></div>';
+  h+='<div class="grid-2" style="margin-top:10px;">';
+  h+='<div class="stat-card"><div class="num" style="font-size:18px;color:#FFD700;">'+ratio+':1</div><div class="label">底池赔率</div></div>';
+  h+='<div class="stat-card"><div class="num" style="font-size:18px;color:#aaa;">'+totalAfter+'</div><div class="label">跟注后总底池</div></div></div>';
+  h+='<div style="margin-top:10px;font-size:12px;color:#888;padding:10px;background:#1A1A2E;border-radius:6px;">';
+  h+='<strong style="color:#fff;">快速判断：</strong><br>';
+  if(needed<=16) h+='<span style="color:#00FF88;">赔率极好! 卡顺(4outs)以上的听牌都值得跟。</span>';
+  else if(needed<=20) h+='<span style="color:#00FF88;">赔率不错。转牌同花听(9outs×2=18%)可跟。翻牌圈更宽松。</span>';
+  else if(needed<=25) h+='<span style="color:#FFD700;">需要较强听牌。翻牌圈: 8+outs(两头顺/同花)可跟。转牌圈: 需要13+outs或隐含赔率。</span>';
+  else if(needed<=33) h+='<span style="color:#FF8C00;">赔率一般。翻牌圈9+outs(同花听)可跟，转牌圈不太够。</span>';
+  else h+='<span style="color:#FF4444;">赔率很差! 需要很强听牌(15+outs)或made hand才值得跟。</span>';
+  h+='</div>';
+  el.innerHTML=h;
+}
+function calcOU(){
+  var sel=document.getElementById('cp-outs-type');
+  var v=sel.value;
+  var customDiv=document.getElementById('cp-outs-custom');
+  if(v==='custom'){customDiv.style.display='block';v=document.getElementById('cp-outs-num').value;}
+  else{customDiv.style.display='none';}
+  var outs=parseInt(v);var el=document.getElementById('cp-ou-result');
+  if(!outs||outs<1){el.innerHTML='';return;}
+  var f4=Math.min(outs*4,100),t2=Math.min(outs*2,100);
+  var fExact=Math.round((1-((47-outs)/47)*((46-outs)/46))*1000)/10;
+  var tExact=Math.round(outs/46*1000)/10;
+  var h='<div class="grid-2" style="margin-top:12px;">';
+  h+='<div class="calc-result-box"><div class="big-num" style="color:#00FF88;">~'+f4+'%</div>';
+  h+='<div class="sub-label">翻牌圈 → 河牌</div><div style="font-size:11px;color:#666;margin-top:4px;">精确: '+fExact+'%</div></div>';
+  h+='<div class="calc-result-box"><div class="big-num" style="color:#FFD700;">~'+t2+'%</div>';
+  h+='<div class="sub-label">转牌圈 → 河牌</div><div style="font-size:11px;color:#666;margin-top:4px;">精确: '+tExact+'%</div></div></div>';
+  h+='<div style="margin-top:10px;padding:10px;background:#1A1A2E;border-radius:6px;font-size:13px;color:#aaa;">';
+  h+='<strong style="color:#00D4FF;">'+outs+' outs</strong> | 4-2法则: '+outs+'×4='+f4+'%(翻牌) '+outs+'×2='+t2+'%(转牌)<br>';
+  h+='<span style="font-size:12px;color:#666;">跟注需要的底池赔率: 翻牌需对手下注≤'+(f4>0?Math.round(f4/(100-f4)*100)+'%pot':'—')+' 转牌需≤'+(t2>0?Math.round(t2/(100-t2)*100)+'%pot':'—')+'</span>';
+  h+='</div>';
+  el.innerHTML=h;
+}
+function calcEV2(){
+  var wp=parseFloat(document.getElementById('cp-ev-wp').value);
+  var pot=parseFloat(document.getElementById('cp-ev-pot').value);
+  var ca=parseFloat(document.getElementById('cp-ev-call').value);
+  var el=document.getElementById('cp-ev-result');
+  if(!wp||!pot||!ca){el.innerHTML='';return;}
+  var winAmt=pot+ca;
+  var ev=Math.round(((wp/100)*winAmt-((100-wp)/100)*ca)*10)/10;
+  var isPos=ev>0;
+  var potOdds=Math.round(ca/(pot+2*ca)*1000)/10;
+  var h='<div class="calc-result-box" style="border-color:'+(isPos?'rgba(0,255,136,0.3)':'rgba(255,68,68,0.3)')+';">';
+  h+='<div class="big-num" style="color:'+(isPos?'#00FF88':'#FF4444')+';">'+(isPos?'+':'')+ev+'</div>';
+  h+='<div class="sub-label">期望值 EV → '+(isPos?'<span style="color:#00FF88;">CALL ✓</span>':'<span style="color:#FF4444;">FOLD ✗</span>')+'</div></div>';
+  h+='<div style="margin-top:10px;padding:10px;background:#1A1A2E;border-radius:6px;font-size:13px;color:#aaa;line-height:1.8;">';
+  h+='EV = '+wp+'% × '+(pot+ca)+' − '+(100-wp)+'% × '+ca+' = <span style="color:'+(isPos?'#00FF88':'#FF4444')+';font-weight:700;">'+(isPos?'+':'')+ev+'</span><br>';
+  h+='需要赢率: '+potOdds+'% | 你的赢率: '+wp+'% | '+(wp>potOdds?'<span style="color:#00FF88;">赢率 > 赔率 → Call正确</span>':'<span style="color:#FF4444;">赢率 < 赔率 → Fold正确</span>');
+  h+='</div>';
+  el.innerHTML=h;
+}
+
+// ===== 翻前范围矩阵 =====
+(function(){
+var GR=['A','K','Q','J','T','9','8','7','6','5','4','3','2'];
+var rmScn='open',rmPos='CO';
+var RM_OPEN={
+  UTG:['AA','KK','QQ','JJ','TT','AKs','AKo','AQs'],
+  'UTG+1':['AA','KK','QQ','JJ','TT','AKs','AKo','AQs'],
+  MP:['AA','KK','QQ','JJ','TT','99','88','AKs','AKo','AQs','AQo','AJs','KQs'],
+  HJ:['AA','KK','QQ','JJ','TT','99','88','AKs','AKo','AQs','AQo','AJs','ATs','KQs','KJs','QJs'],
+  CO:['AA','KK','QQ','JJ','TT','99','88','77','66','AKs','AQs','AJs','ATs','A9s','A8s','A7s','A6s','A5s','A4s','A3s','A2s','AKo','AQo','AJo','ATo','KQs','KJs','KTs','KQo','KJo','QJs','QTs','QJo','JTs','T9s','98s','87s','76s'],
+  BTN:['AA','KK','QQ','JJ','TT','99','88','77','66','55','AKs','AQs','AJs','ATs','A9s','A8s','A7s','A6s','A5s','A4s','A3s','A2s','AKo','AQo','AJo','ATo','A9o','KQs','KJs','KTs','K9s','KQo','KJo','KTo','QJs','QTs','Q9s','QJo','JTs','J9s','JTo','T9s','T8s','98s','97s','87s','76s','65s'],
+  SB:['AA','KK','QQ','JJ','TT','AKs','AKo','AQs','AQo','AJs','KQs']
+};
+var RM_FO_3B={
+  'UTG+1':['AA','KK','QQ','AKs'],
+  MP:['AA','KK','QQ','AKs','AKo'],
+  HJ:['AA','KK','QQ','AKs','AKo'],
+  CO:['AA','KK','QQ','AKs','AKo','JJ','TT','AQs'],
+  BTN:['AA','KK','QQ','AKs','AKo','JJ','TT','AQs','AQo','AJs','KQs'],
+  SB:['AA','KK','QQ','AKs','AKo','JJ','TT','AQs','AQo'],
+  BB:['AA','KK','QQ','AKs','AKo','JJ','TT','AQs']
+};
+var RM_FO_CA={
+  'UTG+1':['JJ','TT','AKo','AQs'],
+  MP:['JJ','TT','AQs','99'],
+  HJ:['JJ','TT','AQs','AQo','99'],
+  CO:['99','88','77','66','AJs','ATs','KQs','KJs','QJs','JTs','T9s','98s','87s','76s'],
+  BTN:['99','88','77','66','55','44','33','22','ATs','A9s','A8s','A7s','A6s','A5s','A4s','A3s','A2s','KJs','KTs','K9s','QJs','QTs','Q9s','JTs','J9s','T9s','T8s','98s','97s','87s','76s','65s'],
+  SB:[],
+  BB:['99','88','77','66','55','44','33','22','ATs','A9s','A8s','A7s','A6s','A5s','A4s','A3s','A2s','AJo','ATo','KQs','KJs','KTs','KQo','QJs','QTs','QJo','JTs','J9s','JTo','T9s','T8s','98s','97s','87s','76s','65s']
+};
+
+function cellHand(r,c){
+  if(r===c) return GR[r]+GR[c];
+  if(r<c) return GR[r]+GR[c]+'s';
+  return GR[c]+GR[r]+'o';
+}
+
+function has(arr,h){return arr&&arr.indexOf(h)>=0;}
+
+function classify(pos,r,c){
+  var hand=cellHand(r,c);
+  if(rmScn==='open'){
+    var rng=RM_OPEN[pos];
+    if(!rng) return 'fold';
+    return has(rng,hand)?'raise':'fold';
+  }else{
+    var tb=RM_FO_3B[pos],tc=RM_FO_CA[pos];
+    if(has(tb,hand)) return '3bet';
+    if(has(tc,hand)) return 'call';
+    return 'fold';
+  }
+}
+
+function renderGrid(){
+  var tbl=document.getElementById('rm-grid');
+  var html='<tr><th></th>';
+  for(var c=0;c<13;c++) html+='<th>'+GR[c]+'</th>';
+  html+='</tr>';
+  var raiseN=0,tbN=0,callN=0,foldN=0;
+  for(var r=0;r<13;r++){
+    html+='<tr><th>'+GR[r]+'</th>';
+    for(var c=0;c<13;c++){
+      var cls=classify(rmPos,r,c);
+      var hand=cellHand(r,c);
+      var cssClass='rg-'+cls.replace('3bet','3bet');
+      if(cls==='raise')raiseN++;else if(cls==='3bet')tbN++;else if(cls==='call')callN++;else foldN++;
+      html+='<td class="rg-'+cls+'" title="'+hand+'">'+hand+'</td>';
+    }
+    html+='</tr>';
+  }
+  tbl.innerHTML=html;
+  var total=169;
+  var playable=raiseN+tbN+callN;
+  var pct=Math.round(playable/total*100);
+  var statsHtml=rmPos+' 位 | 可打: <span style="color:#FFD700;font-weight:700;">'+playable+'/'+total+' ('+pct+'%)</span>';
+  if(rmScn==='open') statsHtml+=' | Raise: '+raiseN;
+  else statsHtml+=' | 3bet: '+tbN+' Call: '+callN;
+  statsHtml+=' | Fold: '+foldN;
+  if(pct>25) statsHtml+=' | <span style="color:#FF4444;">范围偏宽!</span>';
+  else if(pct>20) statsHtml+=' | <span style="color:#FFD700;">适中</span>';
+  else statsHtml+=' | <span style="color:#00FF88;">紧实</span>';
+  document.getElementById('rm-stats').innerHTML=statsHtml;
+}
+
+function renderTabs(){
+  var positions;
+  if(rmScn==='open') positions=['UTG','UTG+1','MP','HJ','CO','BTN','SB'];
+  else positions=['UTG+1','MP','HJ','CO','BTN','SB','BB'];
+  var tabsEl=document.getElementById('rm-tabs');
+  tabsEl.innerHTML='';
+  positions.forEach(function(p){
+    var btn=document.createElement('button');
+    btn.className='pos-tab'+(p===rmPos?' active':'');
+    btn.textContent=p;
+    btn.onclick=function(){rmPos=p;renderTabs();renderGrid();};
+    tabsEl.appendChild(btn);
+  });
+  document.getElementById('rm-leg-3b').style.display=rmScn==='facing'?'inline':'none';
+  document.getElementById('rm-leg-call').style.display=rmScn==='facing'?'inline':'none';
+}
+
+window.showRMScn=function(scn){
+  rmScn=scn;
+  document.getElementById('rm-scn-open').classList.toggle('active',scn==='open');
+  document.getElementById('rm-scn-facing').classList.toggle('active',scn==='facing');
+  if(scn==='open'&&(rmPos==='BB'))rmPos='CO';
+  if(scn==='facing'&&rmPos==='UTG')rmPos='UTG+1';
+  renderTabs();renderGrid();
+};
+
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){renderTabs();renderGrid();});
+else{renderTabs();renderGrid();}
+})();
+
+// ===== 胜率模拟器 (Monte Carlo) =====
+(function(){
+var RNAMES={14:'A',13:'K',12:'Q',11:'J',10:'T',9:'9',8:'8',7:'7',6:'6',5:'5',4:'4',3:'3',2:'2'};
+var SNAMES={0:'♠',1:'♥',2:'♦',3:'♣'};
+var EQ_RANGES={
+  tight:['AA','KK','QQ','JJ','TT','AKs','AKo','AQs'],
+  medium:['AA','KK','QQ','JJ','TT','99','88','77','AKs','AQs','AJs','ATs','AKo','AQo','AJo','ATo','KQs','KJs','KTs','KQo','QJs','QTs','JTs','T9s','98s','87s','76s'],
+  loose:['AA','KK','QQ','JJ','TT','99','88','77','66','55','44','33','22','AKs','AQs','AJs','ATs','A9s','A8s','A7s','A6s','A5s','A4s','A3s','A2s','AKo','AQo','AJo','ATo','A9o','A8o','A7o','KQs','KJs','KTs','K9s','K8s','KQo','KJo','KTo','QJs','QTs','Q9s','QJo','JTs','J9s','JTo','T9s','T8s','98s','97s','87s','76s','65s'],
+  any:null
+};
+var RVL={A:14,K:13,Q:12,J:11,T:10};
+function rv(c){return RVL[c]||parseInt(c);}
+
+function handStr(c1,c2){
+  var r1=c1.r,r2=c2.r,s1=c1.s,s2=c2.s;
+  var hi=r1>=r2?c1:c2,lo=r1>=r2?c2:c1;
+  if(hi.r===lo.r) return RNAMES[hi.r]+RNAMES[lo.r];
+  return RNAMES[hi.r]+RNAMES[lo.r]+(hi.s===lo.s?'s':'o');
+}
+
+function matchRange(c1,c2,range){
+  if(!range) return true;
+  var hs=handStr(c1,c2);
+  for(var i=0;i<range.length;i++){
+    var h=range[i];
+    var hr1=rv(h[0]),hr2=rv(h[1]);
+    if(hr1===hr2){if(c1.r===hr1&&c2.r===hr1)return true;}
+    else{
+      var hiR=Math.max(c1.r,c2.r),loR=Math.min(c1.r,c2.r);
+      if(hiR===hr1&&loR===hr2){
+        var isSuited=c1.s===c2.s;
+        if(h.length<=2)return true;
+        if(h[2]==='s'&&isSuited)return true;
+        if(h[2]==='o'&&!isSuited)return true;
+      }
+    }
+  }
+  return false;
+}
+
+function eval5(cards){
+  var ranks=[];for(var i=0;i<5;i++)ranks.push(cards[i].r);
+  ranks.sort(function(a,b){return b-a;});
+  var suits=[];for(var i=0;i<5;i++)suits.push(cards[i].s);
+  var isFlush=suits[0]===suits[1]&&suits[1]===suits[2]&&suits[2]===suits[3]&&suits[3]===suits[4];
+  var isStraight=false,sHigh=0;
+  var uniq=[];var seen={};for(var i=0;i<5;i++){if(!seen[ranks[i]]){uniq.push(ranks[i]);seen[ranks[i]]=1;}}
+  if(uniq.length===5){
+    if(ranks[0]-ranks[4]===4){isStraight=true;sHigh=ranks[0];}
+    if(ranks[0]===14&&ranks[1]===5&&ranks[4]===2){isStraight=true;sHigh=5;}
+  }
+  var cnt={};for(var i=0;i<5;i++){cnt[ranks[i]]=(cnt[ranks[i]]||0)+1;}
+  var groups=[];for(var k in cnt)groups.push({r:parseInt(k),c:cnt[k]});
+  groups.sort(function(a,b){return b.c-a.c||b.r-a.r;});
+
+  if(isFlush&&isStraight)return 8e6+sHigh;
+  if(groups[0].c===4)return 7e6+groups[0].r*15+groups[1].r;
+  if(groups[0].c===3&&groups.length>=2&&groups[1].c===2)return 6e6+groups[0].r*15+groups[1].r;
+  if(isFlush)return 5e6+ranks[0]*28561+ranks[1]*2197+ranks[2]*169+ranks[3]*13+ranks[4];
+  if(isStraight)return 4e6+sHigh;
+  if(groups[0].c===3){var ks=[];for(var i=1;i<groups.length;i++)ks.push(groups[i].r);ks.sort(function(a,b){return b-a;});return 3e6+groups[0].r*225+ks[0]*15+ks[1];}
+  if(groups[0].c===2&&groups.length>=2&&groups[1].c===2){var hp=Math.max(groups[0].r,groups[1].r),lp=Math.min(groups[0].r,groups[1].r),kk=groups[2].r;return 2e6+hp*225+lp*15+kk;}
+  if(groups[0].c===2){var ks=[];for(var i=1;i<groups.length;i++)ks.push(groups[i].r);ks.sort(function(a,b){return b-a;});return 1e6+groups[0].r*3375+ks[0]*225+ks[1]*15+ks[2];}
+  return ranks[0]*28561+ranks[1]*2197+ranks[2]*169+ranks[3]*13+ranks[4];
+}
+
+function best7(cards){
+  var best=0;
+  for(var i=0;i<7;i++){for(var j=i+1;j<7;j++){
+    var h5=[];for(var k=0;k<7;k++){if(k!==i&&k!==j)h5.push(cards[k]);}
+    var s=eval5(h5);if(s>best)best=s;
+  }}
+  return best;
+}
+
+function shuffleArr(arr){
+  for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;}
+}
+
+window.eqPreview=function(){
+  var r1=document.getElementById('eq-r1').value,r2=document.getElementById('eq-r2').value;
+  var el=document.getElementById('eq-hand-preview');
+  if(!r1||!r2){el.innerHTML='';return;}
+  var s1=parseInt(document.getElementById('eq-s1').value),s2=parseInt(document.getElementById('eq-s2').value);
+  var rn={14:'A',13:'K',12:'Q',11:'J',10:'T',9:'9',8:'8',7:'7',6:'6',5:'5',4:'4',3:'3',2:'2'};
+  el.innerHTML='手牌: '+rn[parseInt(r1)]+SNAMES[s1]+' '+rn[parseInt(r2)]+SNAMES[s2];
+};
+
+window.runEquity=function(){
+  var r1=parseInt(document.getElementById('eq-r1').value),r2=parseInt(document.getElementById('eq-r2').value);
+  if(!r1||!r2){document.getElementById('eq-result').innerHTML='<div style="color:#FF4444;font-size:13px;">请先选择你的两张手牌</div>';return;}
+  var s1=parseInt(document.getElementById('eq-s1').value),s2=parseInt(document.getElementById('eq-s2').value);
+  if(r1===r2&&s1===s2){document.getElementById('eq-result').innerHTML='<div style="color:#FF4444;font-size:13px;">两张牌不能相同</div>';return;}
+  var hero=[{r:r1,s:s1},{r:r2,s:s2}];
+  var board=[];
+  for(var i=1;i<=5;i++){
+    var br=document.getElementById('eq-br'+i).value;
+    if(br){
+      var bs=parseInt(document.getElementById('eq-bs'+i).value);
+      board.push({r:parseInt(br),s:bs});
+    }
+  }
+  var used=hero.concat(board);
+  for(var i=0;i<used.length;i++){for(var j=i+1;j<used.length;j++){
+    if(used[i].r===used[j].r&&used[i].s===used[j].s){
+      document.getElementById('eq-result').innerHTML='<div style="color:#FF4444;font-size:13px;">有重复的牌，请检查</div>';return;
+    }
+  }}
+  var rangeName=document.getElementById('eq-range').value;
+  var range=EQ_RANGES[rangeName];
+  var btn=document.getElementById('eq-run-btn');
+  btn.textContent='计算中...';btn.disabled=true;
+  setTimeout(function(){
+    var deck=[];
+    for(var s=0;s<4;s++){for(var r=2;r<=14;r++){deck.push({r:r,s:s});}}
+    var remaining=deck.filter(function(c){return !used.some(function(u){return u.r===c.r&&u.s===c.s;});});
+    var wins=0,ties=0,total=0,iters=0,maxIters=50000;
+    while(total<10000&&iters<maxIters){
+      iters++;
+      shuffleArr(remaining);
+      var idx=0;
+      var vc1=remaining[idx++],vc2=remaining[idx++];
+      if(!matchRange(vc1,vc2,range))continue;
+      var bd=board.slice();
+      while(bd.length<5){bd.push(remaining[idx++]);}
+      var hAll=hero.concat(bd),vAll=[vc1,vc2].concat(bd);
+      var hScore=best7(hAll),vScore=best7(vAll);
+      if(hScore>vScore)wins++;else if(hScore===vScore)ties++;
+      total++;
+    }
+    btn.textContent='计算胜率 (约1秒)';btn.disabled=false;
+    if(total<100){
+      document.getElementById('eq-result').innerHTML='<div style="color:#FF4444;font-size:13px;">对手范围内匹配的组合太少('+total+'次)，请放宽范围或更换手牌</div>';return;
+    }
+    var winPct=Math.round(wins/total*1000)/10;
+    var tiePct=Math.round(ties/total*1000)/10;
+    var losePct=Math.round((total-wins-ties)/total*1000)/10;
+    var color=winPct>=55?'#00FF88':winPct>=45?'#FFD700':winPct>=35?'#FF8C00':'#FF4444';
+    var hexR=parseInt(color.slice(1,3),16),hexG=parseInt(color.slice(3,5),16),hexB=parseInt(color.slice(5,7),16);
+    var h='<div class="calc-result-box" style="border-color:rgba('+hexR+','+hexG+','+hexB+',0.3);">';
+    h+='<div class="big-num" style="color:'+color+';">'+winPct+'%</div>';
+    h+='<div class="sub-label">胜率 ('+total+'次模拟)</div></div>';
+    h+='<div style="margin-top:10px;display:flex;align-items:center;gap:4px;font-size:12px;">';
+    h+='<span style="color:#00FF88;">胜'+winPct+'%</span>';
+    h+='<div style="flex:1;height:20px;background:#1e2d4a;border-radius:4px;overflow:hidden;display:flex;">';
+    h+='<div class="eq-bar" style="width:'+winPct+'%;background:#00FF88;"></div>';
+    h+='<div class="eq-bar" style="width:'+tiePct+'%;background:#FFD700;"></div>';
+    h+='<div class="eq-bar" style="width:'+losePct+'%;background:#FF4444;"></div>';
+    h+='</div>';
+    h+='<span style="color:#FF4444;">负'+losePct+'%</span>';
+    h+='</div>';
+    if(tiePct>0) h+='<div style="text-align:center;font-size:11px;color:#FFD700;margin-top:4px;">平局: '+tiePct+'%</div>';
+    h+='<div style="margin-top:10px;padding:10px;background:#1A1A2E;border-radius:6px;font-size:12px;color:#888;">';
+    var rn={14:'A',13:'K',12:'Q',11:'J',10:'T',9:'9',8:'8',7:'7',6:'6',5:'5',4:'4',3:'3',2:'2'};
+    var handName=rn[Math.max(r1,r2)]+rn[Math.min(r1,r2)]+(r1===r2?'':(s1===s2?'s':'o'));
+    h+='<strong style="color:#fff;">'+handName+'</strong> vs '+{tight:'极紧(10%)',medium:'标准(20%)',loose:'松(35%)',any:'随机'}[rangeName]+' → ';
+    if(winPct>=60)h+='<span style="color:#00FF88;">强势碾压，放心打</span>';
+    else if(winPct>=50)h+='<span style="color:#00FF88;">略有优势，可以打</span>';
+    else if(winPct>=40)h+='<span style="color:#FFD700;">接近硬币翻转，谨慎</span>';
+    else h+='<span style="color:#FF4444;">劣势明显，考虑fold</span>';
+    h+='</div>';
+    document.getElementById('eq-result').innerHTML=h;
+  },50);
+};
+})();
+</script>
+<script>
+// ===== Tab Switching & Sub-nav System =====
+var TAB_ORDER = ['tools','strategy','learn','train','profile'];
+var TAB_META = {
+  tools:    {icon:'⚡', name:'决策'},
+  strategy: {icon:'📊', name:'策略'},
+  learn:    {icon:'📖', name:'学习'},
+  train:    {icon:'🎯', name:'训练'},
+  profile:  {icon:'👤', name:'我的'}
+};
+var TAB_TITLES = {
+  tools:    '⚡ 决策工具',
+  strategy: '📊 策略分析',
+  learn:    '📖 学习进阶',
+  train:    '🎯 实战训练',
+  profile:  '👤 我的档案'
+};
+var currentTab = '';
+
+function switchTab(tab, el) {
+  if (currentTab === tab) { window.scrollTo({top: 0, behavior: 'smooth'}); return; }
+  currentTab = tab;
+  document.querySelectorAll('.tab-item').forEach(function(t) {
+    t.classList.toggle('active', t.getAttribute('data-target') === tab);
+  });
+  document.querySelectorAll('section[data-tab]').forEach(function(s) {
+    if (s.getAttribute('data-tab') === tab) { s.classList.add('tab-visible'); }
+    else { s.classList.remove('tab-visible'); }
+  });
+  document.querySelector('.footer').style.display = (tab === 'profile') ? 'block' : 'none';
+  var titleEl = document.getElementById('tab-title');
+  if (titleEl) titleEl.textContent = TAB_TITLES[tab] || '';
+  buildSubNav(tab);
+  window.scrollTo({top: 0, behavior: 'auto'});
+}
+
+function buildSubNav(tab) {
+  var container = document.getElementById('sub-nav-container');
+  var sections = document.querySelectorAll('section[data-tab="' + tab + '"]');
+  if (sections.length <= 1) { container.innerHTML = ''; return; }
+  var html = '';
+  sections.forEach(function(s, i) {
+    var label = s.getAttribute('data-label') || s.querySelector('h2').textContent.trim();
+    var id = s.id;
+    html += '<span class="sub-nav-pill' + (i === 0 ? ' active' : '') + '" data-section="' + id + '" onclick="scrollToSection(\'' + id + '\',this)">' + label + '</span>';
+  });
+  container.innerHTML = html;
+}
+
+function scrollToSection(id, pill) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var offset = el.getBoundingClientRect().top + window.pageYOffset - 90;
+  window.scrollTo({top: offset, behavior: 'smooth'});
+  document.querySelectorAll('.sub-nav-pill').forEach(function(p) { p.classList.remove('active'); });
+  if (pill) pill.classList.add('active');
+}
+
+// Scroll spy - highlight active sub-nav pill on scroll
+var scrollSpyTimer = null;
+window.addEventListener('scroll', function() {
+  if (scrollSpyTimer) return;
+  scrollSpyTimer = setTimeout(function() {
+    scrollSpyTimer = null;
+    var pills = document.querySelectorAll('.sub-nav-pill');
+    if (!pills.length) return;
+    var sections = document.querySelectorAll('section[data-tab="' + currentTab + '"]');
+    var activeId = null;
+    sections.forEach(function(s) {
+      var rect = s.getBoundingClientRect();
+      if (rect.top <= 120) activeId = s.id;
+    });
+    pills.forEach(function(p) {
+      p.classList.toggle('active', p.getAttribute('data-section') === activeId);
+    });
+  }, 100);
+});
+
+// Initialize on load
+(function() {
+  function init() {
+    switchTab('tools', document.querySelector('.tab-item[data-target="tools"]'));
+    // Handle hash navigation
+    if (window.location.hash) {
+      var targetId = window.location.hash.substring(1);
+      var targetEl = document.getElementById(targetId);
+      if (targetEl && targetEl.getAttribute('data-tab')) {
+        var tab = targetEl.getAttribute('data-tab');
+        switchTab(tab, document.querySelector('.tab-item[data-target="' + tab + '"]'));
+        setTimeout(function() { scrollToSection(targetId, null); }, 100);
+      }
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+</body>
+</html>
