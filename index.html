@@ -530,9 +530,122 @@ nav.nav { display: none !important; }
   .calc-input-group label { font-size: 13px; }
   .calc-input-group input, .calc-input-group select { font-size: 16px; }
 }
+
+/* ===== Wizard & Profile Styles ===== */
+.wizard-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85); z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+  animation: wizFadeIn 0.3s ease;
+}
+@keyframes wizFadeIn { from{opacity:0} to{opacity:1} }
+.wizard-card {
+  background: #111827; border-radius: 16px; width: 100%; max-width: 480px;
+  max-height: 90vh; overflow-y: auto; border: 1px solid #1e2d4a;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.wizard-header {
+  padding: 24px 24px 16px; text-align: center;
+  border-bottom: 1px solid #1e2d4a;
+}
+.wizard-header h2 { font-size: 20px; color: #fff; margin-bottom: 4px; }
+.wizard-header .wiz-step { font-size: 12px; color: #555; }
+.wizard-progress { display: flex; gap: 4px; padding: 0 24px; margin-top: 12px; }
+.wizard-progress span {
+  flex: 1; height: 3px; background: #1e2d4a; border-radius: 2px; transition: background 0.3s;
+}
+.wizard-progress span.done { background: #FFD700; }
+.wizard-progress span.current { background: #FFD700; }
+.wizard-body { padding: 20px 24px; }
+.wizard-footer {
+  padding: 16px 24px; display: flex; justify-content: space-between;
+  border-top: 1px solid #1e2d4a;
+}
+.wiz-btn {
+  padding: 10px 24px; border-radius: 8px; border: none; font-size: 14px;
+  font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.wiz-btn-primary { background: #FFD700; color: #0B1426; }
+.wiz-btn-primary:hover { background: #ffe44d; }
+.wiz-btn-ghost { background: transparent; color: #888; border: 1px solid #1e2d4a; }
+.wiz-label { font-size: 13px; color: #888; margin-bottom: 8px; font-weight: 600; display: block; }
+.wiz-input {
+  width: 100%; padding: 12px 14px; background: #0B1426; border: 1px solid #1e2d4a;
+  border-radius: 8px; color: #fff; font-size: 16px; margin-bottom: 16px;
+}
+.wiz-input:focus { border-color: #FFD700; outline: none; }
+.wiz-options { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.wiz-opt {
+  padding: 10px 16px; background: #1A1A2E; border: 1px solid #1e2d4a;
+  border-radius: 8px; color: #aaa; font-size: 13px; cursor: pointer;
+  transition: all 0.2s; flex: 1; min-width: 80px; text-align: center; font-weight: 500;
+}
+.wiz-opt:hover { border-color: #FFD700; color: #fff; }
+.wiz-opt.selected { background: rgba(255,215,0,0.12); border-color: #FFD700; color: #FFD700; font-weight: 600; }
+.wiz-multi { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.wiz-chip {
+  padding: 8px 14px; background: #1A1A2E; border: 1px solid #1e2d4a;
+  border-radius: 20px; color: #aaa; font-size: 13px; cursor: pointer; transition: all 0.2s;
+}
+.wiz-chip.selected { background: rgba(255,215,0,0.12); border-color: #FFD700; color: #FFD700; }
+.wiz-slider-wrap { margin-bottom: 20px; }
+.wiz-slider-row { display: flex; align-items: center; gap: 12px; }
+.wiz-slider {
+  flex: 1; -webkit-appearance: none; height: 6px; background: #1e2d4a;
+  border-radius: 3px; outline: none;
+}
+.wiz-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
+  background: #FFD700; cursor: pointer;
+}
+.wiz-slider-val { font-size: 20px; font-weight: 700; color: #FFD700; min-width: 50px; text-align: right; }
+.wiz-hint { font-size: 12px; color: #555; margin-top: 4px; }
+
+.profile-card-wrap {
+  background: linear-gradient(135deg, #111827, #0f172a);
+  border-radius: 12px; padding: 24px; border: 1px solid #1e2d4a;
+  margin-bottom: 16px;
+}
+.profile-card-wrap h3 { color: #FFD700; font-size: 18px; margin-bottom: 16px; }
+.profile-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #0e1726; }
+.profile-row .pk { color: #666; font-size: 13px; }
+.profile-row .pv { color: #ddd; font-size: 14px; font-weight: 500; }
+.gauge-wrap { display: flex; gap: 16px; margin: 16px 0; }
+.gauge {
+  flex: 1; background: #0B1426; border-radius: 12px; padding: 16px; text-align: center;
+  border: 1px solid #1e2d4a;
+}
+.gauge .g-val { font-size: 32px; font-weight: 900; }
+.gauge .g-label { font-size: 12px; color: #888; margin-top: 4px; }
+.gauge .g-status { font-size: 11px; margin-top: 6px; font-weight: 600; }
+.wiz-success {
+  text-align: center; padding: 40px 20px;
+}
+.wiz-success .check { font-size: 48px; color: #00FF88; margin-bottom: 12px; }
+.wiz-success h3 { color: #fff; font-size: 18px; margin-bottom: 8px; }
+.wiz-success p { color: #888; font-size: 14px; }
 </style>
 </head>
 <body>
+
+<!-- Profile Setup Wizard -->
+<div class="wizard-overlay" id="wizard-overlay" style="display:none;">
+<div class="wizard-card">
+  <div class="wizard-header">
+    <h2 id="wiz-title">创建你的德扑档案</h2>
+    <div class="wiz-step" id="wiz-step-label">第 1/4 步</div>
+    <div class="wizard-progress" id="wiz-progress">
+      <span class="current"></span><span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="wizard-body" id="wiz-body"></div>
+  <div class="wizard-footer">
+    <button class="wiz-btn wiz-btn-ghost" id="wiz-prev" onclick="wizPrev()" style="visibility:hidden;">上一步</button>
+    <button class="wiz-btn wiz-btn-primary" id="wiz-next" onclick="wizNext()">下一步</button>
+  </div>
+</div>
+</div>
 
 <!-- PC Sidebar Navigation -->
 <nav class="sidebar" id="sidebar">
@@ -2715,7 +2828,6 @@ window.addEventListener('scroll', function() {
 (function() {
   function init() {
     switchTab('start', document.querySelector('.tab-item[data-target="start"]'));
-    // Handle hash navigation
     if (window.location.hash) {
       var targetId = window.location.hash.substring(1);
       var targetEl = document.getElementById(targetId);
@@ -2725,10 +2837,295 @@ window.addEventListener('scroll', function() {
         setTimeout(function() { scrollToSection(targetId, null); }, 100);
       }
     }
+    var profile = ProfileMgr.get();
+    if (!profile) {
+      setTimeout(wizOpen, 500);
+    } else {
+      personalizeAll(profile);
+    }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
+
+// ===== ProfileManager =====
+var ProfileMgr = {
+  KEY: 'poker_profile',
+  get: function() {
+    try { var d = localStorage.getItem(this.KEY); return d ? JSON.parse(d) : null; } catch(e) { return null; }
+  },
+  save: function(p) {
+    p.updatedAt = new Date().toISOString();
+    if (!p.createdAt) p.createdAt = p.updatedAt;
+    localStorage.setItem(this.KEY, JSON.stringify(p));
+    return p;
+  },
+  clear: function() { localStorage.removeItem(this.KEY); }
+};
+
+// ===== Wizard =====
+var wizStep = 0;
+var wizData = { name:'', level:'', scene:'friends', blinds:'10/20', tableSize:10, buyInBB:50, vpip:30, pfr:10, weaknesses:[], goals:[] };
+
+var WEAKNESS_OPTS = [
+  {id:'tooLoose',label:'入池太宽',desc:'VPIP过高,打太多垃圾牌'},
+  {id:'cantFold',label:'好牌不舍得fold',desc:'拿到AA/AK就觉得天下无敌'},
+  {id:'tooPassive',label:'打法太被动',desc:'有牌不bet,总是check-call'},
+  {id:'tiltEasy',label:'容易上头',desc:'输了就想补码追回来'},
+  {id:'noContBet',label:'不会续火',desc:'Cbet一枪就停,被人读死'},
+  {id:'riverBluff',label:'河牌乱加注',desc:'非nuts还raise,送钱'}
+];
+var GOAL_OPTS = [
+  {id:'loseLess',label:'少亏钱'},
+  {id:'steadyWin',label:'稳定盈利'},
+  {id:'improveTech',label:'提升技术'},
+  {id:'social',label:'社交娱乐'}
+];
+
+function wizOpen() {
+  wizStep = 0;
+  var p = ProfileMgr.get();
+  if (p) { wizData = Object.assign({}, wizData, p); }
+  document.getElementById('wizard-overlay').style.display = 'flex';
+  wizRender();
+}
+
+function wizRender() {
+  var body = document.getElementById('wiz-body');
+  var titles = ['基本信息','牌局环境','自我评估','弱点与目标'];
+  document.getElementById('wiz-title').textContent = titles[wizStep] || '完成';
+  document.getElementById('wiz-step-label').textContent = '第 ' + (wizStep+1) + '/4 步';
+  var bars = document.getElementById('wiz-progress').children;
+  for (var i = 0; i < 4; i++) { bars[i].className = i < wizStep ? 'done' : i === wizStep ? 'current' : ''; }
+  document.getElementById('wiz-prev').style.visibility = wizStep > 0 ? 'visible' : 'hidden';
+  document.getElementById('wiz-next').textContent = wizStep === 3 ? '完成' : '下一步';
+
+  var h = '';
+  if (wizStep === 0) {
+    h += '<label class="wiz-label">你的昵称</label>';
+    h += '<input class="wiz-input" id="wiz-name" placeholder="输入昵称..." value="' + (wizData.name||'') + '" maxlength="20">';
+    h += '<label class="wiz-label">经验等级</label>';
+    h += '<div class="wiz-options" id="wiz-level">';
+    [{id:'beginner',l:'纯新手',d:'刚学会规则'},{id:'basic',l:'入门',d:'会选牌会位置'},{id:'intermediate',l:'进阶中',d:'理解EV和赔率'},{id:'advanced',l:'高手',d:'GTO+Exploit'}].forEach(function(o){
+      h += '<div class="wiz-opt' + (wizData.level===o.id?' selected':'') + '" onclick="wizSelOpt(\'level\',\'' + o.id + '\',this)">' + o.l + '<br><span style="font-size:11px;color:#666;">' + o.d + '</span></div>';
+    });
+    h += '</div>';
+  } else if (wizStep === 1) {
+    h += '<label class="wiz-label">打牌场景</label>';
+    h += '<div class="wiz-options" id="wiz-scene">';
+    [{id:'friends',l:'朋友局'},{id:'club',l:'俱乐部'},{id:'online',l:'线上'}].forEach(function(o){
+      h += '<div class="wiz-opt' + (wizData.scene===o.id?' selected':'') + '" onclick="wizSelOpt(\'scene\',\'' + o.id + '\',this)">' + o.l + '</div>';
+    });
+    h += '</div>';
+    h += '<label class="wiz-label">盲注级别</label>';
+    h += '<input class="wiz-input" id="wiz-blinds" placeholder="如 10/20" value="' + (wizData.blinds||'') + '">';
+    h += '<label class="wiz-label">桌型</label>';
+    h += '<div class="wiz-options" id="wiz-table">';
+    [6,9,10].forEach(function(n){
+      h += '<div class="wiz-opt' + (wizData.tableSize===n?' selected':'') + '" onclick="wizSelOpt(\'tableSize\',' + n + ',this)">' + n + '人桌</div>';
+    });
+    h += '</div>';
+    h += '<label class="wiz-label">典型买入 (BB数)</label>';
+    h += '<input class="wiz-input" id="wiz-buyin" type="number" placeholder="50" value="' + (wizData.buyInBB||50) + '">';
+  } else if (wizStep === 2) {
+    h += '<label class="wiz-label">你的 VPIP (自愿入池比例)</label>';
+    h += '<div class="wiz-slider-wrap"><div class="wiz-slider-row">';
+    h += '<input type="range" class="wiz-slider" id="wiz-vpip" min="5" max="60" value="' + (wizData.vpip||30) + '" oninput="wizSliderUpdate(\'vpip\',this.value)">';
+    h += '<span class="wiz-slider-val" id="wiz-vpip-val">' + (wizData.vpip||30) + '%</span>';
+    h += '</div><div class="wiz-hint">紧: &lt;18% | 标准: 18-25% | 松: &gt;25%</div></div>';
+    h += '<label class="wiz-label">你的 PFR (翻前加注比例)</label>';
+    h += '<div class="wiz-slider-wrap"><div class="wiz-slider-row">';
+    h += '<input type="range" class="wiz-slider" id="wiz-pfr" min="0" max="40" value="' + (wizData.pfr||10) + '" oninput="wizSliderUpdate(\'pfr\',this.value)">';
+    h += '<span class="wiz-slider-val" id="wiz-pfr-val">' + (wizData.pfr||10) + '%</span>';
+    h += '</div><div class="wiz-hint">被动: &lt;10% | 标准: 12-18% | 激进: &gt;20%</div></div>';
+    h += '<div class="highlight" style="font-size:13px;margin-top:8px;">不确定？先填个大概值，打几次牌后再回来修改。</div>';
+  } else if (wizStep === 3) {
+    h += '<label class="wiz-label">你的主要弱点（可多选）</label><div class="wiz-multi" id="wiz-weak">';
+    WEAKNESS_OPTS.forEach(function(o){
+      h += '<span class="wiz-chip' + (wizData.weaknesses.indexOf(o.id)>=0?' selected':'') + '" onclick="wizToggleChip(\'weaknesses\',\'' + o.id + '\',this)">' + o.label + '</span>';
+    });
+    h += '</div>';
+    h += '<label class="wiz-label">你的目标（可多选）</label><div class="wiz-multi" id="wiz-goals">';
+    GOAL_OPTS.forEach(function(o){
+      h += '<span class="wiz-chip' + (wizData.goals.indexOf(o.id)>=0?' selected':'') + '" onclick="wizToggleChip(\'goals\',\'' + o.id + '\',this)">' + o.label + '</span>';
+    });
+    h += '</div>';
+  }
+  body.innerHTML = h;
+}
+
+function wizSelOpt(field, val, el) {
+  wizData[field] = val;
+  var parent = el.parentElement;
+  Array.from(parent.children).forEach(function(c){ c.classList.remove('selected'); });
+  el.classList.add('selected');
+}
+function wizSliderUpdate(field, val) {
+  wizData[field] = parseInt(val);
+  document.getElementById('wiz-' + field + '-val').textContent = val + '%';
+}
+function wizToggleChip(field, val, el) {
+  var arr = wizData[field];
+  var idx = arr.indexOf(val);
+  if (idx >= 0) { arr.splice(idx, 1); el.classList.remove('selected'); }
+  else { arr.push(val); el.classList.add('selected'); }
+}
+
+function wizCollect() {
+  if (wizStep === 0) {
+    var nameEl = document.getElementById('wiz-name');
+    if (nameEl) wizData.name = nameEl.value.trim();
+  } else if (wizStep === 1) {
+    var bEl = document.getElementById('wiz-blinds');
+    var buEl = document.getElementById('wiz-buyin');
+    if (bEl) wizData.blinds = bEl.value.trim();
+    if (buEl) wizData.buyInBB = parseInt(buEl.value) || 50;
+  }
+}
+
+function wizNext() {
+  wizCollect();
+  if (wizStep === 0 && !wizData.name) { document.getElementById('wiz-name').style.borderColor='#FF4444'; return; }
+  if (wizStep === 0 && !wizData.level) { return; }
+  if (wizStep < 3) { wizStep++; wizRender(); return; }
+  var profile = ProfileMgr.save(wizData);
+  var body = document.getElementById('wiz-body');
+  body.innerHTML = '<div class="wiz-success"><div class="check">&#10003;</div><h3>档案创建成功!</h3><p>' + profile.name + ', 你的个性化攻略已就绪</p></div>';
+  document.getElementById('wiz-next').textContent = '开始使用';
+  document.getElementById('wiz-next').onclick = function() {
+    document.getElementById('wizard-overlay').style.display = 'none';
+    personalizeAll(profile);
+    document.getElementById('wiz-next').onclick = wizNext;
+  };
+  document.getElementById('wiz-prev').style.visibility = 'hidden';
+  document.getElementById('wiz-step-label').textContent = '';
+  document.getElementById('wiz-title').textContent = '准备就绪';
+  var bars = document.getElementById('wiz-progress').children;
+  for (var i = 0; i < 4; i++) bars[i].className = 'done';
+}
+
+function wizPrev() {
+  wizCollect();
+  if (wizStep > 0) { wizStep--; wizRender(); }
+}
+
+// ===== Personalization Engine =====
+var WEAKNESS_MAP = {
+  tooLoose: {rule:0, label:'入池太宽', advice:'把VPIP从{vpip}%降到20%以下。前位(UTG/MP)只打TT+/AK。', train:'quiz', color:'#FF4444'},
+  cantFold: {rule:1, label:'好牌不舍得fold', advice:'AA只是一对,面对转牌raise只call不推。AKo面对翻前all-in直接fold。', train:'multistreet', color:'#FF8C00'},
+  tooPassive:{rule:2, label:'打法太被动', advice:'有牌就bet做value,翻牌cbet后转牌续火。PFR目标15%+。', train:'quiz', color:'#FFD700'},
+  tiltEasy:  {rule:-1, label:'容易上头', advice:'设定止损线(最多补码2次)。输了深呼吸30秒再行动。', train:'mathdrill', color:'#9B59B6'},
+  noContBet: {rule:2, label:'不会续火', advice:'翻牌cbet 60%+频率,转牌面没变差就再打一枪(2/3 pot)。', train:'multistreet', color:'#00D4FF'},
+  riverBluff:{rule:0, label:'河牌乱加注', advice:'河牌非nuts绝对不raise。只call或fold。', train:'rangeread', color:'#FF4444'}
+};
+
+function personalizeAll(profile) {
+  if (!profile) return;
+  personalizeHeader(profile);
+  personalizeLeaks(profile);
+  personalizeLevels(profile);
+  personalizeTrainTip(profile);
+}
+
+function personalizeHeader(p) {
+  var el = document.getElementById('tab-title');
+  if (el && currentTab === 'start') el.textContent = '♣ ' + p.name + ' 的入门指南';
+}
+
+function personalizeLeaks(p) {
+  var sec = document.getElementById('leaks');
+  if (!sec) return;
+  var vpip = p.vpip || 30, pfr = p.pfr || 10;
+  var vpipColor = vpip > 25 ? '#FF4444' : vpip > 20 ? '#FFD700' : '#00FF88';
+  var pfrColor = pfr < 10 ? '#FF4444' : pfr < 15 ? '#FFD700' : '#00FF88';
+  var vpipStatus = vpip > 25 ? '偏高' : vpip > 20 ? '正常' : '偏紧';
+  var pfrStatus = pfr < 10 ? '偏被动' : pfr < 15 ? '正常' : '激进';
+
+  var sceneLabel = {friends:'朋友局',club:'俱乐部',online:'线上'}[p.scene] || '朋友局';
+  var levelLabel = {beginner:'纯新手',basic:'入门',intermediate:'进阶中',advanced:'高手'}[p.level] || '';
+
+  var h = '<h2>☆ ' + p.name + ' 的个人档案</h2>';
+  h += '<div class="profile-card-wrap"><h3>基本信息</h3>';
+  h += '<div class="profile-row"><span class="pk">昵称</span><span class="pv">' + p.name + '</span></div>';
+  h += '<div class="profile-row"><span class="pk">经验等级</span><span class="pv">' + levelLabel + '</span></div>';
+  h += '<div class="profile-row"><span class="pk">场景</span><span class="pv">' + sceneLabel + ' | ' + (p.blinds||'10/20') + '盲注 | ' + (p.tableSize||10) + '人桌</span></div>';
+  h += '<div class="profile-row"><span class="pk">买入</span><span class="pv">' + (p.buyInBB||50) + 'BB</span></div>';
+  h += '</div>';
+
+  h += '<div class="gauge-wrap">';
+  h += '<div class="gauge"><div class="g-val" style="color:' + vpipColor + ';">' + vpip + '%</div><div class="g-label">VPIP</div><div class="g-status" style="color:' + vpipColor + ';">' + vpipStatus + '</div></div>';
+  h += '<div class="gauge"><div class="g-val" style="color:' + pfrColor + ';">' + pfr + '%</div><div class="g-label">PFR</div><div class="g-status" style="color:' + pfrColor + ';">' + pfrStatus + '</div></div>';
+  var gap = vpip - pfr;
+  var gapColor = gap > 15 ? '#FF4444' : gap > 10 ? '#FFD700' : '#00FF88';
+  h += '<div class="gauge"><div class="g-val" style="color:' + gapColor + ';">' + gap + '%</div><div class="g-label">GAP</div><div class="g-status" style="color:' + gapColor + ';">' + (gap>15?'太被动':gap>10?'偏被动':'健康') + '</div></div>';
+  h += '</div>';
+
+  if (vpip > 25) h += '<div class="highlight" style="border-color:rgba(255,68,68,0.3);background:rgba(255,68,68,0.05);">VPIP ' + vpip + '% 偏高，目标降到20%以下。每局少打5手边缘牌就能明显减少亏损。</div>';
+  if (gap > 15) h += '<div class="highlight" style="border-color:rgba(255,68,68,0.3);background:rgba(255,68,68,0.05);">VPIP-PFR差值 ' + gap + '% 过大，说明跟注太多、加注太少。要提高主动性。</div>';
+
+  if (p.weaknesses && p.weaknesses.length > 0) {
+    h += '<h3 style="margin-top:20px;">弱点清单</h3>';
+    p.weaknesses.forEach(function(wk) {
+      var w = WEAKNESS_MAP[wk];
+      if (!w) return;
+      h += '<div class="rule-card" style="border-left-color:' + w.color + ';"><strong style="color:' + w.color + ';">' + w.label + '</strong><br><span style="color:#aaa;font-size:14px;">' + w.advice.replace('{vpip}', vpip) + '</span></div>';
+    });
+  }
+
+  if (p.goals && p.goals.length > 0) {
+    h += '<h3 style="margin-top:20px;">我的目标</h3><div style="display:flex;gap:8px;flex-wrap:wrap;">';
+    p.goals.forEach(function(g) {
+      var gl = GOAL_OPTS.find(function(o){return o.id===g;});
+      if (gl) h += '<span class="tag tag-cyan">' + gl.label + '</span>';
+    });
+    h += '</div>';
+  }
+
+  h += '<div style="margin-top:24px;text-align:center;"><button onclick="wizOpen()" style="padding:10px 24px;background:#1A1A2E;color:#FFD700;border:1px solid #FFD700;border-radius:8px;font-size:14px;cursor:pointer;font-weight:600;">编辑档案</button>';
+  h += ' <button onclick="if(confirm(\'确定清除档案？\')){ProfileMgr.clear();location.reload();}" style="padding:10px 24px;background:#1A1A2E;color:#FF4444;border:1px solid #FF4444;border-radius:8px;font-size:14px;cursor:pointer;margin-left:8px;">重置档案</button></div>';
+
+  sec.innerHTML = h;
+}
+
+function personalizeLevels(p) {
+  var cards = document.querySelectorAll('#levels .level-card');
+  if (!cards.length) return;
+  cards.forEach(function(c) { c.classList.remove('current-level'); });
+  var lvMap = {beginner:0, basic:1, intermediate:2, advanced:3};
+  var idx = lvMap[p.level];
+  if (idx !== undefined && cards[idx]) {
+    cards[idx].classList.add('current-level');
+    var badge = cards[idx].querySelector('.tag');
+    if (!badge) {
+      var span = document.createElement('span');
+      span.className = 'tag tag-yellow';
+      span.textContent = '当前阶段';
+      var h4 = cards[idx].querySelector('h4');
+      if (h4) h4.appendChild(document.createTextNode(' ')), h4.appendChild(span);
+    }
+  }
+}
+
+function personalizeTrainTip(p) {
+  if (!p.weaknesses || !p.weaknesses.length) return;
+  var existing = document.getElementById('train-tip');
+  if (existing) existing.remove();
+  var firstTrainSection = document.querySelector('section[data-tab="train"]');
+  if (!firstTrainSection) return;
+  var tip = document.createElement('div');
+  tip.id = 'train-tip';
+  tip.className = 'highlight';
+  tip.style.cssText = 'border-color:rgba(255,215,0,0.3);background:rgba(255,215,0,0.05);margin-bottom:16px;';
+  var recTrains = [];
+  p.weaknesses.forEach(function(wk) {
+    var w = WEAKNESS_MAP[wk];
+    if (w && recTrains.indexOf(w.train) < 0) recTrains.push(w.train);
+  });
+  var trainNames = {quiz:'基础训练',multistreet:'多街决策',mathdrill:'速算训练',rangeread:'读牌训练'};
+  var recs = recTrains.map(function(t){return trainNames[t]||t;}).join('、');
+  tip.innerHTML = '<strong style="color:#FFD700;">基于你的弱点,推荐先练:</strong> ' + recs;
+  firstTrainSection.parentElement.insertBefore(tip, firstTrainSection);
+}
 </script>
 </body>
 </html>
