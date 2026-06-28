@@ -671,6 +671,7 @@ nav.nav { display: none !important; }
   <div class="sidebar-tab" data-target="profile" onclick="switchTab('profile',this)">
     <span class="sb-icon">☆</span> 我的档案
   </div>
+  <div style="padding:16px 20px;margin-top:auto;border-top:1px solid #1e2d4a;" id="sidebar-login-area"></div>
 </nav>
 
 <div class="container">
@@ -678,7 +679,10 @@ nav.nav { display: none !important; }
 <header>
   <h1>布斯 · 德扑攻略</h1>
   <div class="subtitle">Page酒吧 | 10/20盲注 | 50BB | 10人桌</div>
-  <div id="tab-title" style="margin-top:8px;font-size:14px;color:#FFD700;font-weight:600;">♣ 入门基础</div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-top:8px;">
+    <span id="tab-title" style="font-size:14px;color:#FFD700;font-weight:600;">♣ 入门基础</span>
+    <span id="login-status"></span>
+  </div>
 </header>
 
 <div class="sub-nav" id="sub-nav-container"></div>
@@ -2824,6 +2828,64 @@ window.addEventListener('scroll', function() {
   }, 100);
 });
 
+// ===== Auth Module (WeChat + JWT) =====
+var API_BASE = window.POKER_API_BASE || '';  // Set to your FC endpoint URL
+var AuthMgr = {
+  TOKEN_KEY: 'poker_token',
+  getToken: function() { return localStorage.getItem(this.TOKEN_KEY); },
+  setToken: function(t) { localStorage.setItem(this.TOKEN_KEY, t); },
+  clearToken: function() { localStorage.removeItem(this.TOKEN_KEY); },
+  isLoggedIn: function() { return !!this.getToken(); },
+  isWechat: function() { return /MicroMessenger/i.test(navigator.userAgent); },
+
+  startWechatLogin: function() {
+    if (!API_BASE) { alert('API未配置，使用本地模式'); return; }
+    window.location.href = API_BASE + '/api/wechat/auth-url?redirect=1';
+  },
+
+  handleCallback: function() {
+    var params = new URLSearchParams(window.location.search);
+    var token = params.get('token');
+    var isNew = params.get('isNew');
+    if (token) {
+      this.setToken(token);
+      window.history.replaceState({}, '', window.location.pathname);
+      return { token: token, isNew: isNew === 'true' };
+    }
+    return null;
+  },
+
+  fetchProfile: function(callback) {
+    var token = this.getToken();
+    if (!token || !API_BASE) { callback(null); return; }
+    fetch(API_BASE + '/api/user/profile', {
+      headers: { 'Authorization': 'Bearer ' + token }
+    }).then(function(r) {
+      if (!r.ok) { AuthMgr.clearToken(); callback(null); return; }
+      return r.json();
+    }).then(function(d) {
+      if (d && d.user) { ProfileMgr.save(d.user); callback(d.user); }
+      else callback(null);
+    }).catch(function() { callback(null); });
+  },
+
+  syncProfile: function(profile) {
+    var token = this.getToken();
+    if (!token || !API_BASE) return;
+    fetch(API_BASE + '/api/user/profile', {
+      method: 'PUT',
+      headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
+      body: JSON.stringify(profile)
+    }).catch(function() {});
+  },
+
+  logout: function() {
+    this.clearToken();
+    ProfileMgr.clear();
+    location.reload();
+  }
+};
+
 // Initialize on load
 (function() {
   function init() {
@@ -2837,16 +2899,61 @@ window.addEventListener('scroll', function() {
         setTimeout(function() { scrollToSection(targetId, null); }, 100);
       }
     }
-    var profile = ProfileMgr.get();
-    if (!profile) {
-      setTimeout(wizOpen, 500);
-    } else {
-      personalizeAll(profile);
+
+    // Handle WeChat OAuth callback
+    var callbackResult = AuthMgr.handleCallback();
+    if (callbackResult) {
+      if (callbackResult.isNew) {
+        AuthMgr.fetchProfile(function(p) {
+          if (p) { personalizeAll(p); }
+          setTimeout(wizOpen, 300);
+        });
+        return;
+      } else {
+        AuthMgr.fetchProfile(function(p) {
+          if (p) personalizeAll(p);
+        });
+        return;
+      }
     }
+
+    // Normal flow: check login state
+    if (AuthMgr.isLoggedIn() && API_BASE) {
+      AuthMgr.fetchProfile(function(p) {
+        if (p) { personalizeAll(p); }
+        else {
+          var local = ProfileMgr.get();
+          if (!local) setTimeout(wizOpen, 500);
+          else personalizeAll(local);
+        }
+      });
+    } else {
+      var profile = ProfileMgr.get();
+      if (!profile) {
+        setTimeout(wizOpen, 500);
+      } else {
+        personalizeAll(profile);
+      }
+    }
+
+    updateLoginUI();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
+
+function updateLoginUI() {
+  var container = document.getElementById('login-status');
+  if (!container) return;
+  if (AuthMgr.isLoggedIn()) {
+    var p = ProfileMgr.get();
+    container.innerHTML = '<span style="color:#00FF88;font-size:12px;">' + (p && p.nickname ? p.nickname : '已登录') + '</span> <span onclick="AuthMgr.logout()" style="color:#666;font-size:11px;cursor:pointer;margin-left:8px;">退出</span>';
+  } else if (AuthMgr.isWechat()) {
+    container.innerHTML = '<span onclick="AuthMgr.startWechatLogin()" style="color:#00D4FF;font-size:12px;cursor:pointer;">微信登录</span>';
+  } else {
+    container.innerHTML = '<span style="color:#666;font-size:11px;">本地模式</span>';
+  }
+}
 
 // ===== ProfileManager =====
 var ProfileMgr = {
@@ -2989,6 +3096,7 @@ function wizNext() {
   if (wizStep === 0 && !wizData.level) { return; }
   if (wizStep < 3) { wizStep++; wizRender(); return; }
   var profile = ProfileMgr.save(wizData);
+  AuthMgr.syncProfile(profile);
   var body = document.getElementById('wiz-body');
   body.innerHTML = '<div class="wiz-success"><div class="check">&#10003;</div><h3>档案创建成功!</h3><p>' + profile.name + ', 你的个性化攻略已就绪</p></div>';
   document.getElementById('wiz-next').textContent = '开始使用';
