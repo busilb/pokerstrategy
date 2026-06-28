@@ -392,15 +392,180 @@ nav.nav { display: none !important; }
   .sub-nav-pill { padding: 6px 12px; font-size: 12px; }
   .calc-result-box .big-num { font-size: 26px; }
 }
+
+/* ===== PC / Desktop Optimization (≥769px) ===== */
+.sidebar {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0;
+    width: 200px;
+    height: 100vh;
+    background: #0a101e;
+    border-right: 1px solid #1e2d4a;
+    padding: 24px 0;
+    z-index: 999;
+    overflow-y: auto;
+  }
+  .sidebar-brand {
+    text-align: center;
+    padding: 0 16px 20px;
+    border-bottom: 1px solid #1e2d4a;
+    margin-bottom: 12px;
+  }
+  .sidebar-brand h2 {
+    font-size: 18px;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .sidebar-brand .sub {
+    font-size: 11px;
+    color: #555;
+  }
+  .sidebar-tab {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    margin: 2px 10px;
+    border-radius: 8px;
+    color: #667;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .sidebar-tab:hover { background: #141c2e; color: #aab; }
+  .sidebar-tab.active {
+    background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.04));
+    color: #FFD700;
+    font-weight: 600;
+    border-left: 3px solid #FFD700;
+    margin-left: 7px;
+    padding-left: 17px;
+  }
+  .sidebar-tab .sb-icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #141c2e;
+    border-radius: 6px;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .sidebar-tab.active .sb-icon {
+    background: rgba(255,215,0,0.15);
+    color: #FFD700;
+  }
+  .sidebar-phase {
+    font-size: 10px;
+    color: #445;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 16px 20px 6px;
+    font-weight: 600;
+  }
+
+  .bottom-tabbar { display: none !important; }
+
+  body {
+    padding-left: 200px !important;
+    padding-bottom: 20px !important;
+  }
+  .container {
+    max-width: 880px !important;
+    padding: 28px 32px !important;
+  }
+  header {
+    padding: 28px 0 18px !important;
+    margin-bottom: 16px !important;
+    text-align: left !important;
+  }
+  header h1 { font-size: 26px !important; }
+  header .subtitle { font-size: 13px !important; }
+  #tab-title { font-size: 15px !important; }
+
+  section[data-tab] {
+    padding: 28px;
+    margin-bottom: 20px;
+    background: #0f172a;
+    border: 1px solid rgba(30,45,74,0.6);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2), 0 1px 4px rgba(0,0,0,0.15);
+  }
+  section[data-tab] h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+  }
+  section h3 { font-size: 16px; margin: 18px 0 10px; }
+  li { font-size: 15px; margin: 8px 0; }
+  p, td, .rule-card, .highlight, .quiz-card .question { font-size: 15px; }
+  th { font-size: 13px; }
+  th, td { padding: 10px 12px; }
+  table { font-size: 14px; }
+  .rule-card { padding: 16px 20px; margin: 12px 0; }
+  .highlight { padding: 16px 20px; font-size: 15px; }
+  .formula-box { font-size: 15px; padding: 16px 20px; }
+  .stat-card .num { font-size: 28px; }
+  .stat-card .label { font-size: 13px; }
+  .grid-2 { gap: 14px; }
+  .quiz-card { padding: 20px; }
+  .calc-result-box .big-num { font-size: 36px; }
+  .level-card { padding: 20px; margin: 14px 0; }
+  .sub-nav { padding: 4px 0 20px; gap: 10px; }
+  .sub-nav-pill { padding: 8px 20px; font-size: 14px; }
+
+  .pos-tab { padding: 8px 16px; font-size: 13px; }
+  button { font-size: 14px; }
+  select { font-size: 14px; }
+  .calc-input-group label { font-size: 13px; }
+  .calc-input-group input, .calc-input-group select { font-size: 16px; }
+}
 </style>
 </head>
 <body>
+
+<!-- PC Sidebar Navigation -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <h2>♠ 布斯攻略</h2>
+    <div class="sub">德州扑克 · 从入门到进阶</div>
+  </div>
+  <div class="sidebar-phase">学习路径</div>
+  <div class="sidebar-tab active" data-target="start" onclick="switchTab('start',this)">
+    <span class="sb-icon">♣</span> 入门基础
+  </div>
+  <div class="sidebar-tab" data-target="strategy" onclick="switchTab('strategy',this)">
+    <span class="sb-icon">♦</span> 进阶策略
+  </div>
+  <div class="sidebar-phase">实战应用</div>
+  <div class="sidebar-tab" data-target="tools" onclick="switchTab('tools',this)">
+    <span class="sb-icon">♠</span> 实战工具
+  </div>
+  <div class="sidebar-tab" data-target="train" onclick="switchTab('train',this)">
+    <span class="sb-icon">✦</span> 刻意训练
+  </div>
+  <div class="sidebar-phase">个人档案</div>
+  <div class="sidebar-tab" data-target="profile" onclick="switchTab('profile',this)">
+    <span class="sb-icon">☆</span> 我的档案
+  </div>
+</nav>
+
 <div class="container">
 
 <header>
   <h1>布斯 · 德扑攻略</h1>
   <div class="subtitle">Page酒吧 | 10/20盲注 | 50BB | 10人桌</div>
-  <div id="tab-title" style="margin-top:8px;font-size:14px;color:#FFD700;font-weight:600;">⚡ 决策工具</div>
+  <div id="tab-title" style="margin-top:8px;font-size:14px;color:#FFD700;font-weight:600;">♣ 入门基础</div>
 </header>
 
 <div class="sub-nav" id="sub-nav-container"></div>
@@ -426,7 +591,7 @@ nav.nav { display: none !important; }
 </nav>
 
 <!-- 快速决策器 -->
-<section id="quickdecision" data-tab="tools" data-label="⚡ 决策器" style="border:2px solid #FFD700;box-shadow:0 0 20px rgba(255,215,0,0.1);">
+<section id="quickdecision" data-tab="tools" data-label="⚡ 决策器">
   <h2><span class="accent-gold">&#9889;</span> 快速决策器</h2>
   <p style="font-size:13px;color:#888;margin-bottom:16px;">3步出答案：位置 → 局面 → 手牌。瞬间决策，上桌直接用。</p>
 
@@ -466,7 +631,7 @@ nav.nav { display: none !important; }
 </section>
 
 <!-- 实时牌桌计算器 -->
-<section id="calculator" data-tab="tools" data-label="🔢 计算器" style="border:2px solid #00D4FF;box-shadow:0 0 20px rgba(0,212,255,0.1);">
+<section id="calculator" data-tab="tools" data-label="🔢 计算器">
   <h2><span class="accent-cyan">🔢</span> 实时牌桌计算器</h2>
   <p style="font-size:13px;color:#888;margin-bottom:16px;">上桌快速算赔率和EV。输入数字，瞬间出结果。</p>
 
@@ -516,7 +681,7 @@ nav.nav { display: none !important; }
 </section>
 
 <!-- 翻前范围矩阵 -->
-<section id="rangematrix" data-tab="strategy" data-label="范围矩阵">
+<section id="rangematrix" data-tab="tools" data-label="范围矩阵">
   <h2><span class="accent-green">■</span> 翻前范围矩阵</h2>
   <p style="font-size:13px;color:#888;margin-bottom:12px;">一目了然：哪些牌能打，哪些牌要扔。选位置看你的open/call/fold范围。对角线=对子，上三角=同花，下三角=非同花。</p>
   <div style="display:flex;gap:6px;margin-bottom:8px;">
@@ -535,7 +700,7 @@ nav.nav { display: none !important; }
 </section>
 
 <!-- 胜率模拟器 -->
-<section id="equitycalc" data-tab="strategy" data-label="胜率模拟">
+<section id="equitycalc" data-tab="tools" data-label="胜率模拟">
   <h2><span class="accent-purple">■</span> 胜率模拟器</h2>
   <p style="font-size:13px;color:#888;margin-bottom:16px;">蒙特卡洛模拟10000次发牌，精确计算你的手牌 vs 对手范围的胜率。帮你建立胜率直觉。</p>
 
@@ -601,7 +766,7 @@ nav.nav { display: none !important; }
 </section>
 
 <!-- 三条军规 -->
-<section id="rules" data-tab="learn" data-label="三条军规">
+<section id="rules" data-tab="start" data-label="三条军规">
   <h2><span class="accent-red">&#9632;</span> 今日三条军规</h2>
   <div class="rule-card">
     <span class="rule-num">1</span><strong>管手</strong><br>
@@ -626,7 +791,7 @@ nav.nav { display: none !important; }
 </section>
 
 <!-- 成长阶段 -->
-<section id="levels" data-tab="learn" data-label="成长路线">
+<section id="levels" data-tab="strategy" data-label="成长路线">
   <h2><span class="accent-gold">&#9632;</span> 德扑成长路线图</h2>
   <p style="font-size:13px;color:#888;margin-bottom:16px;">从完全不会到稳定盈利，5个阶段。每个阶段有明确的能力指标和突破方向。</p>
 
@@ -752,7 +917,7 @@ nav.nav { display: none !important; }
 </section>
 
 <!-- 进阶理论 -->
-<section id="advanced" data-tab="learn" data-label="进阶理论">
+<section id="advanced" data-tab="strategy" data-label="进阶理论">
   <h2><span class="accent-cyan">&#9632;</span> 进阶理论 · 用数学打牌</h2>
 
   <h3>一、纳什均衡（Nash Equilibrium）</h3>
@@ -935,7 +1100,7 @@ nav.nav { display: none !important; }
 </section>
 
 <!-- 基础知识 -->
-<section id="basics" data-tab="learn" data-label="基础速查">
+<section id="basics" data-tab="start" data-label="基础速查">
   <h2><span class="accent-gold">&#9632;</span> 德扑基础速查</h2>
   <h3>牌力排名（从大到小）</h3>
   <table>
@@ -1250,24 +1415,24 @@ nav.nav { display: none !important; }
 
 <!-- Bottom Tab Bar -->
 <div class="bottom-tabbar" id="bottom-tabbar">
-  <div class="tab-item active" data-target="tools" onclick="switchTab('tools',this)">
-    <span class="tab-icon">⚡</span>
-    <span>决策</span>
+  <div class="tab-item active" data-target="start" onclick="switchTab('start',this)">
+    <span class="tab-icon">♣</span>
+    <span>入门</span>
   </div>
   <div class="tab-item" data-target="strategy" onclick="switchTab('strategy',this)">
-    <span class="tab-icon">📊</span>
+    <span class="tab-icon">♦</span>
     <span>策略</span>
   </div>
-  <div class="tab-item" data-target="learn" onclick="switchTab('learn',this)">
-    <span class="tab-icon">📖</span>
-    <span>学习</span>
+  <div class="tab-item" data-target="tools" onclick="switchTab('tools',this)">
+    <span class="tab-icon">♠</span>
+    <span>工具</span>
   </div>
   <div class="tab-item" data-target="train" onclick="switchTab('train',this)">
-    <span class="tab-icon">🎯</span>
+    <span class="tab-icon">✦</span>
     <span>训练</span>
   </div>
   <div class="tab-item" data-target="profile" onclick="switchTab('profile',this)">
-    <span class="tab-icon">👤</span>
+    <span class="tab-icon">☆</span>
     <span>我的</span>
   </div>
 </div>
@@ -2467,20 +2632,20 @@ window.runEquity=function(){
 </script>
 <script>
 // ===== Tab Switching & Sub-nav System =====
-var TAB_ORDER = ['tools','strategy','learn','train','profile'];
+var TAB_ORDER = ['start','strategy','tools','train','profile'];
 var TAB_META = {
-  tools:    {icon:'⚡', name:'决策'},
-  strategy: {icon:'📊', name:'策略'},
-  learn:    {icon:'📖', name:'学习'},
-  train:    {icon:'🎯', name:'训练'},
-  profile:  {icon:'👤', name:'我的'}
+  start:    {icon:'♣', name:'入门'},
+  strategy: {icon:'♦', name:'策略'},
+  tools:    {icon:'♠', name:'工具'},
+  train:    {icon:'✦', name:'训练'},
+  profile:  {icon:'☆', name:'我的'}
 };
 var TAB_TITLES = {
-  tools:    '⚡ 决策工具',
-  strategy: '📊 策略分析',
-  learn:    '📖 学习进阶',
-  train:    '🎯 实战训练',
-  profile:  '👤 我的档案'
+  start:    '♣ 入门基础',
+  strategy: '♦ 进阶策略',
+  tools:    '♠ 实战工具',
+  train:    '✦ 刻意训练',
+  profile:  '☆ 我的档案'
 };
 var currentTab = '';
 
@@ -2488,6 +2653,9 @@ function switchTab(tab, el) {
   if (currentTab === tab) { window.scrollTo({top: 0, behavior: 'smooth'}); return; }
   currentTab = tab;
   document.querySelectorAll('.tab-item').forEach(function(t) {
+    t.classList.toggle('active', t.getAttribute('data-target') === tab);
+  });
+  document.querySelectorAll('.sidebar-tab').forEach(function(t) {
     t.classList.toggle('active', t.getAttribute('data-target') === tab);
   });
   document.querySelectorAll('section[data-tab]').forEach(function(s) {
@@ -2546,7 +2714,7 @@ window.addEventListener('scroll', function() {
 // Initialize on load
 (function() {
   function init() {
-    switchTab('tools', document.querySelector('.tab-item[data-target="tools"]'));
+    switchTab('start', document.querySelector('.tab-item[data-target="start"]'));
     // Handle hash navigation
     if (window.location.hash) {
       var targetId = window.location.hash.substring(1);
